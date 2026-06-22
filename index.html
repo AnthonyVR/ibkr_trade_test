@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IBKR Probe Trades</title>
+  <style>
+    :root {
+      --bg: #09090b;
+      --panel: rgba(24,24,27,0.88);
+      --panel-border: #27272a;
+      --text: #e4e4e7;
+      --muted: #a1a1aa;
+      --good: #34d399;
+      --bad: #fb7185;
+      --buy: rgba(16,185,129,0.05);
+      --sell: rgba(244,63,94,0.05);
+      --accent: rgba(14,165,233,0.12);
+      --accent-border: rgba(14,165,233,0.28);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 24px;
+      background: var(--bg);
+      color: var(--text);
+      font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .shell { max-width: 1780px; margin: 0 auto; display: grid; gap: 20px; }
+    .hero, .panel, .summary {
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: 16px;
+    }
+    .hero {
+      padding: 18px;
+      background: var(--accent);
+      border-color: var(--accent-border);
+    }
+    .eyebrow {
+      color: #7dd3fc;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    h1 { margin: 8px 0 6px; font-size: 28px; }
+    p, .meta { margin: 0; color: var(--muted); }
+    .grid { display: grid; gap: 16px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .summary { padding: 18px; }
+    .summary .label {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .summary .value { margin-top: 10px; font-size: 28px; font-weight: 700; }
+    .summary .note { margin-top: 8px; color: var(--muted); }
+    .panel { overflow: hidden; }
+    .panel-head { padding: 16px 18px; border-bottom: 1px solid var(--panel-border); }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; min-width: 1700px; }
+    th, td { padding: 12px 14px; text-align: left; vertical-align: top; }
+    th {
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      background: rgba(9,9,11,0.7);
+      position: sticky;
+      top: 0;
+    }
+    tbody tr { border-top: 1px solid var(--panel-border); }
+    .buy-row { background: var(--buy); }
+    .sell-row { background: var(--sell); }
+    .good { color: var(--good); }
+    .bad { color: var(--bad); }
+    .empty { color: var(--muted); text-align: center; padding: 28px; }
+    @media (max-width: 1100px) {
+      body { padding: 12px; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <section class="hero">
+      <div class="eyebrow">Trade Ledger</div>
+      <h1>IBKR Probe Trades</h1>
+      <p>Static export of the probe ledger. Updated from the trading server after trade events.</p>
+      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events.jsonl | Generated: 2026-06-22 02:47:24 UTC | Rows: 3</p>
+    </section>
+
+    <section class="grid">
+      <div class="summary">
+        <div class="label">Total PnL (Gross)</div>
+        <div class="value">-20.00</div>
+        <div class="note">Sum of closed-trade price difference times quantity. Fees excluded.</div>
+      </div>
+      <div class="summary">
+        <div class="label">Profit / Trade (bps)</div>
+        <div class="value">-2.02</div>
+        <div class="note">Average closed-trade gross return in basis points versus entry fill.</div>
+      </div>
+      <div class="summary">
+        <div class="label">Avg Slippage (bps)</div>
+        <div class="value">+0.20</div>
+        <div class="note">Average per-side execution slippage in basis points versus expected bid/ask reference.</div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <div class="eyebrow" style="color:#a1a1aa;">Ledger</div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Entry Time</th>
+              <th>Exit Time</th>
+              <th>Duration</th>
+              <th>Instrument</th>
+              <th>Side</th>
+              <th>Status</th>
+              <th>Qty</th>
+              <th>Prob Up</th>
+              <th>Entry Close</th>
+              <th>Entry Bid</th>
+              <th>Entry Ask</th>
+              <th>Entry Half-Spread</th>
+              <th>Expected Entry</th>
+              <th>Actual Entry</th>
+              <th>Exit Close</th>
+              <th>Exit Bid</th>
+              <th>Exit Ask</th>
+              <th>Exit Half-Spread</th>
+              <th>Expected Exit</th>
+              <th>Actual Exit</th>
+              <th>Round Trip Slippage</th>
+              <th>PnL / Unit</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            <tr class="sell-row">
+              <td>19/06/2026, 15:00:07</td>
+              <td>19/06/2026, 15:45:07</td>
+              <td>45m</td>
+              <td>EUR-CAD</td>
+              <td>SELL</td>
+              <td>closed</td>
+              <td>20000</td>
+              <td>0.2899</td>
+              <td>1.625900</td>
+              <td>1.625870</td>
+              <td>1.625930</td>
+              <td>+0.18</td>
+              <td>1.625870</td>
+              <td>1.625860 <span class="bad">(-0.06bps)</span></td>
+              <td>1.625680</td>
+              <td>1.625650</td>
+              <td>1.625710</td>
+              <td>+0.18</td>
+              <td>1.625710</td>
+              <td>1.625790 <span class="bad">(+0.49bps)</span></td>
+              <td><span class="bad">+0.55bps</span></td>
+              <td>+0.00007</td>
+            </tr>
+            
+            <tr class="sell-row">
+              <td>19/06/2026, 08:45:07</td>
+              <td>19/06/2026, 13:15:07</td>
+              <td>4h 29m</td>
+              <td>EUR-USD</td>
+              <td>SELL</td>
+              <td>closed</td>
+              <td>20000</td>
+              <td>0.3375</td>
+              <td>1.146405</td>
+              <td>1.146400</td>
+              <td>1.146410</td>
+              <td>+0.04</td>
+              <td>1.146400</td>
+              <td>1.146390 <span class="bad">(-0.09bps)</span></td>
+              <td>1.146255</td>
+              <td>1.146250</td>
+              <td>1.146260</td>
+              <td>+0.04</td>
+              <td>1.146260</td>
+              <td>1.146340 <span class="bad">(+0.70bps)</span></td>
+              <td><span class="bad">+0.79bps</span></td>
+              <td>+0.00005</td>
+            </tr>
+            
+            <tr class="sell-row">
+              <td>19/06/2026, 07:00:07</td>
+              <td>19/06/2026, 07:45:07</td>
+              <td>45m</td>
+              <td>EUR-CAD</td>
+              <td>SELL</td>
+              <td>closed</td>
+              <td>20000</td>
+              <td>0.3248</td>
+              <td>1.618025</td>
+              <td>1.617990</td>
+              <td>1.618060</td>
+              <td>+0.22</td>
+              <td>1.617990</td>
+              <td>1.618010 <span class="good">(+0.12bps)</span></td>
+              <td>1.619100</td>
+              <td>1.619070</td>
+              <td>1.619130</td>
+              <td>+0.19</td>
+              <td>1.619130</td>
+              <td>1.619130 <span class="good">(+0.00bps)</span></td>
+              <td><span class="good">-0.12bps</span></td>
+              <td>-0.00112</td>
+            </tr>
+            
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
