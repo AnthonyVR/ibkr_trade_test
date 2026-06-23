@@ -46,7 +46,7 @@
     }
     h1 { margin: 8px 0 6px; font-size: 28px; }
     p, .meta { margin: 0; color: var(--muted); }
-    .grid { display: grid; gap: 12px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid { display: grid; gap: 12px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .summary { padding: 14px; }
     .summary .label {
       color: var(--muted);
@@ -78,13 +78,13 @@
     .empty { color: var(--muted); text-align: center; padding: 28px; }
     @media (max-width: 1100px) {
       body { padding: 12px; }
-      .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+      .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
       .summary { padding: 12px; }
       .summary .value { font-size: 18px; }
     }
     @media (max-width: 720px) {
       body { padding: 10px; }
-      .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+      .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
       .summary { padding: 10px; border-radius: 12px; }
       .summary .label { font-size: 9px; letter-spacing: 0.08em; }
       .summary .value { margin-top: 6px; font-size: 16px; }
@@ -98,13 +98,13 @@
       <div class="eyebrow">Trade Ledger</div>
       <h1>IBKR Probe Trades</h1>
       <p>Static export of the probe ledger. Updated from the trading server after trade events.</p>
-      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events.jsonl | Generated: 2026-06-22 19:00:05 UTC | Rows: 5</p>
+      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events.jsonl | Generated: 2026-06-23 01:45:06 UTC | Rows: 6</p>
     </section>
 
     <section class="grid">
       <div class="summary">
-        <div class="label">Total PnL (Gross)</div>
-        <div class="value">-6353.50</div>
+        <div class="label">Total PnL (Gross, EUR)</div>
+        <div class="value">-21.04</div>
       </div>
       <div class="summary">
         <div class="label">Profit / Trade (bps)</div>
@@ -112,7 +112,11 @@
       </div>
       <div class="summary">
         <div class="label">Avg Slippage (bps)</div>
-        <div class="value">-0.05</div>
+        <div class="value">-0.02</div>
+      </div>
+      <div class="summary">
+        <div class="label">Win Rate</div>
+        <div class="value">60.0%</div>
       </div>
     </section>
 
@@ -145,10 +149,35 @@
               <th>Expected Exit</th>
               <th>Actual Exit</th>
               <th>Round Trip Slippage</th>
-              <th>PnL / Unit</th>
+              <th>PnL (bps)</th>
             </tr>
           </thead>
           <tbody>
+            
+            <tr class="sell-row">
+              <td>23/06/2026, 01:45:06</td>
+              <td>—</td>
+              <td>—</td>
+              <td>EUR-AUD</td>
+              <td>SELL</td>
+              <td>short</td>
+              <td>25000</td>
+              <td>0.3454</td>
+              <td>1.636115</td>
+              <td>1.636090</td>
+              <td>1.636140</td>
+              <td>+0.15</td>
+              <td>1.636090</td>
+              <td>1.636050 <span class="bad">(-0.24bps)</span></td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="bad">+0.24bps</span></td>
+              <td>—</td>
+            </tr>
             
             <tr class="sell-row">
               <td>22/06/2026, 15:15:04</td>
@@ -172,7 +201,7 @@
               <td>1.619120</td>
               <td>1.619110 <span class="good">(-0.06bps)</span></td>
               <td><span class="good">-0.19bps</span></td>
-              <td>+0.00166</td>
+              <td><span class="good">+10.24bps</span></td>
             </tr>
             
             <tr class="buy-row">
@@ -197,7 +226,7 @@
               <td>161.419000</td>
               <td>161.445000 <span class="good">(+1.61bps)</span></td>
               <td><span class="good">-1.49bps</span></td>
-              <td>-0.25500</td>
+              <td><span class="bad">-15.77bps</span></td>
             </tr>
             
             <tr class="sell-row">
@@ -222,7 +251,7 @@
               <td>1.625710</td>
               <td>1.625790 <span class="bad">(+0.49bps)</span></td>
               <td><span class="bad">+0.55bps</span></td>
-              <td>+0.00007</td>
+              <td><span class="good">+0.43bps</span></td>
             </tr>
             
             <tr class="sell-row">
@@ -247,7 +276,7 @@
               <td>1.146260</td>
               <td>1.146340 <span class="bad">(+0.70bps)</span></td>
               <td><span class="bad">+0.79bps</span></td>
-              <td>+0.00005</td>
+              <td><span class="good">+0.44bps</span></td>
             </tr>
             
             <tr class="sell-row">
@@ -272,7 +301,7 @@
               <td>1.619130</td>
               <td>1.619130 <span class="good">(+0.00bps)</span></td>
               <td><span class="good">-0.12bps</span></td>
-              <td>-0.00112</td>
+              <td><span class="bad">-6.92bps</span></td>
             </tr>
             
           </tbody>
