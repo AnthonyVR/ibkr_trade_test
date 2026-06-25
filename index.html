@@ -98,7 +98,7 @@
       <div class="eyebrow">Trade Ledger</div>
       <h1>IBKR Probe Trades</h1>
       <p>Static export of the probe ledger. Updated from the trading server after trade events.</p>
-      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events.jsonl | Generated: 2026-06-25 13:15:05 UTC | Rows: 13</p>
+      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-06-25 14:47:38 UTC | Rows: 19</p>
     </section>
 
     <section class="grid">
@@ -132,6 +132,7 @@
               <th>Exit Time</th>
               <th>Duration</th>
               <th>Instrument</th>
+              <th>Strategy</th>
               <th>Side</th>
               <th>Status</th>
               <th>Qty</th>
@@ -154,11 +155,168 @@
           </thead>
           <tbody>
             
+            <tr class="buy-row">
+              <td>25/06/2026, 14:45:09</td>
+              <td>—</td>
+              <td>—</td>
+              <td>USD-JPY</td>
+              <td>forex-v1-test-daily-mon-wed</td>
+              <td>BUY</td>
+              <td>long</td>
+              <td>25000</td>
+              <td>0.6227</td>
+              <td>161.678500</td>
+              <td>161.677000</td>
+              <td>161.680000</td>
+              <td>+0.09</td>
+              <td>161.680000</td>
+              <td>161.677000 <span class="good">(-0.19bps)</span></td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="good">-0.19bps</span></td>
+              <td>—</td>
+            </tr>
+            
+            <tr class="sell-row">
+              <td>25/06/2026, 14:45:07</td>
+              <td>—</td>
+              <td>—</td>
+              <td>USD-CAD</td>
+              <td>forex-v1-test-daily-mon-wed</td>
+              <td>SELL</td>
+              <td>short</td>
+              <td>25000</td>
+              <td>0.4374</td>
+              <td>1.420540</td>
+              <td>1.420530</td>
+              <td>1.420550</td>
+              <td>+0.07</td>
+              <td>1.420530</td>
+              <td>1.420450 <span class="bad">(-0.56bps)</span></td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="bad">+0.56bps</span></td>
+              <td>—</td>
+            </tr>
+            
+            <tr class="sell-row">
+              <td>25/06/2026, 14:45:06</td>
+              <td>—</td>
+              <td>—</td>
+              <td>EUR-USD</td>
+              <td>forex-v1-test-daily-mon-wed</td>
+              <td>SELL</td>
+              <td>short</td>
+              <td>25000</td>
+              <td>0.4378</td>
+              <td>1.137815</td>
+              <td>1.137810</td>
+              <td>1.137820</td>
+              <td>+0.04</td>
+              <td>1.137810</td>
+              <td>1.137860 <span class="good">(+0.44bps)</span></td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="good">-0.44bps</span></td>
+              <td>—</td>
+            </tr>
+            
+            <tr class="sell-row">
+              <td>25/06/2026, 14:45:05</td>
+              <td>—</td>
+              <td>—</td>
+              <td>EUR-AUD</td>
+              <td>forex-v1-test-daily-mon-wed</td>
+              <td>SELL</td>
+              <td>short</td>
+              <td>25000</td>
+              <td>0.3992</td>
+              <td>1.648505</td>
+              <td>1.648490</td>
+              <td>1.648520</td>
+              <td>+0.09</td>
+              <td>1.648490</td>
+              <td>1.648490 <span class="good">(+0.00bps)</span></td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="good">+0.00bps</span></td>
+              <td>—</td>
+            </tr>
+            
+            <tr class="buy-row">
+              <td>25/06/2026, 14:45:05</td>
+              <td>—</td>
+              <td>—</td>
+              <td>USD-JPY</td>
+              <td>826657e4-23bd-4123-9fff-a5ea960fcd7a</td>
+              <td>BUY</td>
+              <td>long</td>
+              <td>25000</td>
+              <td>0.6594</td>
+              <td>161.678500</td>
+              <td>161.677000</td>
+              <td>161.680000</td>
+              <td>+0.09</td>
+              <td>161.680000</td>
+              <td>161.679000 <span class="good">(-0.06bps)</span></td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="good">-0.06bps</span></td>
+              <td>—</td>
+            </tr>
+            
+            <tr class="sell-row">
+              <td>25/06/2026, 14:45:05</td>
+              <td>—</td>
+              <td>—</td>
+              <td>USD-CAD</td>
+              <td>826657e4-23bd-4123-9fff-a5ea960fcd7a</td>
+              <td>SELL</td>
+              <td>short</td>
+              <td>25000</td>
+              <td>0.3310</td>
+              <td>1.420540</td>
+              <td>1.420530</td>
+              <td>1.420550</td>
+              <td>+0.07</td>
+              <td>1.420530</td>
+              <td>1.420520 <span class="bad">(-0.07bps)</span></td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="bad">+0.07bps</span></td>
+              <td>—</td>
+            </tr>
+            
             <tr class="sell-row">
               <td>25/06/2026, 13:15:05</td>
               <td>—</td>
               <td>—</td>
               <td>GBP-USD</td>
+              <td>826657e4-23bd-4123-9fff-a5ea960fcd7a</td>
               <td>SELL</td>
               <td>short</td>
               <td>25000</td>
@@ -184,6 +342,7 @@
               <td>25/06/2026, 09:15:06</td>
               <td>7h 44m</td>
               <td>USD-CAD</td>
+              <td>826657e4-23bd-4123-9fff-a5ea960fcd7a</td>
               <td>BUY</td>
               <td>closed</td>
               <td>25000</td>
@@ -209,6 +368,7 @@
               <td>25/06/2026, 08:45:07</td>
               <td>7h 29m</td>
               <td>USD-SGD</td>
+              <td>826657e4-23bd-4123-9fff-a5ea960fcd7a</td>
               <td>BUY</td>
               <td>closed</td>
               <td>25000</td>
@@ -234,6 +394,7 @@
               <td>24/06/2026, 18:00:05</td>
               <td>59m</td>
               <td>USD-CAD</td>
+              <td>826657e4-23bd-4123-9fff-a5ea960fcd7a</td>
               <td>BUY</td>
               <td>closed</td>
               <td>25000</td>
@@ -259,6 +420,7 @@
               <td>23/06/2026, 19:45:04</td>
               <td>2h 14m</td>
               <td>EUR-AUD</td>
+              <td>826657e4-23bd-4123-9fff-a5ea960fcd7a</td>
               <td>SELL</td>
               <td>closed</td>
               <td>25000</td>
@@ -284,6 +446,7 @@
               <td>23/06/2026, 13:30:05</td>
               <td>2h 59m</td>
               <td>EUR-AUD</td>
+              <td>826657e4-23bd-4123-9fff-a5ea960fcd7a</td>
               <td>SELL</td>
               <td>closed</td>
               <td>25000</td>
@@ -309,6 +472,7 @@
               <td>23/06/2026, 11:45:06</td>
               <td>2h 29m</td>
               <td>USD-JPY</td>
+              <td>826657e4-23bd-4123-9fff-a5ea960fcd7a</td>
               <td>BUY</td>
               <td>closed</td>
               <td>25000</td>
@@ -334,6 +498,7 @@
               <td>23/06/2026, 09:00:04</td>
               <td>7h 14m</td>
               <td>EUR-AUD</td>
+              <td>826657e4-23bd-4123-9fff-a5ea960fcd7a</td>
               <td>SELL</td>
               <td>closed</td>
               <td>25000</td>
@@ -359,6 +524,7 @@
               <td>22/06/2026, 16:15:05</td>
               <td>1h 0m</td>
               <td>EUR-CAD</td>
+              <td>826657e4-23bd-4123-9fff-a5ea960fcd7a</td>
               <td>SELL</td>
               <td>closed</td>
               <td>25000</td>
@@ -384,6 +550,7 @@
               <td>22/06/2026, 19:00:05</td>
               <td>4h 44m</td>
               <td>USD-JPY</td>
+              <td>826657e4-23bd-4123-9fff-a5ea960fcd7a</td>
               <td>BUY</td>
               <td>closed</td>
               <td>25000</td>
@@ -409,6 +576,7 @@
               <td>19/06/2026, 15:45:07</td>
               <td>45m</td>
               <td>EUR-CAD</td>
+              <td>826657e4-23bd-4123-9fff-a5ea960fcd7a</td>
               <td>SELL</td>
               <td>closed</td>
               <td>20000</td>
@@ -434,6 +602,7 @@
               <td>19/06/2026, 13:15:07</td>
               <td>4h 29m</td>
               <td>EUR-USD</td>
+              <td>826657e4-23bd-4123-9fff-a5ea960fcd7a</td>
               <td>SELL</td>
               <td>closed</td>
               <td>20000</td>
@@ -459,6 +628,7 @@
               <td>19/06/2026, 07:45:07</td>
               <td>45m</td>
               <td>EUR-CAD</td>
+              <td>826657e4-23bd-4123-9fff-a5ea960fcd7a</td>
               <td>SELL</td>
               <td>closed</td>
               <td>20000</td>
