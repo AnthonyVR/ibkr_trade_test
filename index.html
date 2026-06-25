@@ -56,6 +56,34 @@
       text-transform: uppercase;
     }
     .summary .value { margin-top: 8px; font-size: 22px; font-weight: 700; line-height: 1.1; }
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: end;
+      margin-top: 14px;
+    }
+    .filter-label {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 240px;
+    }
+    .filter-label span {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .filter-label select {
+      border: 1px solid var(--panel-border);
+      border-radius: 10px;
+      background: rgba(9,9,11,0.85);
+      color: var(--text);
+      padding: 10px 12px;
+      font: inherit;
+    }
     .panel { overflow: hidden; }
     .panel-head { padding: 16px 18px; border-bottom: 1px solid var(--panel-border); }
     .table-wrap { overflow-x: auto; }
@@ -98,25 +126,35 @@
       <div class="eyebrow">Trade Ledger</div>
       <h1>IBKR Probe Trades</h1>
       <p>Static export of the probe ledger. Updated from the trading server after trade events.</p>
-      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-06-25 14:47:38 UTC | Rows: 19</p>
+      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-06-25 14:51:50 UTC | Rows: 19</p>
+      <div class="filters">
+        <label class="filter-label">
+          <span>Strategy</span>
+          <select id="strategy-filter">
+            <option value="all">All Strategies</option>
+            <option value="826657e4-23bd-4123-9fff-a5ea960fcd7a">826657e4-23bd-4123-9fff-a5ea960fcd7a</option><option value="4af43c67-4f80-43b2-b0a5-15aaa15af27f">forex-v1-test-daily-mon-wed</option>
+          </select>
+        </label>
+        <p class="meta" id="row-count">Showing 19 of 19 trade rows.</p>
+      </div>
     </section>
 
     <section class="grid">
       <div class="summary">
         <div class="label">Total PnL (Gross, EUR)</div>
-        <div class="value">-106.82</div>
+        <div class="value" id="summary-total-gross">-106.82</div>
       </div>
       <div class="summary">
         <div class="label">Profit / Trade (bps)</div>
-        <div class="value">-3.62</div>
+        <div class="value" id="summary-profit-bps">-3.62</div>
       </div>
       <div class="summary">
         <div class="label">Avg Slippage (bps)</div>
-        <div class="value">-0.01</div>
+        <div class="value" id="summary-slippage-bps">-0.01</div>
       </div>
       <div class="summary">
         <div class="label">Win Rate</div>
-        <div class="value">50.0%</div>
+        <div class="value" id="summary-win-rate">50.0%</div>
       </div>
     </section>
 
@@ -155,7 +193,12 @@
           </thead>
           <tbody>
             
-            <tr class="buy-row">
+            <tr class="ledger-row buy-row"
+                data-strategy-id="4af43c67-4f80-43b2-b0a5-15aaa15af27f"
+                data-gross-pnl-eur=""
+                data-profit-bps=""
+                data-entry-slip-bps="-0.18555170707659108"
+                data-exit-slip-bps="">
               <td>25/06/2026, 14:45:09</td>
               <td>—</td>
               <td>—</td>
@@ -181,7 +224,12 @@
               <td>—</td>
             </tr>
             
-            <tr class="sell-row">
+            <tr class="ledger-row sell-row"
+                data-strategy-id="4af43c67-4f80-43b2-b0a5-15aaa15af27f"
+                data-gross-pnl-eur=""
+                data-profit-bps=""
+                data-entry-slip-bps="0.5631700844056796"
+                data-exit-slip-bps="">
               <td>25/06/2026, 14:45:07</td>
               <td>—</td>
               <td>—</td>
@@ -207,7 +255,12 @@
               <td>—</td>
             </tr>
             
-            <tr class="sell-row">
+            <tr class="ledger-row sell-row"
+                data-strategy-id="4af43c67-4f80-43b2-b0a5-15aaa15af27f"
+                data-gross-pnl-eur=""
+                data-profit-bps=""
+                data-entry-slip-bps="-0.4394406799035473"
+                data-exit-slip-bps="">
               <td>25/06/2026, 14:45:06</td>
               <td>—</td>
               <td>—</td>
@@ -233,7 +286,12 @@
               <td>—</td>
             </tr>
             
-            <tr class="sell-row">
+            <tr class="ledger-row sell-row"
+                data-strategy-id="4af43c67-4f80-43b2-b0a5-15aaa15af27f"
+                data-gross-pnl-eur=""
+                data-profit-bps=""
+                data-entry-slip-bps="-0.0"
+                data-exit-slip-bps="">
               <td>25/06/2026, 14:45:05</td>
               <td>—</td>
               <td>—</td>
@@ -259,7 +317,12 @@
               <td>—</td>
             </tr>
             
-            <tr class="buy-row">
+            <tr class="ledger-row buy-row"
+                data-strategy-id="826657e4-23bd-4123-9fff-a5ea960fcd7a"
+                data-gross-pnl-eur=""
+                data-profit-bps=""
+                data-entry-slip-bps="-0.06185056902553036"
+                data-exit-slip-bps="">
               <td>25/06/2026, 14:45:05</td>
               <td>—</td>
               <td>—</td>
@@ -285,7 +348,12 @@
               <td>—</td>
             </tr>
             
-            <tr class="sell-row">
+            <tr class="ledger-row sell-row"
+                data-strategy-id="826657e4-23bd-4123-9fff-a5ea960fcd7a"
+                data-gross-pnl-eur=""
+                data-profit-bps=""
+                data-entry-slip-bps="0.07039626055110072"
+                data-exit-slip-bps="">
               <td>25/06/2026, 14:45:05</td>
               <td>—</td>
               <td>—</td>
@@ -311,7 +379,12 @@
               <td>—</td>
             </tr>
             
-            <tr class="sell-row">
+            <tr class="ledger-row sell-row"
+                data-strategy-id="826657e4-23bd-4123-9fff-a5ea960fcd7a"
+                data-gross-pnl-eur=""
+                data-profit-bps=""
+                data-entry-slip-bps="-0.37934540157415797"
+                data-exit-slip-bps="">
               <td>25/06/2026, 13:15:05</td>
               <td>—</td>
               <td>—</td>
@@ -337,7 +410,12 @@
               <td>—</td>
             </tr>
             
-            <tr class="buy-row">
+            <tr class="ledger-row buy-row"
+                data-strategy-id="826657e4-23bd-4123-9fff-a5ea960fcd7a"
+                data-gross-pnl-eur="2.7822001020116383"
+                data-profit-bps="1.2648710182903649"
+                data-entry-slip-bps="-0.07027011833377933"
+                data-exit-slip-bps="-0.14052542456179942">
               <td>25/06/2026, 01:30:06</td>
               <td>25/06/2026, 09:15:06</td>
               <td>7h 44m</td>
@@ -363,7 +441,12 @@
               <td><span class="good">+1.26bps</span></td>
             </tr>
             
-            <tr class="buy-row">
+            <tr class="ledger-row buy-row"
+                data-strategy-id="826657e4-23bd-4123-9fff-a5ea960fcd7a"
+                data-gross-pnl-eur="-7.972072574998975"
+                data-profit-bps="-3.6246134388324927"
+                data-entry-slip-bps="0.15424124873644784"
+                data-exit-slip-bps="-0.23144755012748514">
               <td>25/06/2026, 01:15:07</td>
               <td>25/06/2026, 08:45:07</td>
               <td>7h 29m</td>
@@ -389,7 +472,12 @@
               <td><span class="bad">-3.62bps</span></td>
             </tr>
             
-            <tr class="buy-row">
+            <tr class="ledger-row buy-row"
+                data-strategy-id="826657e4-23bd-4123-9fff-a5ea960fcd7a"
+                data-gross-pnl-eur="25.06855165669013"
+                data-profit-bps="11.392805654206933"
+                data-entry-slip-bps="0.21098233374574157"
+                data-exit-slip-bps="-0.35124199168333087">
               <td>24/06/2026, 17:00:06</td>
               <td>24/06/2026, 18:00:05</td>
               <td>59m</td>
@@ -415,7 +503,12 @@
               <td><span class="good">+11.39bps</span></td>
             </tr>
             
-            <tr class="sell-row">
+            <tr class="ledger-row sell-row"
+                data-strategy-id="826657e4-23bd-4123-9fff-a5ea960fcd7a"
+                data-gross-pnl-eur="-3.0384331407976184"
+                data-profit-bps="-1.2155025191288371"
+                data-entry-slip-bps="0.1823220536754576"
+                data-exit-slip-bps="-0.0">
               <td>23/06/2026, 17:30:04</td>
               <td>23/06/2026, 19:45:04</td>
               <td>2h 14m</td>
@@ -441,7 +534,12 @@
               <td><span class="bad">-1.22bps</span></td>
             </tr>
             
-            <tr class="sell-row">
+            <tr class="ledger-row sell-row"
+                data-strategy-id="826657e4-23bd-4123-9fff-a5ea960fcd7a"
+                data-gross-pnl-eur="-34.09540625285427"
+                data-profit-bps="-13.655788774210187"
+                data-entry-slip-bps="-0.1828933731632902"
+                data-exit-slip-bps="0.6697271166424419">
               <td>23/06/2026, 10:30:06</td>
               <td>23/06/2026, 13:30:05</td>
               <td>2h 59m</td>
@@ -467,7 +565,12 @@
               <td><span class="bad">-13.66bps</span></td>
             </tr>
             
-            <tr class="buy-row">
+            <tr class="ledger-row buy-row"
+                data-strategy-id="826657e4-23bd-4123-9fff-a5ea960fcd7a"
+                data-gross-pnl-eur="26.61539130057282"
+                data-profit-bps="12.144494702275631"
+                data-entry-slip-bps="0.30981813675344383"
+                data-exit-slip-bps="-0.06188693257448246">
               <td>23/06/2026, 09:15:07</td>
               <td>23/06/2026, 11:45:06</td>
               <td>2h 29m</td>
@@ -493,7 +596,12 @@
               <td><span class="good">+12.14bps</span></td>
             </tr>
             
-            <tr class="sell-row">
+            <tr class="ledger-row sell-row"
+                data-strategy-id="826657e4-23bd-4123-9fff-a5ea960fcd7a"
+                data-gross-pnl-eur="-95.14009188249649"
+                data-profit-bps="-38.20176644968118"
+                data-entry-slip-bps="0.24448532782450844"
+                data-exit-slip-bps="-0.24355492772396678">
               <td>23/06/2026, 01:45:06</td>
               <td>23/06/2026, 09:00:04</td>
               <td>7h 14m</td>
@@ -519,7 +627,12 @@
               <td><span class="bad">-38.20bps</span></td>
             </tr>
             
-            <tr class="sell-row">
+            <tr class="ledger-row sell-row"
+                data-strategy-id="826657e4-23bd-4123-9fff-a5ea960fcd7a"
+                data-gross-pnl-eur="25.63160283985799"
+                data-profit-bps="10.242045447534165"
+                data-entry-slip-bps="-0.12339966065174163"
+                data-exit-slip-bps="-0.06176194475914983">
               <td>22/06/2026, 15:15:04</td>
               <td>22/06/2026, 16:15:05</td>
               <td>1h 0m</td>
@@ -545,7 +658,12 @@
               <td><span class="good">+10.24bps</span></td>
             </tr>
             
-            <tr class="buy-row">
+            <tr class="ledger-row buy-row"
+                data-strategy-id="826657e4-23bd-4123-9fff-a5ea960fcd7a"
+                data-gross-pnl-eur="-34.56905269950349"
+                data-profit-bps="-15.769944341372632"
+                data-entry-slip-bps="0.12368736780795853"
+                data-exit-slip-bps="-1.6107149715945481">
               <td>22/06/2026, 14:15:07</td>
               <td>22/06/2026, 19:00:05</td>
               <td>4h 44m</td>
@@ -571,7 +689,12 @@
               <td><span class="bad">-15.77bps</span></td>
             </tr>
             
-            <tr class="sell-row">
+            <tr class="ledger-row sell-row"
+                data-strategy-id="826657e4-23bd-4123-9fff-a5ea960fcd7a"
+                data-gross-pnl-eur="0.8611780916295272"
+                data-profit-bps="0.43054137502622913"
+                data-entry-slip-bps="0.06150553242167865"
+                data-exit-slip-bps="0.49209268565783565">
               <td>19/06/2026, 15:00:07</td>
               <td>19/06/2026, 15:45:07</td>
               <td>45m</td>
@@ -597,7 +720,12 @@
               <td><span class="good">+0.43bps</span></td>
             </tr>
             
-            <tr class="sell-row">
+            <tr class="ledger-row sell-row"
+                data-strategy-id="826657e4-23bd-4123-9fff-a5ea960fcd7a"
+                data-gross-pnl-eur="0.8724062272374911"
+                data-profit-bps="0.4361517459163593"
+                data-entry-slip-bps="0.0872295882769148"
+                data-exit-slip-bps="0.6979219374300591">
               <td>19/06/2026, 08:45:07</td>
               <td>19/06/2026, 13:15:07</td>
               <td>4h 29m</td>
@@ -623,7 +751,12 @@
               <td><span class="good">+0.44bps</span></td>
             </tr>
             
-            <tr class="sell-row">
+            <tr class="ledger-row sell-row"
+                data-strategy-id="826657e4-23bd-4123-9fff-a5ea960fcd7a"
+                data-gross-pnl-eur="-13.834846519671546"
+                data-profit-bps="-6.922083299856057"
+                data-entry-slip-bps="-0.12361015828224513"
+                data-exit-slip-bps="-0.0">
               <td>19/06/2026, 07:00:07</td>
               <td>19/06/2026, 07:45:07</td>
               <td>45m</td>
@@ -654,5 +787,83 @@
       </div>
     </section>
   </div>
+  <script>
+    (function () {
+      const rows = Array.from(document.querySelectorAll('.ledger-row'));
+      const select = document.getElementById('strategy-filter');
+      const rowCount = document.getElementById('row-count');
+      const totalEl = document.getElementById('summary-total-gross');
+      const profitEl = document.getElementById('summary-profit-bps');
+      const slipEl = document.getElementById('summary-slippage-bps');
+      const winEl = document.getElementById('summary-win-rate');
+
+      function formatSigned(value, digits) {
+        if (value == null || Number.isNaN(value)) return '—';
+        return `${value >= 0 ? '+' : ''}${value.toFixed(digits)}`;
+      }
+
+      function formatPercent(value, digits) {
+        if (value == null || Number.isNaN(value)) return '—';
+        return `${value.toFixed(digits)}%`;
+      }
+
+      function readNumber(row, name) {
+        const raw = row.getAttribute(name);
+        if (!raw) return null;
+        const value = Number(raw);
+        return Number.isFinite(value) ? value : null;
+      }
+
+      function applyFilter() {
+        const selected = select.value;
+        const visibleRows = [];
+        for (const row of rows) {
+          const match = selected === 'all' || row.getAttribute('data-strategy-id') === selected;
+          row.style.display = match ? '' : 'none';
+          if (match) {
+            visibleRows.push(row);
+          }
+        }
+
+        rowCount.textContent = `Showing ${visibleRows.length} of 19 trade rows.`;
+
+        let totalGross = 0;
+        let totalGrossCount = 0;
+        const pnlSamples = [];
+        const slippageSamples = [];
+        for (const row of visibleRows) {
+          const gross = readNumber(row, 'data-gross-pnl-eur');
+          if (gross != null) {
+            totalGross += gross;
+            totalGrossCount += 1;
+          }
+          const pnl = readNumber(row, 'data-profit-bps');
+          if (pnl != null) {
+            pnlSamples.push(pnl);
+          }
+          const entrySlip = readNumber(row, 'data-entry-slip-bps');
+          if (entrySlip != null) {
+            slippageSamples.push(entrySlip);
+          }
+          const exitSlip = readNumber(row, 'data-exit-slip-bps');
+          if (exitSlip != null) {
+            slippageSamples.push(exitSlip);
+          }
+        }
+
+        const avgPnl = pnlSamples.length ? pnlSamples.reduce((a, b) => a + b, 0) / pnlSamples.length : null;
+        const avgSlip = slippageSamples.length ? slippageSamples.reduce((a, b) => a + b, 0) / slippageSamples.length : null;
+        const winRate = pnlSamples.length ? (pnlSamples.filter((value) => value > 0).length / pnlSamples.length) * 100 : null;
+
+        totalEl.textContent = totalGrossCount ? formatSigned(totalGross, 2) : '—';
+        profitEl.textContent = formatSigned(avgPnl, 2);
+        slipEl.textContent = formatSigned(avgSlip, 2);
+        winEl.textContent = formatPercent(winRate, 1);
+      }
+
+      select.addEventListener('change', applyFilter);
+      applyFilter();
+    })();
+  </script>
 </body>
 </html>
