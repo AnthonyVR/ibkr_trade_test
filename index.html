@@ -126,7 +126,7 @@
       <div class="eyebrow">Trade Ledger</div>
       <h1>IBKR Probe Trades</h1>
       <p>Static export of the probe ledger. Updated from the trading server after trade events.</p>
-      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-07-28 16:30:05 UTC | Rows: 163</p>
+      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-07-28 17:30:05 UTC | Rows: 165</p>
       <div class="filters">
         <label class="filter-label">
           <span>Strategy</span>
@@ -135,18 +135,18 @@
             <option value="826657e4-23bd-4123-9fff-a5ea960fcd7a">826657e4-23bd-4123-9fff-a5ea960fcd7a</option><option value="826657e4-23bd-4123-9fff-a5ea960fcd7a">forex-v1-test-daily</option><option value="4af43c67-4f80-43b2-b0a5-15aaa15af27f">forex-v1-test-daily-mon-wed</option>
           </select>
         </label>
-        <p class="meta" id="row-count">Showing 163 of 163 trade rows.</p>
+        <p class="meta" id="row-count">Showing 165 of 165 trade rows.</p>
       </div>
     </section>
 
     <section class="grid">
       <div class="summary">
         <div class="label">Total PnL (Gross, EUR)</div>
-        <div class="value" id="summary-total-gross">-354.14</div>
+        <div class="value" id="summary-total-gross">-327.81</div>
       </div>
       <div class="summary">
         <div class="label">Profit / Trade (bps)</div>
-        <div class="value" id="summary-profit-bps">-0.98</div>
+        <div class="value" id="summary-profit-bps">-0.91</div>
       </div>
       <div class="summary">
         <div class="label">Avg Slippage (bps)</div>
@@ -154,7 +154,7 @@
       </div>
       <div class="summary">
         <div class="label">Win Rate</div>
-        <div class="value" id="summary-win-rate">51.3%</div>
+        <div class="value" id="summary-win-rate">51.6%</div>
       </div>
     </section>
 
@@ -192,6 +192,68 @@
             </tr>
           </thead>
           <tbody>
+            
+            <tr class="ledger-row sell-row"
+                data-strategy-id="4af43c67-4f80-43b2-b0a5-15aaa15af27f"
+                data-gross-pnl-eur=""
+                data-profit-bps=""
+                data-entry-slip-bps="-0.3667167846282777"
+                data-exit-slip-bps="">
+              <td>28/07/2026, 17:30:05</td>
+              <td>—</td>
+              <td>—</td>
+              <td>USD-CHF</td>
+              <td>forex-v1-test-daily-mon-wed</td>
+              <td>SELL</td>
+              <td>short</td>
+              <td>25000</td>
+              <td>0.3144</td>
+              <td>0.818080</td>
+              <td>0.818070</td>
+              <td>0.818090</td>
+              <td>+0.12</td>
+              <td>0.818070</td>
+              <td>0.818100 <span class="good">(+0.37bps)</span></td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="good">-0.37bps</span></td>
+              <td>—</td>
+            </tr>
+            
+            <tr class="ledger-row sell-row"
+                data-strategy-id="4af43c67-4f80-43b2-b0a5-15aaa15af27f"
+                data-gross-pnl-eur=""
+                data-profit-bps=""
+                data-entry-slip-bps="-0.0"
+                data-exit-slip-bps="">
+              <td>28/07/2026, 17:30:04</td>
+              <td>—</td>
+              <td>—</td>
+              <td>USD-CAD</td>
+              <td>forex-v1-test-daily-mon-wed</td>
+              <td>SELL</td>
+              <td>short</td>
+              <td>25000</td>
+              <td>0.3490</td>
+              <td>1.410150</td>
+              <td>1.410140</td>
+              <td>1.410160</td>
+              <td>+0.07</td>
+              <td>1.410140</td>
+              <td>1.410140 <span class="good">(+0.00bps)</span></td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="good">+0.00bps</span></td>
+              <td>—</td>
+            </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="4af43c67-4f80-43b2-b0a5-15aaa15af27f"
@@ -1435,17 +1497,17 @@
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="826657e4-23bd-4123-9fff-a5ea960fcd7a"
-                data-gross-pnl-eur=""
-                data-profit-bps=""
+                data-gross-pnl-eur="26.331611538514146"
+                data-profit-bps="10.521701008330469"
                 data-entry-slip-bps="-0.08768161053639674"
-                data-exit-slip-bps="">
+                data-exit-slip-bps="-0.17554330653487188">
               <td>28/07/2026, 16:30:04</td>
-              <td>—</td>
-              <td>—</td>
+              <td>28/07/2026, 17:30:04</td>
+              <td>1h 0m</td>
               <td>EUR-USD</td>
               <td>forex-v1-test-daily</td>
               <td>SELL</td>
-              <td>short</td>
+              <td>closed</td>
               <td>25000</td>
               <td>0.3000</td>
               <td>1.140495</td>
@@ -1454,14 +1516,14 @@
               <td>+0.04</td>
               <td>1.140490</td>
               <td>1.140500 <span class="good">(+0.09bps)</span></td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td><span class="good">-0.09bps</span></td>
-              <td>—</td>
+              <td>1.139315</td>
+              <td>1.139310</td>
+              <td>1.139320</td>
+              <td>+0.04</td>
+              <td>1.139320</td>
+              <td>1.139300 <span class="good">(-0.18bps)</span></td>
+              <td><span class="good">-0.26bps</span></td>
+              <td><span class="good">+10.52bps</span></td>
             </tr>
             
             <tr class="ledger-row sell-row"
@@ -5289,7 +5351,7 @@
           }
         }
 
-        rowCount.textContent = `Showing ${visibleRows.length} of 163 trade rows.`;
+        rowCount.textContent = `Showing ${visibleRows.length} of 165 trade rows.`;
 
         let totalGross = 0;
         let totalGrossCount = 0;
