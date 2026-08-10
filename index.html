@@ -46,7 +46,7 @@
     }
     h1 { margin: 8px 0 6px; font-size: 28px; }
     p, .meta { margin: 0; color: var(--muted); }
-    .grid { display: grid; gap: 12px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .grid { display: grid; gap: 12px; grid-template-columns: repeat(5, minmax(0, 1fr)); }
     .summary { padding: 14px; }
     .summary .label {
       color: var(--muted);
@@ -103,16 +103,17 @@
     .sell-row { background: var(--sell); }
     .good { color: var(--good); }
     .bad { color: var(--bad); }
+    .info { color: #7dd3fc; }
     .empty { color: var(--muted); text-align: center; padding: 28px; }
     @media (max-width: 1100px) {
       body { padding: 12px; }
-      .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+      .grid { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
       .summary { padding: 12px; }
       .summary .value { font-size: 18px; }
     }
     @media (max-width: 720px) {
       body { padding: 10px; }
-      .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+      .grid { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
       .summary { padding: 10px; border-radius: 12px; }
       .summary .label { font-size: 9px; letter-spacing: 0.08em; }
       .summary .value { margin-top: 6px; font-size: 16px; }
@@ -126,7 +127,7 @@
       <div class="eyebrow">Trade Ledger</div>
       <h1>IBKR Probe Trades</h1>
       <p>Static export of the probe ledger. Updated from the trading server after trade events.</p>
-      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-08-10 12:45:12 UTC | Rows: 89</p>
+      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-08-10 13:40:43 UTC | Rows: 89</p>
       <p class="meta"><a href="./archive_index.html" style="color:#7dd3fc;">View archived probe ledgers</a></p>
       <div class="filters">
         <label class="filter-label">
@@ -154,6 +155,10 @@
         <div class="value" id="summary-slippage-bps">+0.30</div>
       </div>
       <div class="summary">
+        <div class="label">Avg Spot vs CFD Gap (bps)</div>
+        <div class="value" id="summary-spot-vs-cfd-bps">—</div>
+      </div>
+      <div class="summary">
         <div class="label">Win Rate</div>
         <div class="value" id="summary-win-rate">37.6%</div>
       </div>
@@ -164,7 +169,7 @@
         <div class="eyebrow" style="color:#a1a1aa;">Ledger</div>
       </div>
       <div class="table-wrap">
-        <table>
+        <table style="min-width: 2100px;">
           <thead>
             <tr>
               <th>Entry Time</th>
@@ -181,12 +186,14 @@
               <th>Entry Ask</th>
               <th>Entry Half-Spread</th>
               <th>Expected Entry</th>
+              <th>Expected CFD Entry</th>
               <th>Actual Entry</th>
               <th>Exit Close</th>
               <th>Exit Bid</th>
               <th>Exit Ask</th>
               <th>Exit Half-Spread</th>
               <th>Expected Exit</th>
+              <th>Expected CFD Exit</th>
               <th>Actual Exit</th>
               <th>Round Trip Slippage</th>
               <th>PnL (bps)</th>
@@ -199,7 +206,9 @@
                 data-gross-pnl-eur="-21.40353053351951"
                 data-profit-bps="-9.894255148104914"
                 data-entry-slip-bps="0.371020801899311"
-                data-exit-slip-bps="0.3706815598276885">
+                data-exit-slip-bps="0.3706815598276885"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>10/08/2026, 11:15:06</td>
               <td>10/08/2026, 12:45:05</td>
               <td>1h 29m</td>
@@ -214,12 +223,14 @@
               <td>0.808590</td>
               <td>+0.06</td>
               <td>0.808580</td>
+              <td>—</td>
               <td>0.808550 <span class="bad">(-0.37bps)</span></td>
               <td>0.809310</td>
               <td>0.809300</td>
               <td>0.809320</td>
               <td>+0.12</td>
               <td>0.809320</td>
+              <td>—</td>
               <td>0.809350 <span class="bad">(+0.37bps)</span></td>
               <td><span class="bad">+0.74bps</span></td>
               <td><span class="bad">-9.89bps</span></td>
@@ -230,7 +241,9 @@
                 data-gross-pnl-eur="-4.014957547040534"
                 data-profit-bps="-1.8555170707568465"
                 data-entry-slip-bps="0.7422619194900661"
-                data-exit-slip-bps="0.37115850942711054">
+                data-exit-slip-bps="0.37115850942711054"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>10/08/2026, 10:00:05</td>
               <td>10/08/2026, 10:15:07</td>
               <td>15m</td>
@@ -245,12 +258,14 @@
               <td>0.808340</td>
               <td>+0.06</td>
               <td>0.808340</td>
+              <td>—</td>
               <td>0.808400 <span class="bad">(+0.74bps)</span></td>
               <td>0.808290</td>
               <td>0.808280</td>
               <td>0.808300</td>
               <td>+0.12</td>
               <td>0.808280</td>
+              <td>—</td>
               <td>0.808250 <span class="bad">(-0.37bps)</span></td>
               <td><span class="bad">+1.11bps</span></td>
               <td><span class="bad">-1.86bps</span></td>
@@ -261,7 +276,9 @@
                 data-gross-pnl-eur="-12.046312013769647"
                 data-profit-bps="-5.575171901133004"
                 data-entry-slip-bps="0.3716643127923696"
-                data-exit-slip-bps="0.6191567085628691">
+                data-exit-slip-bps="0.6191567085628691"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>10/08/2026, 08:00:05</td>
               <td>10/08/2026, 08:30:06</td>
               <td>30m</td>
@@ -276,12 +293,14 @@
               <td>0.807200</td>
               <td>+0.12</td>
               <td>0.807180</td>
+              <td>—</td>
               <td>0.807150 <span class="bad">(-0.37bps)</span></td>
               <td>0.807540</td>
               <td>0.807530</td>
               <td>0.807550</td>
               <td>+0.12</td>
               <td>0.807550</td>
+              <td>—</td>
               <td>0.807600 <span class="bad">(+0.62bps)</span></td>
               <td><span class="bad">+0.99bps</span></td>
               <td><span class="bad">-5.58bps</span></td>
@@ -292,7 +311,9 @@
                 data-gross-pnl-eur="6.691811495800254"
                 data-profit-bps="3.0923371884466877"
                 data-entry-slip-bps="0.371066693053316"
-                data-exit-slip-bps="-0.24745737546732327">
+                data-exit-slip-bps="-0.24745737546732327"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>10/08/2026, 06:45:05</td>
               <td>10/08/2026, 07:30:06</td>
               <td>45m</td>
@@ -307,12 +328,14 @@
               <td>0.808490</td>
               <td>+0.06</td>
               <td>0.808480</td>
+              <td>—</td>
               <td>0.808450 <span class="bad">(-0.37bps)</span></td>
               <td>0.808215</td>
               <td>0.808210</td>
               <td>0.808220</td>
               <td>+0.06</td>
               <td>0.808220</td>
+              <td>—</td>
               <td>0.808200 <span class="good">(-0.25bps)</span></td>
               <td><span class="bad">+0.12bps</span></td>
               <td><span class="good">+3.09bps</span></td>
@@ -323,7 +346,9 @@
                 data-gross-pnl-eur="8.658420963767883"
                 data-profit-bps="6.790595025888395"
                 data-entry-slip-bps="-5.945303210463079"
-                data-exit-slip-bps="1.6990909863221304">
+                data-exit-slip-bps="1.6990909863221304"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>09/08/2026, 22:00:05</td>
               <td>10/08/2026, 03:45:05</td>
               <td>5h 44m</td>
@@ -338,12 +363,14 @@
               <td>0.590090</td>
               <td>+11.79</td>
               <td>0.588700</td>
+              <td>—</td>
               <td>0.589050 <span class="good">(+5.95bps)</span></td>
               <td>0.588545</td>
               <td>0.588540</td>
               <td>0.588550</td>
               <td>+0.08</td>
               <td>0.588550</td>
+              <td>—</td>
               <td>0.588650 <span class="bad">(+1.70bps)</span></td>
               <td><span class="good">-4.25bps</span></td>
               <td><span class="good">+6.79bps</span></td>
@@ -354,7 +381,9 @@
                 data-gross-pnl-eur="9.740723584241271"
                 data-profit-bps="6.369877556798945"
                 data-entry-slip-bps="-0.14155483834530197"
-                data-exit-slip-bps="0.5666043401882398">
+                data-exit-slip-bps="0.5666043401882398"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>09/08/2026, 22:00:05</td>
               <td>10/08/2026, 03:45:04</td>
               <td>5h 44m</td>
@@ -369,12 +398,14 @@
               <td>0.707060</td>
               <td>+4.39</td>
               <td>0.706440</td>
+              <td>—</td>
               <td>0.706450 <span class="good">(+0.14bps)</span></td>
               <td>0.705950</td>
               <td>0.705940</td>
               <td>0.705960</td>
               <td>+0.14</td>
               <td>0.705960</td>
+              <td>—</td>
               <td>0.706000 <span class="bad">(+0.57bps)</span></td>
               <td><span class="bad">+0.43bps</span></td>
               <td><span class="good">+6.37bps</span></td>
@@ -385,7 +416,9 @@
                 data-gross-pnl-eur="-41.45696711321333"
                 data-profit-bps="-19.19980180849672"
                 data-entry-slip-bps="-0.0"
-                data-exit-slip-bps="-1.112567063070617">
+                data-exit-slip-bps="-1.112567063070617"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>05/08/2026, 20:30:05</td>
               <td>10/08/2026, 06:00:05</td>
               <td>105h 29m</td>
@@ -400,12 +433,14 @@
               <td>0.807330</td>
               <td>+0.19</td>
               <td>0.807300</td>
+              <td>—</td>
               <td>0.807300 <span class="good">(+0.00bps)</span></td>
               <td>0.808935</td>
               <td>0.808930</td>
               <td>0.808940</td>
               <td>+0.06</td>
               <td>0.808940</td>
+              <td>—</td>
               <td>0.808850 <span class="good">(-1.11bps)</span></td>
               <td><span class="good">-1.11bps</span></td>
               <td><span class="bad">-19.20bps</span></td>
@@ -416,7 +451,9 @@
                 data-gross-pnl-eur="-4.329079291415825"
                 data-profit-bps="-1.7319016279873396"
                 data-entry-slip-bps="-0.1731931623350857"
-                data-exit-slip-bps="0.0865808361982832">
+                data-exit-slip-bps="0.0865808361982832"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>05/08/2026, 19:30:06</td>
               <td>05/08/2026, 19:45:05</td>
               <td>14m</td>
@@ -431,12 +468,14 @@
               <td>1.154790</td>
               <td>+0.04</td>
               <td>1.154780</td>
+              <td>—</td>
               <td>1.154800 <span class="good">(+0.17bps)</span></td>
               <td>1.154980</td>
               <td>1.154970</td>
               <td>1.154990</td>
               <td>+0.09</td>
               <td>1.154990</td>
+              <td>—</td>
               <td>1.155000 <span class="bad">(+0.09bps)</span></td>
               <td><span class="good">-0.09bps</span></td>
               <td><span class="bad">-1.73bps</span></td>
@@ -447,7 +486,9 @@
                 data-gross-pnl-eur="-9.740133245021719"
                 data-profit-bps="-7.640067911713929"
                 data-entry-slip-bps="-0.0"
-                data-exit-slip-bps="0.5097013150289594">
+                data-exit-slip-bps="0.5097013150289594"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>05/08/2026, 18:15:06</td>
               <td>05/08/2026, 20:15:06</td>
               <td>2h 0m</td>
@@ -462,12 +503,14 @@
               <td>0.589000</td>
               <td>+0.34</td>
               <td>0.589000</td>
+              <td>—</td>
               <td>0.589000 <span class="good">(+0.00bps)</span></td>
               <td>0.588590</td>
               <td>0.588580</td>
               <td>0.588600</td>
               <td>+0.17</td>
               <td>0.588580</td>
+              <td>—</td>
               <td>0.588550 <span class="bad">(-0.51bps)</span></td>
               <td><span class="bad">+0.51bps</span></td>
               <td><span class="bad">-7.64bps</span></td>
@@ -478,7 +521,9 @@
                 data-gross-pnl-eur="-17.4284869744147"
                 data-profit-bps="-8.049535603715658"
                 data-entry-slip-bps="0.7430892697903123"
-                data-exit-slip-bps="0.3718024985138498">
+                data-exit-slip-bps="0.3718024985138498"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>05/08/2026, 17:30:06</td>
               <td>05/08/2026, 18:15:06</td>
               <td>45m</td>
@@ -493,12 +538,14 @@
               <td>0.807440</td>
               <td>+0.19</td>
               <td>0.807440</td>
+              <td>—</td>
               <td>0.807500 <span class="bad">(+0.74bps)</span></td>
               <td>0.806890</td>
               <td>0.806880</td>
               <td>0.806900</td>
               <td>+0.12</td>
               <td>0.806880</td>
+              <td>—</td>
               <td>0.806850 <span class="bad">(-0.37bps)</span></td>
               <td><span class="bad">+1.11bps</span></td>
               <td><span class="bad">-8.05bps</span></td>
@@ -509,7 +556,9 @@
                 data-gross-pnl-eur="-98.46121403451966"
                 data-profit-bps="-45.29890141246866"
                 data-entry-slip-bps="0.21401513800391286"
-                data-exit-slip-bps="0.14332088830221343">
+                data-exit-slip-bps="0.14332088830221343"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>05/08/2026, 15:15:05</td>
               <td>10/08/2026, 06:15:05</td>
               <td>111h 0m</td>
@@ -524,12 +573,14 @@
               <td>1.401770</td>
               <td>+0.07</td>
               <td>1.401770</td>
+              <td>—</td>
               <td>1.401800 <span class="bad">(+0.21bps)</span></td>
               <td>1.395490</td>
               <td>1.395470</td>
               <td>1.395510</td>
               <td>+0.14</td>
               <td>1.395470</td>
+              <td>—</td>
               <td>1.395450 <span class="bad">(-0.14bps)</span></td>
               <td><span class="bad">+0.36bps</span></td>
               <td><span class="bad">-45.30bps</span></td>
@@ -540,7 +591,9 @@
                 data-gross-pnl-eur="33.51734618719127"
                 data-profit-bps="15.464555239390984"
                 data-entry-slip-bps="-0.0"
-                data-exit-slip-bps="0.37173799905932337">
+                data-exit-slip-bps="0.37173799905932337"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>05/08/2026, 13:45:05</td>
               <td>05/08/2026, 14:15:05</td>
               <td>30m</td>
@@ -555,12 +608,14 @@
               <td>0.808320</td>
               <td>+0.12</td>
               <td>0.808300</td>
+              <td>—</td>
               <td>0.808300 <span class="good">(+0.00bps)</span></td>
               <td>0.807005</td>
               <td>0.806990</td>
               <td>0.807020</td>
               <td>+0.19</td>
               <td>0.807020</td>
+              <td>—</td>
               <td>0.807050 <span class="bad">(+0.37bps)</span></td>
               <td><span class="bad">+0.37bps</span></td>
               <td><span class="good">+15.46bps</span></td>
@@ -571,7 +626,9 @@
                 data-gross-pnl-eur="-12.03980332008625"
                 data-profit-bps="-5.564142194745737"
                 data-entry-slip-bps="0.49456595655287533"
-                data-exit-slip-bps="0.49433980918532805">
+                data-exit-slip-bps="0.49433980918532805"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>05/08/2026, 11:30:05</td>
               <td>05/08/2026, 12:45:05</td>
               <td>1h 15m</td>
@@ -586,12 +643,14 @@
               <td>0.808820</td>
               <td>+0.19</td>
               <td>0.808790</td>
+              <td>—</td>
               <td>0.808750 <span class="bad">(-0.49bps)</span></td>
               <td>0.809145</td>
               <td>0.809130</td>
               <td>0.809160</td>
               <td>+0.19</td>
               <td>0.809160</td>
+              <td>—</td>
               <td>0.809200 <span class="bad">(+0.49bps)</span></td>
               <td><span class="bad">+0.99bps</span></td>
               <td><span class="bad">-5.56bps</span></td>
@@ -602,7 +661,9 @@
                 data-gross-pnl-eur="-9.74899585342843"
                 data-profit-bps="-3.9008321775317394"
                 data-entry-slip-bps="0.2600487157925374"
-                data-exit-slip-bps="0.6932589235428998">
+                data-exit-slip-bps="0.6932589235428998"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>05/08/2026, 10:15:05</td>
               <td>05/08/2026, 11:00:04</td>
               <td>44m</td>
@@ -617,12 +678,14 @@
               <td>1.153640</td>
               <td>+0.04</td>
               <td>1.153630</td>
+              <td>—</td>
               <td>1.153600 <span class="bad">(-0.26bps)</span></td>
               <td>1.153965</td>
               <td>1.153960</td>
               <td>1.153970</td>
               <td>+0.04</td>
               <td>1.153970</td>
+              <td>—</td>
               <td>1.154050 <span class="bad">(+0.69bps)</span></td>
               <td><span class="bad">+0.95bps</span></td>
               <td><span class="bad">-3.90bps</span></td>
@@ -633,7 +696,9 @@
                 data-gross-pnl-eur="9.747222041717036"
                 data-profit-bps="7.66675185279752"
                 data-entry-slip-bps="0.1703693607752745"
-                data-exit-slip-bps="0.34101759650832086">
+                data-exit-slip-bps="0.34101759650832086"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>05/08/2026, 08:00:04</td>
               <td>05/08/2026, 09:45:04</td>
               <td>1h 45m</td>
@@ -648,12 +713,14 @@
               <td>0.586970</td>
               <td>+0.09</td>
               <td>0.586960</td>
+              <td>—</td>
               <td>0.586950 <span class="bad">(-0.17bps)</span></td>
               <td>0.586465</td>
               <td>0.586450</td>
               <td>0.586480</td>
               <td>+0.26</td>
               <td>0.586480</td>
+              <td>—</td>
               <td>0.586500 <span class="bad">(+0.34bps)</span></td>
               <td><span class="bad">+0.51bps</span></td>
               <td><span class="good">+7.67bps</span></td>
@@ -664,7 +731,9 @@
                 data-gross-pnl-eur="8.042406729234596"
                 data-profit-bps="3.711493257453507"
                 data-entry-slip-bps="0.49484127965867064"
-                data-exit-slip-bps="0.24753087947746233">
+                data-exit-slip-bps="0.24753087947746233"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>05/08/2026, 05:30:05</td>
               <td>05/08/2026, 06:45:05</td>
               <td>1h 14m</td>
@@ -679,12 +748,14 @@
               <td>0.808360</td>
               <td>+0.12</td>
               <td>0.808340</td>
+              <td>—</td>
               <td>0.808300 <span class="bad">(-0.49bps)</span></td>
               <td>0.807975</td>
               <td>0.807970</td>
               <td>0.807980</td>
               <td>+0.06</td>
               <td>0.807980</td>
+              <td>—</td>
               <td>0.808000 <span class="bad">(+0.25bps)</span></td>
               <td><span class="bad">+0.74bps</span></td>
               <td><span class="good">+3.71bps</span></td>
@@ -695,7 +766,9 @@
                 data-gross-pnl-eur="45.368058687022604"
                 data-profit-bps="20.97702062740441"
                 data-entry-slip-bps="0.12713507466067966"
-                data-exit-slip-bps="0.5074435627600715">
+                data-exit-slip-bps="0.5074435627600715"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>05/08/2026, 02:45:09</td>
               <td>05/08/2026, 05:30:06</td>
               <td>2h 44m</td>
@@ -710,12 +783,14 @@
               <td>157.313000</td>
               <td>+0.03</td>
               <td>157.313000</td>
+              <td>—</td>
               <td>157.315000 <span class="bad">(+0.13bps)</span></td>
               <td>157.654000</td>
               <td>157.653000</td>
               <td>157.655000</td>
               <td>+0.06</td>
               <td>157.653000</td>
+              <td>—</td>
               <td>157.645000 <span class="bad">(-0.51bps)</span></td>
               <td><span class="bad">+0.63bps</span></td>
               <td><span class="good">+20.98bps</span></td>
@@ -726,7 +801,9 @@
                 data-gross-pnl-eur="-4.332624227167677"
                 data-profit-bps="-3.401939105289641"
                 data-entry-slip-bps="-0.3401823377333651"
-                data-exit-slip-bps="1.1909420351500501">
+                data-exit-slip-bps="1.1909420351500501"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>05/08/2026, 00:45:05</td>
               <td>05/08/2026, 02:45:05</td>
               <td>2h 0m</td>
@@ -741,12 +818,14 @@
               <td>0.587920</td>
               <td>+0.17</td>
               <td>0.587920</td>
+              <td>—</td>
               <td>0.587900 <span class="good">(-0.34bps)</span></td>
               <td>0.587780</td>
               <td>0.587770</td>
               <td>0.587790</td>
               <td>+0.17</td>
               <td>0.587770</td>
+              <td>—</td>
               <td>0.587700 <span class="bad">(-1.19bps)</span></td>
               <td><span class="bad">+0.85bps</span></td>
               <td><span class="bad">-3.40bps</span></td>
@@ -757,7 +836,9 @@
                 data-gross-pnl-eur="32.182710553337174"
                 data-profit-bps="14.832210617391876"
                 data-entry-slip-bps="0.6179705846001049"
-                data-exit-slip-bps="1.1141923343557922">
+                data-exit-slip-bps="1.1141923343557922"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>05/08/2026, 00:15:05</td>
               <td>05/08/2026, 02:45:09</td>
               <td>2h 30m</td>
@@ -772,12 +853,14 @@
               <td>0.809130</td>
               <td>+0.19</td>
               <td>0.809100</td>
+              <td>—</td>
               <td>0.809050 <span class="bad">(-0.62bps)</span></td>
               <td>0.807755</td>
               <td>0.807750</td>
               <td>0.807760</td>
               <td>+0.06</td>
               <td>0.807760</td>
+              <td>—</td>
               <td>0.807850 <span class="bad">(+1.11bps)</span></td>
               <td><span class="bad">+1.73bps</span></td>
               <td><span class="good">+14.83bps</span></td>
@@ -788,7 +871,9 @@
                 data-gross-pnl-eur="9.375933611518317"
                 data-profit-bps="4.32125439841918"
                 data-entry-slip-bps="0.6172839506185867"
-                data-exit-slip-bps="-0.0">
+                data-exit-slip-bps="-0.0"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>04/08/2026, 18:15:06</td>
               <td>04/08/2026, 18:45:07</td>
               <td>30m</td>
@@ -803,12 +888,14 @@
               <td>0.810020</td>
               <td>+0.12</td>
               <td>0.810000</td>
+              <td>—</td>
               <td>0.809950 <span class="bad">(-0.62bps)</span></td>
               <td>0.809595</td>
               <td>0.809590</td>
               <td>0.809600</td>
               <td>+0.06</td>
               <td>0.809600</td>
+              <td>—</td>
               <td>0.809600 <span class="good">(+0.00bps)</span></td>
               <td><span class="bad">+0.62bps</span></td>
               <td><span class="good">+4.32bps</span></td>
@@ -819,7 +906,9 @@
                 data-gross-pnl-eur="-7.590741897426793"
                 data-profit-bps="-4.971590909091939"
                 data-entry-slip-bps="0.28408283855600697"
-                data-exit-slip-bps="-0.141972854789518">
+                data-exit-slip-bps="-0.141972854789518"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>04/08/2026, 17:15:04</td>
               <td>05/08/2026, 02:00:05</td>
               <td>8h 45m</td>
@@ -834,12 +923,14 @@
               <td>0.704030</td>
               <td>+0.07</td>
               <td>0.704020</td>
+              <td>—</td>
               <td>0.704000 <span class="bad">(-0.28bps)</span></td>
               <td>0.704355</td>
               <td>0.704350</td>
               <td>0.704360</td>
               <td>+0.07</td>
               <td>0.704360</td>
+              <td>—</td>
               <td>0.704350 <span class="good">(-0.14bps)</span></td>
               <td><span class="bad">+0.14bps</span></td>
               <td><span class="bad">-4.97bps</span></td>
@@ -850,7 +941,9 @@
                 data-gross-pnl-eur="10.715761648187298"
                 data-profit-bps="4.937357279516966"
                 data-entry-slip-bps="0.24686176975090388"
-                data-exit-slip-bps="0.741024342649026">
+                data-exit-slip-bps="0.741024342649026"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>04/08/2026, 17:00:05</td>
               <td>04/08/2026, 17:45:05</td>
               <td>44m</td>
@@ -865,12 +958,14 @@
               <td>0.810190</td>
               <td>+0.12</td>
               <td>0.810170</td>
+              <td>—</td>
               <td>0.810150 <span class="bad">(-0.25bps)</span></td>
               <td>0.809680</td>
               <td>0.809670</td>
               <td>0.809690</td>
               <td>+0.12</td>
               <td>0.809690</td>
+              <td>—</td>
               <td>0.809750 <span class="bad">(+0.74bps)</span></td>
               <td><span class="bad">+0.99bps</span></td>
               <td><span class="good">+4.94bps</span></td>
@@ -881,7 +976,9 @@
                 data-gross-pnl-eur="-7.593937000700215"
                 data-profit-bps="-3.0384581994971134"
                 data-entry-slip-bps="0.34724030765525987"
-                data-exit-slip-bps="0.08678747483220087">
+                data-exit-slip-bps="0.08678747483220087"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>04/08/2026, 16:30:05</td>
               <td>04/08/2026, 17:15:05</td>
               <td>44m</td>
@@ -896,12 +993,14 @@
               <td>1.151950</td>
               <td>+0.04</td>
               <td>1.151940</td>
+              <td>—</td>
               <td>1.151900 <span class="bad">(-0.35bps)</span></td>
               <td>1.152235</td>
               <td>1.152230</td>
               <td>1.152240</td>
               <td>+0.04</td>
               <td>1.152240</td>
+              <td>—</td>
               <td>1.152250 <span class="bad">(+0.09bps)</span></td>
               <td><span class="bad">+0.43bps</span></td>
               <td><span class="bad">-3.04bps</span></td>
@@ -912,7 +1011,9 @@
                 data-gross-pnl-eur="-13.009991673606303"
                 data-profit-bps="-10.191948360795736"
                 data-entry-slip-bps="0.8492569002122207"
-                data-exit-slip-bps="0.6788174999158267">
+                data-exit-slip-bps="0.6788174999158267"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>04/08/2026, 12:45:06</td>
               <td>04/08/2026, 14:15:05</td>
               <td>1h 29m</td>
@@ -927,12 +1028,14 @@
               <td>0.588780</td>
               <td>+0.25</td>
               <td>0.588750</td>
+              <td>—</td>
               <td>0.588700 <span class="bad">(-0.85bps)</span></td>
               <td>0.589255</td>
               <td>0.589250</td>
               <td>0.589260</td>
               <td>+0.08</td>
               <td>0.589260</td>
+              <td>—</td>
               <td>0.589300 <span class="bad">(+0.68bps)</span></td>
               <td><span class="bad">+1.53bps</span></td>
               <td><span class="bad">-10.19bps</span></td>
@@ -943,7 +1046,9 @@
                 data-gross-pnl-eur="22.8175910733362"
                 data-profit-bps="10.504850769326051"
                 data-entry-slip-bps="0.3707456931705491"
-                data-exit-slip-bps="-0.12371491135770299">
+                data-exit-slip-bps="-0.12371491135770299"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>04/08/2026, 12:30:06</td>
               <td>04/08/2026, 12:45:06</td>
               <td>14m</td>
@@ -958,12 +1063,14 @@
               <td>0.809210</td>
               <td>+0.19</td>
               <td>0.809180</td>
+              <td>—</td>
               <td>0.809150 <span class="bad">(-0.37bps)</span></td>
               <td>0.808300</td>
               <td>0.808290</td>
               <td>0.808310</td>
               <td>+0.12</td>
               <td>0.808310</td>
+              <td>—</td>
               <td>0.808300 <span class="good">(-0.12bps)</span></td>
               <td><span class="bad">+0.25bps</span></td>
               <td><span class="good">+10.50bps</span></td>
@@ -974,7 +1081,9 @@
                 data-gross-pnl-eur="17.432278236152033"
                 data-profit-bps="8.02568218298467"
                 data-entry-slip-bps="1.4814449025951086"
-                data-exit-slip-bps="0.49430926459188596">
+                data-exit-slip-bps="0.49430926459188596"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>04/08/2026, 10:30:07</td>
               <td>04/08/2026, 11:30:06</td>
               <td>59m</td>
@@ -989,12 +1098,14 @@
               <td>0.810040</td>
               <td>+0.12</td>
               <td>0.810020</td>
+              <td>—</td>
               <td>0.809900 <span class="bad">(-1.48bps)</span></td>
               <td>0.809190</td>
               <td>0.809170</td>
               <td>0.809210</td>
               <td>+0.25</td>
               <td>0.809210</td>
+              <td>—</td>
               <td>0.809250 <span class="bad">(+0.49bps)</span></td>
               <td><span class="bad">+1.98bps</span></td>
               <td><span class="good">+8.03bps</span></td>
@@ -1005,7 +1116,9 @@
                 data-gross-pnl-eur="-1.3402651870249036"
                 data-profit-bps="-0.6170554115758915"
                 data-entry-slip-bps="0.49361996199038655"
-                data-exit-slip-bps="0.49363823721834854">
+                data-exit-slip-bps="0.49363823721834854"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>04/08/2026, 04:15:06</td>
               <td>04/08/2026, 07:45:04</td>
               <td>3h 29m</td>
@@ -1020,12 +1133,14 @@
               <td>0.810370</td>
               <td>+0.19</td>
               <td>0.810340</td>
+              <td>—</td>
               <td>0.810300 <span class="bad">(-0.49bps)</span></td>
               <td>0.810300</td>
               <td>0.810290</td>
               <td>0.810310</td>
               <td>+0.12</td>
               <td>0.810310</td>
+              <td>—</td>
               <td>0.810350 <span class="bad">(+0.49bps)</span></td>
               <td><span class="bad">+0.99bps</span></td>
               <td><span class="bad">-0.62bps</span></td>
@@ -1036,7 +1151,9 @@
                 data-gross-pnl-eur="6.702874645839477"
                 data-profit-bps="3.0854674483180804"
                 data-entry-slip-bps="-0.0"
-                data-exit-slip-bps="0.2469196770293094">
+                data-exit-slip-bps="0.2469196770293094"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>04/08/2026, 03:15:07</td>
               <td>04/08/2026, 03:30:04</td>
               <td>14m</td>
@@ -1051,12 +1168,14 @@
               <td>0.810280</td>
               <td>+0.19</td>
               <td>0.810250</td>
+              <td>—</td>
               <td>0.810250 <span class="good">(+0.00bps)</span></td>
               <td>0.809965</td>
               <td>0.809950</td>
               <td>0.809980</td>
               <td>+0.19</td>
               <td>0.809980</td>
+              <td>—</td>
               <td>0.810000 <span class="bad">(+0.25bps)</span></td>
               <td><span class="bad">+0.25bps</span></td>
               <td><span class="good">+3.09bps</span></td>
@@ -1067,7 +1186,9 @@
                 data-gross-pnl-eur="-13.037129745513791"
                 data-profit-bps="-5.212631944745528"
                 data-entry-slip-bps="0.5212903674223841"
-                data-exit-slip-bps="0.8691495371777758">
+                data-exit-slip-bps="0.8691495371777758"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>04/08/2026, 00:15:04</td>
               <td>04/08/2026, 01:00:04</td>
               <td>44m</td>
@@ -1082,12 +1203,14 @@
               <td>1.150990</td>
               <td>+0.09</td>
               <td>1.150990</td>
+              <td>—</td>
               <td>1.151050 <span class="bad">(+0.52bps)</span></td>
               <td>1.150560</td>
               <td>1.150550</td>
               <td>1.150570</td>
               <td>+0.09</td>
               <td>1.150550</td>
+              <td>—</td>
               <td>1.150450 <span class="bad">(-0.87bps)</span></td>
               <td><span class="bad">+1.39bps</span></td>
               <td><span class="bad">-5.21bps</span></td>
@@ -1098,7 +1221,9 @@
                 data-gross-pnl-eur="-10.862528188259454"
                 data-profit-bps="-4.343293954134338"
                 data-entry-slip-bps="0.43434826043613356"
-                data-exit-slip-bps="0.17380422691800768">
+                data-exit-slip-bps="0.17380422691800768"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>03/08/2026, 21:30:09</td>
               <td>03/08/2026, 22:15:04</td>
               <td>44m</td>
@@ -1113,12 +1238,14 @@
               <td>1.151150</td>
               <td>+1.22</td>
               <td>1.151150</td>
+              <td>—</td>
               <td>1.151200 <span class="bad">(+0.43bps)</span></td>
               <td>1.150745</td>
               <td>1.150720</td>
               <td>1.150770</td>
               <td>+0.22</td>
               <td>1.150720</td>
+              <td>—</td>
               <td>1.150700 <span class="bad">(-0.17bps)</span></td>
               <td><span class="bad">+0.61bps</span></td>
               <td><span class="bad">-4.34bps</span></td>
@@ -1129,7 +1256,9 @@
                 data-gross-pnl-eur="-61.31621807078807"
                 data-profit-bps="-28.31419209111581"
                 data-entry-slip-bps="0.6362334976948831"
-                data-exit-slip-bps="0.3172488182496669">
+                data-exit-slip-bps="0.3172488182496669"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>03/08/2026, 20:30:05</td>
               <td>04/08/2026, 03:30:05</td>
               <td>6h 59m</td>
@@ -1144,12 +1273,14 @@
               <td>157.183000</td>
               <td>+0.25</td>
               <td>157.175000</td>
+              <td>—</td>
               <td>157.165000 <span class="bad">(-0.64bps)</span></td>
               <td>157.604000</td>
               <td>157.603000</td>
               <td>157.605000</td>
               <td>+0.06</td>
               <td>157.605000</td>
+              <td>—</td>
               <td>157.610000 <span class="bad">(+0.32bps)</span></td>
               <td><span class="bad">+0.95bps</span></td>
               <td><span class="bad">-28.31bps</span></td>
@@ -1160,7 +1291,9 @@
                 data-gross-pnl-eur="-12.065728740716606"
                 data-profit-bps="-5.555555555554943"
                 data-entry-slip-bps="0.12345526598380871"
-                data-exit-slip-bps="-0.24677039248855603">
+                data-exit-slip-bps="-0.24677039248855603"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>03/08/2026, 19:30:15</td>
               <td>03/08/2026, 21:30:21</td>
               <td>2h 0m</td>
@@ -1175,12 +1308,14 @@
               <td>0.810040</td>
               <td>+0.19</td>
               <td>0.810010</td>
+              <td>—</td>
               <td>0.810000 <span class="bad">(-0.12bps)</span></td>
               <td>0.810065</td>
               <td>0.809660</td>
               <td>0.810470</td>
               <td>+5.00</td>
               <td>0.810470</td>
+              <td>—</td>
               <td>0.810450 <span class="good">(-0.25bps)</span></td>
               <td><span class="good">-0.12bps</span></td>
               <td><span class="bad">-5.56bps</span></td>
@@ -1191,7 +1326,9 @@
                 data-gross-pnl-eur="34.739260140603335"
                 data-profit-bps="11.915844349281874"
                 data-entry-slip-bps="0.2234270734047049"
-                data-exit-slip-bps="0.29753271000260345">
+                data-exit-slip-bps="0.29753271000260345"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>03/08/2026, 16:30:05</td>
               <td>04/08/2026, 10:45:06</td>
               <td>18h 15m</td>
@@ -1206,12 +1343,14 @@
               <td>1.342720</td>
               <td>+0.11</td>
               <td>1.342720</td>
+              <td>—</td>
               <td>1.342750 <span class="bad">(+0.22bps)</span></td>
               <td>1.344405</td>
               <td>1.344390</td>
               <td>1.344420</td>
               <td>+0.11</td>
               <td>1.344390</td>
+              <td>—</td>
               <td>1.344350 <span class="bad">(-0.30bps)</span></td>
               <td><span class="bad">+0.52bps</span></td>
               <td><span class="good">+11.92bps</span></td>
@@ -1222,7 +1361,9 @@
                 data-gross-pnl-eur="-56.25888579465022"
                 data-profit-bps="-25.959577229743516"
                 data-entry-slip-bps="0.9888384855948482"
-                data-exit-slip-bps="0.6165228113439518">
+                data-exit-slip-bps="0.6165228113439518"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>03/08/2026, 13:00:05</td>
               <td>03/08/2026, 17:00:05</td>
               <td>4h 0m</td>
@@ -1237,12 +1378,14 @@
               <td>0.809060</td>
               <td>+0.19</td>
               <td>0.809030</td>
+              <td>—</td>
               <td>0.808950 <span class="bad">(-0.99bps)</span></td>
               <td>0.810990</td>
               <td>0.810980</td>
               <td>0.811000</td>
               <td>+0.12</td>
               <td>0.811000</td>
+              <td>—</td>
               <td>0.811050 <span class="bad">(+0.62bps)</span></td>
               <td><span class="bad">+1.61bps</span></td>
               <td><span class="bad">-25.96bps</span></td>
@@ -1253,7 +1396,9 @@
                 data-gross-pnl-eur="-4.338526549612743"
                 data-profit-bps="-1.7351320869299265"
                 data-entry-slip-bps="0.6073331135367133"
-                data-exit-slip-bps="0.08677090745071857">
+                data-exit-slip-bps="0.08677090745071857"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>03/08/2026, 11:45:05</td>
               <td>03/08/2026, 12:45:05</td>
               <td>59m</td>
@@ -1268,12 +1413,14 @@
               <td>1.152580</td>
               <td>+0.04</td>
               <td>1.152580</td>
+              <td>—</td>
               <td>1.152650 <span class="bad">(+0.61bps)</span></td>
               <td>1.152465</td>
               <td>1.152460</td>
               <td>1.152470</td>
               <td>+0.04</td>
               <td>1.152460</td>
+              <td>—</td>
               <td>1.152450 <span class="bad">(-0.09bps)</span></td>
               <td><span class="bad">+0.69bps</span></td>
               <td><span class="bad">-1.74bps</span></td>
@@ -1284,7 +1431,9 @@
                 data-gross-pnl-eur="9.384564968568647"
                 data-profit-bps="4.326061430073203"
                 data-entry-slip-bps="0.9887162755054069"
-                data-exit-slip-bps="0.1236567782457368">
+                data-exit-slip-bps="0.1236567782457368"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>03/08/2026, 11:00:05</td>
               <td>03/08/2026, 12:30:06</td>
               <td>1h 30m</td>
@@ -1299,12 +1448,14 @@
               <td>0.809140</td>
               <td>+0.06</td>
               <td>0.809130</td>
+              <td>—</td>
               <td>0.809050 <span class="bad">(-0.99bps)</span></td>
               <td>0.808675</td>
               <td>0.808660</td>
               <td>0.808690</td>
               <td>+0.19</td>
               <td>0.808690</td>
+              <td>—</td>
               <td>0.808700 <span class="bad">(+0.12bps)</span></td>
               <td><span class="bad">+1.11bps</span></td>
               <td><span class="good">+4.33bps</span></td>
@@ -1315,7 +1466,9 @@
                 data-gross-pnl-eur="52.581910162422126"
                 data-profit-bps="24.189954802978892"
                 data-entry-slip-bps="-0.0"
-                data-exit-slip-bps="0.5743422186211035">
+                data-exit-slip-bps="0.5743422186211035"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>03/08/2026, 10:00:05</td>
               <td>03/08/2026, 12:30:07</td>
               <td>2h 30m</td>
@@ -1330,12 +1483,14 @@
               <td>157.093000</td>
               <td>+0.10</td>
               <td>157.090000</td>
+              <td>—</td>
               <td>157.090000 <span class="good">(+0.00bps)</span></td>
               <td>156.699000</td>
               <td>156.697000</td>
               <td>156.701000</td>
               <td>+0.13</td>
               <td>156.701000</td>
+              <td>—</td>
               <td>156.710000 <span class="bad">(+0.57bps)</span></td>
               <td><span class="bad">+0.57bps</span></td>
               <td><span class="good">+24.19bps</span></td>
@@ -1346,7 +1501,9 @@
                 data-gross-pnl-eur="12.075793338512995"
                 data-profit-bps="5.563454286949996"
                 data-entry-slip-bps="1.112567063070617"
-                data-exit-slip-bps="0.12370266826599152">
+                data-exit-slip-bps="0.12370266826599152"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>03/08/2026, 09:00:05</td>
               <td>03/08/2026, 09:15:05</td>
               <td>14m</td>
@@ -1361,12 +1518,14 @@
               <td>0.808950</td>
               <td>+0.06</td>
               <td>0.808940</td>
+              <td>—</td>
               <td>0.808850 <span class="bad">(-1.11bps)</span></td>
               <td>0.808375</td>
               <td>0.808360</td>
               <td>0.808390</td>
               <td>+0.19</td>
               <td>0.808390</td>
+              <td>—</td>
               <td>0.808400 <span class="bad">(+0.12bps)</span></td>
               <td><span class="bad">+1.24bps</span></td>
               <td><span class="good">+5.56bps</span></td>
@@ -1377,7 +1536,9 @@
                 data-gross-pnl-eur="-30.41996940620367"
                 data-profit-bps="-19.96292599458246"
                 data-entry-slip-bps="0.28519279032654576"
-                data-exit-slip-bps="1.4285714285712712">
+                data-exit-slip-bps="1.4285714285712712"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>03/08/2026, 08:30:04</td>
               <td>04/08/2026, 01:00:03</td>
               <td>16h 29m</td>
@@ -1392,12 +1553,14 @@
               <td>0.701280</td>
               <td>+0.14</td>
               <td>0.701280</td>
+              <td>—</td>
               <td>0.701300 <span class="bad">(+0.29bps)</span></td>
               <td>0.700010</td>
               <td>0.700000</td>
               <td>0.700020</td>
               <td>+0.14</td>
               <td>0.700000</td>
+              <td>—</td>
               <td>0.699900 <span class="bad">(-1.43bps)</span></td>
               <td><span class="bad">+1.71bps</span></td>
               <td><span class="bad">-19.96bps</span></td>
@@ -1408,7 +1571,9 @@
                 data-gross-pnl-eur="-9.387836051012673"
                 data-profit-bps="-4.329539831765976"
                 data-entry-slip-bps="2.720684623185155"
-                data-exit-slip-bps="-0.3709290536373985">
+                data-exit-slip-bps="-0.3709290536373985"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>03/08/2026, 07:30:06</td>
               <td>03/08/2026, 08:30:06</td>
               <td>1h 0m</td>
@@ -1423,12 +1588,14 @@
               <td>0.808670</td>
               <td>+0.31</td>
               <td>0.808620</td>
+              <td>—</td>
               <td>0.808400 <span class="bad">(-2.72bps)</span></td>
               <td>0.808765</td>
               <td>0.808750</td>
               <td>0.808780</td>
               <td>+0.19</td>
               <td>0.808780</td>
+              <td>—</td>
               <td>0.808750 <span class="good">(-0.37bps)</span></td>
               <td><span class="bad">+2.35bps</span></td>
               <td><span class="bad">-4.33bps</span></td>
@@ -1439,7 +1606,9 @@
                 data-gross-pnl-eur="-40.07707129094314"
                 data-profit-bps="-18.52049720411679"
                 data-entry-slip-bps="-0.0"
-                data-exit-slip-bps="0.07110150450830119">
+                data-exit-slip-bps="0.07110150450830119"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>03/08/2026, 06:45:06</td>
               <td>04/08/2026, 19:30:05</td>
               <td>36h 44m</td>
@@ -1454,12 +1623,14 @@
               <td>1.403890</td>
               <td>+0.14</td>
               <td>1.403850</td>
+              <td>—</td>
               <td>1.403850 <span class="good">(+0.00bps)</span></td>
               <td>1.406430</td>
               <td>1.406420</td>
               <td>1.406440</td>
               <td>+0.07</td>
               <td>1.406440</td>
+              <td>—</td>
               <td>1.406450 <span class="bad">(+0.07bps)</span></td>
               <td><span class="bad">+0.07bps</span></td>
               <td><span class="bad">-18.52bps</span></td>
@@ -1470,7 +1641,9 @@
                 data-gross-pnl-eur="2.680191469446324"
                 data-profit-bps="1.2360939431409148"
                 data-entry-slip-bps="0.49441313161189787"
-                data-exit-slip-bps="-0.12362314719889124">
+                data-exit-slip-bps="-0.12362314719889124"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>03/08/2026, 02:45:06</td>
               <td>03/08/2026, 04:15:11</td>
               <td>1h 30m</td>
@@ -1485,12 +1658,14 @@
               <td>0.809080</td>
               <td>+0.25</td>
               <td>0.809040</td>
+              <td>—</td>
               <td>0.809000 <span class="bad">(-0.49bps)</span></td>
               <td>0.808895</td>
               <td>0.808880</td>
               <td>0.808910</td>
               <td>+0.19</td>
               <td>0.808910</td>
+              <td>—</td>
               <td>0.808900 <span class="good">(-0.12bps)</span></td>
               <td><span class="bad">+0.37bps</span></td>
               <td><span class="good">+1.24bps</span></td>
@@ -1501,7 +1676,9 @@
                 data-gross-pnl-eur="26.021224645571184"
                 data-profit-bps="10.397262054326474"
                 data-entry-slip-bps="0.7797338508449151"
-                data-exit-slip-bps="0.3469481572700207">
+                data-exit-slip-bps="0.3469481572700207"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>03/08/2026, 01:00:06</td>
               <td>03/08/2026, 03:30:06</td>
               <td>2h 30m</td>
@@ -1516,12 +1693,14 @@
               <td>1.154260</td>
               <td>+0.09</td>
               <td>1.154240</td>
+              <td>—</td>
               <td>1.154150 <span class="bad">(-0.78bps)</span></td>
               <td>1.152905</td>
               <td>1.152900</td>
               <td>1.152910</td>
               <td>+0.04</td>
               <td>1.152910</td>
+              <td>—</td>
               <td>1.152950 <span class="bad">(+0.35bps)</span></td>
               <td><span class="bad">+1.13bps</span></td>
               <td><span class="good">+10.40bps</span></td>
@@ -1532,7 +1711,9 @@
                 data-gross-pnl-eur="-34.89720738990455"
                 data-profit-bps="-16.1350378552821"
                 data-entry-slip-bps="1.3650860624719785"
-                data-exit-slip-bps="1.73512133455654">
+                data-exit-slip-bps="1.73512133455654"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>03/08/2026, 00:45:06</td>
               <td>03/08/2026, 01:00:06</td>
               <td>15m</td>
@@ -1547,12 +1728,14 @@
               <td>0.805830</td>
               <td>+0.12</td>
               <td>0.805810</td>
+              <td>—</td>
               <td>0.805700 <span class="bad">(-1.37bps)</span></td>
               <td>0.806850</td>
               <td>0.806840</td>
               <td>0.806860</td>
               <td>+0.12</td>
               <td>0.806860</td>
+              <td>—</td>
               <td>0.807000 <span class="bad">(+1.74bps)</span></td>
               <td><span class="bad">+3.10bps</span></td>
               <td><span class="bad">-16.14bps</span></td>
@@ -1563,7 +1746,9 @@
                 data-gross-pnl-eur="-41.57783107043685"
                 data-profit-bps="-19.171304885591233"
                 data-entry-slip-bps="0.6184674376893374"
-                data-exit-slip-bps="0.6195786864944921">
+                data-exit-slip-bps="0.6195786864944921"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>31/07/2026, 18:45:09</td>
               <td>02/08/2026, 23:00:06</td>
               <td>52h 14m</td>
@@ -1578,12 +1763,14 @@
               <td>0.808450</td>
               <td>+0.19</td>
               <td>0.808450</td>
+              <td>—</td>
               <td>0.808500 <span class="bad">(+0.62bps)</span></td>
               <td>0.807020</td>
               <td>0.807000</td>
               <td>0.807040</td>
               <td>+0.25</td>
               <td>0.807000</td>
+              <td>—</td>
               <td>0.806950 <span class="bad">(-0.62bps)</span></td>
               <td><span class="bad">+1.24bps</span></td>
               <td><span class="bad">-19.17bps</span></td>
@@ -1594,7 +1781,9 @@
                 data-gross-pnl-eur="-23.820867079561477"
                 data-profit-bps="-18.685238661457277"
                 data-entry-slip-bps="1.0190909708531317"
-                data-exit-slip-bps="-0.169546125022541">
+                data-exit-slip-bps="-0.169546125022541"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>31/07/2026, 18:45:06</td>
               <td>02/08/2026, 23:45:06</td>
               <td>52h 59m</td>
@@ -1609,12 +1798,14 @@
               <td>0.588780</td>
               <td>+0.17</td>
               <td>0.588760</td>
+              <td>—</td>
               <td>0.588700 <span class="bad">(-1.02bps)</span></td>
               <td>0.589795</td>
               <td>0.589780</td>
               <td>0.589810</td>
               <td>+0.25</td>
               <td>0.589810</td>
+              <td>—</td>
               <td>0.589800 <span class="good">(-0.17bps)</span></td>
               <td><span class="bad">+0.85bps</span></td>
               <td><span class="bad">-18.69bps</span></td>
@@ -1625,7 +1816,9 @@
                 data-gross-pnl-eur="6.708706065141578"
                 data-profit-bps="3.090807937194443"
                 data-entry-slip-bps="0.494504815241133"
-                data-exit-slip-bps="0.7420783139974396">
+                data-exit-slip-bps="0.7420783139974396"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>31/07/2026, 16:45:06</td>
               <td>31/07/2026, 17:15:06</td>
               <td>30m</td>
@@ -1640,12 +1833,14 @@
               <td>0.808940</td>
               <td>+0.31</td>
               <td>0.808890</td>
+              <td>—</td>
               <td>0.808850 <span class="bad">(-0.49bps)</span></td>
               <td>0.808520</td>
               <td>0.808500</td>
               <td>0.808540</td>
               <td>+0.25</td>
               <td>0.808540</td>
+              <td>—</td>
               <td>0.808600 <span class="bad">(+0.74bps)</span></td>
               <td><span class="bad">+1.24bps</span></td>
               <td><span class="good">+3.09bps</span></td>
@@ -1656,7 +1851,9 @@
                 data-gross-pnl-eur=""
                 data-profit-bps=""
                 data-entry-slip-bps="-0.07811035430907885"
-                data-exit-slip-bps="">
+                data-exit-slip-bps=""
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>10/08/2026, 12:45:06</td>
               <td>—</td>
               <td>—</td>
@@ -1671,7 +1868,9 @@
               <td>1.280270</td>
               <td>+0.12</td>
               <td>1.280240</td>
+              <td>—</td>
               <td>1.280250 <span class="good">(+0.08bps)</span></td>
+              <td>—</td>
               <td>—</td>
               <td>—</td>
               <td>—</td>
@@ -1687,7 +1886,9 @@
                 data-gross-pnl-eur=""
                 data-profit-bps=""
                 data-entry-slip-bps="-0.18904544652445635"
-                data-exit-slip-bps="">
+                data-exit-slip-bps=""
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>10/08/2026, 12:15:05</td>
               <td>—</td>
               <td>—</td>
@@ -1702,7 +1903,9 @@
               <td>158.694000</td>
               <td>+0.06</td>
               <td>158.692000</td>
+              <td>—</td>
               <td>158.695000 <span class="good">(+0.19bps)</span></td>
+              <td>—</td>
               <td>—</td>
               <td>—</td>
               <td>—</td>
@@ -1718,7 +1921,9 @@
                 data-gross-pnl-eur=""
                 data-profit-bps=""
                 data-entry-slip-bps="-0.0"
-                data-exit-slip-bps="">
+                data-exit-slip-bps=""
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>10/08/2026, 12:15:04</td>
               <td>—</td>
               <td>—</td>
@@ -1733,7 +1938,9 @@
               <td>183.325000</td>
               <td>+0.14</td>
               <td>183.320000</td>
+              <td>—</td>
               <td>183.320000 <span class="good">(+0.00bps)</span></td>
+              <td>—</td>
               <td>—</td>
               <td>—</td>
               <td>—</td>
@@ -1749,7 +1956,9 @@
                 data-gross-pnl-eur=""
                 data-profit-bps=""
                 data-entry-slip-bps="-0.1415508309027332"
-                data-exit-slip-bps="">
+                data-exit-slip-bps=""
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>10/08/2026, 10:00:04</td>
               <td>—</td>
               <td>—</td>
@@ -1764,7 +1973,9 @@
               <td>0.706460</td>
               <td>+0.07</td>
               <td>0.706460</td>
+              <td>—</td>
               <td>0.706450 <span class="good">(-0.14bps)</span></td>
+              <td>—</td>
               <td>—</td>
               <td>—</td>
               <td>—</td>
@@ -1780,7 +1991,9 @@
                 data-gross-pnl-eur="-15.667019969321126"
                 data-profit-bps="-7.247746896074186"
                 data-entry-slip-bps="-0.3781576160944025"
-                data-exit-slip-bps="0.06297863764641115">
+                data-exit-slip-bps="0.06297863764641115"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>10/08/2026, 09:00:05</td>
               <td>10/08/2026, 10:45:07</td>
               <td>1h 45m</td>
@@ -1795,12 +2008,14 @@
               <td>158.666000</td>
               <td>+0.06</td>
               <td>158.664000</td>
+              <td>—</td>
               <td>158.670000 <span class="good">(+0.38bps)</span></td>
               <td>158.783500</td>
               <td>158.783000</td>
               <td>158.784000</td>
               <td>+0.03</td>
               <td>158.784000</td>
+              <td>—</td>
               <td>158.785000 <span class="bad">(+0.06bps)</span></td>
               <td><span class="good">-0.32bps</span></td>
               <td><span class="bad">-7.25bps</span></td>
@@ -1811,7 +2026,9 @@
                 data-gross-pnl-eur="-0.6831889071977303"
                 data-profit-bps="-0.3157761778448562"
                 data-entry-slip-bps="-0.2526273241707936"
-                data-exit-slip-bps="0.25261934685209">
+                data-exit-slip-bps="0.25261934685209"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>10/08/2026, 05:00:05</td>
               <td>10/08/2026, 06:00:05</td>
               <td>59m</td>
@@ -1826,12 +2043,14 @@
               <td>158.339000</td>
               <td>+0.09</td>
               <td>158.336000</td>
+              <td>—</td>
               <td>158.340000 <span class="good">(+0.25bps)</span></td>
               <td>158.340000</td>
               <td>158.339000</td>
               <td>158.341000</td>
               <td>+0.06</td>
               <td>158.341000</td>
+              <td>—</td>
               <td>158.345000 <span class="bad">(+0.25bps)</span></td>
               <td><span class="good">-0.00bps</span></td>
               <td><span class="bad">-0.32bps</span></td>
@@ -1842,7 +2061,9 @@
                 data-gross-pnl-eur="10.822463972018648"
                 data-profit-bps="7.077641729776431"
                 data-entry-slip-bps="-0.14155483834530197"
-                data-exit-slip-bps="0.2833142096244671">
+                data-exit-slip-bps="0.2833142096244671"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>09/08/2026, 22:00:05</td>
               <td>10/08/2026, 04:45:04</td>
               <td>6h 44m</td>
@@ -1857,12 +2078,14 @@
               <td>0.707060</td>
               <td>+4.39</td>
               <td>0.706440</td>
+              <td>—</td>
               <td>0.706450 <span class="good">(+0.14bps)</span></td>
               <td>0.705925</td>
               <td>0.705920</td>
               <td>0.705930</td>
               <td>+0.07</td>
               <td>0.705930</td>
+              <td>—</td>
               <td>0.705950 <span class="bad">(+0.28bps)</span></td>
               <td><span class="bad">+0.14bps</span></td>
               <td><span class="good">+7.08bps</span></td>
@@ -1873,7 +2096,9 @@
                 data-gross-pnl-eur="-2.533499027092898"
                 data-profit-bps="-1.1705946620873455"
                 data-entry-slip-bps="0.23411345137833897"
-                data-exit-slip-bps="0.624283049933732">
+                data-exit-slip-bps="0.624283049933732"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>05/08/2026, 20:15:06</td>
               <td>05/08/2026, 20:30:05</td>
               <td>14m</td>
@@ -1888,12 +2113,14 @@
               <td>1.281460</td>
               <td>+0.12</td>
               <td>1.281430</td>
+              <td>—</td>
               <td>1.281400 <span class="bad">(-0.23bps)</span></td>
               <td>1.281435</td>
               <td>1.281400</td>
               <td>1.281470</td>
               <td>+0.27</td>
               <td>1.281470</td>
+              <td>—</td>
               <td>1.281550 <span class="bad">(+0.62bps)</span></td>
               <td><span class="bad">+0.86bps</span></td>
               <td><span class="bad">-1.17bps</span></td>
@@ -1904,7 +2131,9 @@
                 data-gross-pnl-eur="-5.409499080386963"
                 data-profit-bps="-2.163471939769664"
                 data-entry-slip-bps="0.17308075082543095"
-                data-exit-slip-bps="0.6058665189507647">
+                data-exit-slip-bps="0.6058665189507647"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>05/08/2026, 18:15:06</td>
               <td>05/08/2026, 19:00:05</td>
               <td>44m</td>
@@ -1919,12 +2148,14 @@
               <td>1.155530</td>
               <td>+0.04</td>
               <td>1.155530</td>
+              <td>—</td>
               <td>1.155550 <span class="bad">(+0.17bps)</span></td>
               <td>1.155375</td>
               <td>1.155370</td>
               <td>1.155380</td>
               <td>+0.04</td>
               <td>1.155370</td>
+              <td>—</td>
               <td>1.155300 <span class="bad">(-0.61bps)</span></td>
               <td><span class="bad">+0.78bps</span></td>
               <td><span class="bad">-2.16bps</span></td>
@@ -1935,7 +2166,9 @@
                 data-gross-pnl-eur="-101.53464579135104"
                 data-profit-bps="-46.74564658863871"
                 data-entry-slip-bps="0.5709717939939478"
-                data-exit-slip-bps="0.5018928530458766">
+                data-exit-slip-bps="0.5018928530458766"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>05/08/2026, 18:00:06</td>
               <td>09/08/2026, 22:00:05</td>
               <td>99h 59m</td>
@@ -1950,12 +2183,14 @@
               <td>1.401120</td>
               <td>+0.07</td>
               <td>1.401120</td>
+              <td>—</td>
               <td>1.401200 <span class="bad">(+0.57bps)</span></td>
               <td>1.394950</td>
               <td>1.394720</td>
               <td>1.395180</td>
               <td>+1.65</td>
               <td>1.394720</td>
+              <td>—</td>
               <td>1.394650 <span class="bad">(-0.50bps)</span></td>
               <td><span class="bad">+1.07bps</span></td>
               <td><span class="bad">-46.75bps</span></td>
@@ -1966,7 +2201,9 @@
                 data-gross-pnl-eur="22.716946842344292"
                 data-profit-bps="14.893617021276532"
                 data-entry-slip-bps="-0.0"
-                data-exit-slip-bps="0.14163102286017493">
+                data-exit-slip-bps="0.14163102286017493"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>05/08/2026, 16:00:03</td>
               <td>05/08/2026, 18:15:05</td>
               <td>2h 15m</td>
@@ -1981,12 +2218,14 @@
               <td>0.705000</td>
               <td>+0.14</td>
               <td>0.705000</td>
+              <td>—</td>
               <td>0.705000 <span class="good">(+0.00bps)</span></td>
               <td>0.706070</td>
               <td>0.706060</td>
               <td>0.706080</td>
               <td>+0.14</td>
               <td>0.706060</td>
+              <td>—</td>
               <td>0.706050 <span class="bad">(-0.14bps)</span></td>
               <td><span class="bad">+0.14bps</span></td>
               <td><span class="good">+14.89bps</span></td>
@@ -1997,7 +2236,9 @@
                 data-gross-pnl-eur="9.26314749400881"
                 data-profit-bps="4.279753200898277"
                 data-entry-slip-bps="0.1426604752029775"
-                data-exit-slip-bps="0.21389154272821864">
+                data-exit-slip-bps="0.21389154272821864"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>05/08/2026, 15:00:05</td>
               <td>05/08/2026, 16:45:06</td>
               <td>1h 45m</td>
@@ -2012,12 +2253,14 @@
               <td>1.401930</td>
               <td>+0.11</td>
               <td>1.401930</td>
+              <td>—</td>
               <td>1.401950 <span class="bad">(+0.14bps)</span></td>
               <td>1.402585</td>
               <td>1.402580</td>
               <td>1.402590</td>
               <td>+0.04</td>
               <td>1.402580</td>
+              <td>—</td>
               <td>1.402550 <span class="bad">(-0.21bps)</span></td>
               <td><span class="bad">+0.36bps</span></td>
               <td><span class="good">+4.28bps</span></td>
@@ -2028,7 +2271,9 @@
                 data-gross-pnl-eur="19.471668722007333"
                 data-profit-bps="6.677300886596438"
                 data-entry-slip-bps="0.07419168162914183"
-                data-exit-slip-bps="0.3712228079301026">
+                data-exit-slip-bps="0.3712228079301026"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>05/08/2026, 14:15:05</td>
               <td>05/08/2026, 18:15:06</td>
               <td>4h 0m</td>
@@ -2043,12 +2288,14 @@
               <td>1.347870</td>
               <td>+0.04</td>
               <td>1.347860</td>
+              <td>—</td>
               <td>1.347850 <span class="bad">(-0.07bps)</span></td>
               <td>1.346880</td>
               <td>1.346860</td>
               <td>1.346900</td>
               <td>+0.15</td>
               <td>1.346900</td>
+              <td>—</td>
               <td>1.346950 <span class="bad">(+0.37bps)</span></td>
               <td><span class="bad">+0.45bps</span></td>
               <td><span class="good">+6.68bps</span></td>
@@ -2059,7 +2306,9 @@
                 data-gross-pnl-eur="-21.284425842314143"
                 data-profit-bps="-8.520697047990827"
                 data-entry-slip-bps="0.6596233550642834"
-                data-exit-slip-bps="0.27463473580113434">
+                data-exit-slip-bps="0.27463473580113434"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>05/08/2026, 06:45:04</td>
               <td>05/08/2026, 09:00:04</td>
               <td>2h 15m</td>
@@ -2074,12 +2323,14 @@
               <td>181.925000</td>
               <td>+0.08</td>
               <td>181.922000</td>
+              <td>—</td>
               <td>181.910000 <span class="bad">(-0.66bps)</span></td>
               <td>182.058000</td>
               <td>182.056000</td>
               <td>182.060000</td>
               <td>+0.11</td>
               <td>182.060000</td>
+              <td>—</td>
               <td>182.065000 <span class="bad">(+0.27bps)</span></td>
               <td><span class="bad">+0.93bps</span></td>
               <td><span class="bad">-8.52bps</span></td>
@@ -2090,7 +2341,9 @@
                 data-gross-pnl-eur="4.124300930992353"
                 data-profit-bps="1.9028288722568272"
                 data-entry-slip-bps="-0.570881250355921"
-                data-exit-slip-bps="-0.6343567622425086">
+                data-exit-slip-bps="-0.6343567622425086"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>05/08/2026, 05:00:05</td>
               <td>05/08/2026, 06:00:05</td>
               <td>59m</td>
@@ -2105,12 +2358,14 @@
               <td>157.655000</td>
               <td>+0.13</td>
               <td>157.651000</td>
+              <td>—</td>
               <td>157.660000 <span class="good">(+0.57bps)</span></td>
               <td>157.639000</td>
               <td>157.638000</td>
               <td>157.640000</td>
               <td>+0.06</td>
               <td>157.640000</td>
+              <td>—</td>
               <td>157.630000 <span class="good">(-0.63bps)</span></td>
               <td><span class="good">-1.21bps</span></td>
               <td><span class="good">+1.90bps</span></td>
@@ -2121,7 +2376,9 @@
                 data-gross-pnl-eur="-9.752334058619361"
                 data-profit-bps="-3.899311121702365"
                 data-entry-slip-bps="0.08665210911290347"
-                data-exit-slip-bps="-0.3467526613270225">
+                data-exit-slip-bps="-0.3467526613270225"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>05/08/2026, 02:45:07</td>
               <td>05/08/2026, 06:00:05</td>
               <td>3h 14m</td>
@@ -2136,12 +2393,14 @@
               <td>1.154040</td>
               <td>+0.04</td>
               <td>1.154040</td>
+              <td>—</td>
               <td>1.154050 <span class="bad">(+0.09bps)</span></td>
               <td>1.153570</td>
               <td>1.153560</td>
               <td>1.153580</td>
               <td>+0.09</td>
               <td>1.153560</td>
+              <td>—</td>
               <td>1.153600 <span class="good">(+0.35bps)</span></td>
               <td><span class="good">-0.26bps</span></td>
               <td><span class="bad">-3.90bps</span></td>
@@ -2152,7 +2411,9 @@
                 data-gross-pnl-eur="-1.6909481304580405"
                 data-profit-bps="-0.7800007800006942"
                 data-entry-slip-bps="0.7020499859584033"
-                data-exit-slip-bps="-0.936161581488169">
+                data-exit-slip-bps="-0.936161581488169"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>04/08/2026, 20:45:07</td>
               <td>04/08/2026, 22:00:10</td>
               <td>1h 15m</td>
@@ -2167,12 +2428,14 @@
               <td>1.281960</td>
               <td>+0.23</td>
               <td>1.281960</td>
+              <td>—</td>
               <td>1.282050 <span class="bad">(+0.70bps)</span></td>
               <td>1.282295</td>
               <td>1.281830</td>
               <td>1.282760</td>
               <td>+3.63</td>
               <td>1.281830</td>
+              <td>—</td>
               <td>1.281950 <span class="good">(+0.94bps)</span></td>
               <td><span class="good">-0.23bps</span></td>
               <td><span class="bad">-0.78bps</span></td>
@@ -2183,7 +2446,9 @@
                 data-gross-pnl-eur="1.0839685388946008"
                 data-profit-bps="0.43361373688217386"
                 data-entry-slip-bps="0.08672349946721863"
-                data-exit-slip-bps="0.08671823511104713">
+                data-exit-slip-bps="0.08671823511104713"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>04/08/2026, 19:15:05</td>
               <td>04/08/2026, 20:15:05</td>
               <td>1h 0m</td>
@@ -2198,12 +2463,14 @@
               <td>1.153090</td>
               <td>+0.04</td>
               <td>1.153090</td>
+              <td>—</td>
               <td>1.153100 <span class="bad">(+0.09bps)</span></td>
               <td>1.153170</td>
               <td>1.153160</td>
               <td>1.153180</td>
               <td>+0.09</td>
               <td>1.153160</td>
+              <td>—</td>
               <td>1.153150 <span class="bad">(-0.09bps)</span></td>
               <td><span class="bad">+0.17bps</span></td>
               <td><span class="good">+0.43bps</span></td>
@@ -2214,7 +2481,9 @@
                 data-gross-pnl-eur="-17.342519087610565"
                 data-profit-bps="-11.36363636363669"
                 data-entry-slip-bps="0.42611820519133436"
-                data-exit-slip-bps="0.2837764976307501">
+                data-exit-slip-bps="0.2837764976307501"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>04/08/2026, 14:30:03</td>
               <td>04/08/2026, 19:30:04</td>
               <td>5h 0m</td>
@@ -2229,12 +2498,14 @@
               <td>0.704050</td>
               <td>+0.14</td>
               <td>0.704030</td>
+              <td>—</td>
               <td>0.704000 <span class="bad">(-0.43bps)</span></td>
               <td>0.704770</td>
               <td>0.704760</td>
               <td>0.704780</td>
               <td>+0.14</td>
               <td>0.704780</td>
+              <td>—</td>
               <td>0.704800 <span class="bad">(+0.28bps)</span></td>
               <td><span class="bad">+0.71bps</span></td>
               <td><span class="bad">-11.36bps</span></td>
@@ -2245,7 +2516,9 @@
                 data-gross-pnl-eur="-25.43799604092513"
                 data-profit-bps="-11.733750533353374"
                 data-entry-slip-bps="0.21333636745195692"
-                data-exit-slip-bps="-0.07102978989276965">
+                data-exit-slip-bps="-0.07102978989276965"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>04/08/2026, 12:15:06</td>
               <td>04/08/2026, 16:45:05</td>
               <td>4h 29m</td>
@@ -2260,12 +2533,14 @@
               <td>1.406260</td>
               <td>+0.11</td>
               <td>1.406230</td>
+              <td>—</td>
               <td>1.406200 <span class="bad">(-0.21bps)</span></td>
               <td>1.407850</td>
               <td>1.407840</td>
               <td>1.407860</td>
               <td>+0.07</td>
               <td>1.407860</td>
+              <td>—</td>
               <td>1.407850 <span class="good">(-0.07bps)</span></td>
               <td><span class="bad">+0.14bps</span></td>
               <td><span class="bad">-11.73bps</span></td>
@@ -2276,7 +2551,9 @@
                 data-gross-pnl-eur="-21.708455443395223"
                 data-profit-bps="-14.239943040227852"
                 data-entry-slip-bps="-0.0"
-                data-exit-slip-bps="0.1421989647924679">
+                data-exit-slip-bps="0.1421989647924679"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>04/08/2026, 09:15:05</td>
               <td>04/08/2026, 12:00:05</td>
               <td>2h 45m</td>
@@ -2291,12 +2568,14 @@
               <td>0.702270</td>
               <td>+0.14</td>
               <td>0.702250</td>
+              <td>—</td>
               <td>0.702250 <span class="good">(+0.00bps)</span></td>
               <td>0.703235</td>
               <td>0.703230</td>
               <td>0.703240</td>
               <td>+0.07</td>
               <td>0.703240</td>
+              <td>—</td>
               <td>0.703250 <span class="bad">(+0.14bps)</span></td>
               <td><span class="bad">+0.14bps</span></td>
               <td><span class="bad">-14.24bps</span></td>
@@ -2307,7 +2586,9 @@
                 data-gross-pnl-eur="-4.639036564885694"
                 data-profit-bps="-2.1360674997327562"
                 data-entry-slip-bps="0.7832860988083691"
-                data-exit-slip-bps="0.2136478229285027">
+                data-exit-slip-bps="0.2136478229285027"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>04/08/2026, 08:30:06</td>
               <td>04/08/2026, 11:00:06</td>
               <td>2h 29m</td>
@@ -2322,12 +2603,14 @@
               <td>1.404340</td>
               <td>+0.11</td>
               <td>1.404340</td>
+              <td>—</td>
               <td>1.404450 <span class="bad">(+0.78bps)</span></td>
               <td>1.404205</td>
               <td>1.404180</td>
               <td>1.404230</td>
               <td>+0.18</td>
               <td>1.404180</td>
+              <td>—</td>
               <td>1.404150 <span class="bad">(-0.21bps)</span></td>
               <td><span class="bad">+1.00bps</span></td>
               <td><span class="bad">-2.14bps</span></td>
@@ -2338,7 +2621,9 @@
                 data-gross-pnl-eur="23.970431313114766"
                 data-profit-bps="11.022614137391129"
                 data-entry-slip-bps="0.21333636745195692"
-                data-exit-slip-bps="0.2847765571940966">
+                data-exit-slip-bps="0.2847765571940966"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>04/08/2026, 06:15:05</td>
               <td>04/08/2026, 08:15:06</td>
               <td>2h 0m</td>
@@ -2353,12 +2638,14 @@
               <td>1.406270</td>
               <td>+0.14</td>
               <td>1.406230</td>
+              <td>—</td>
               <td>1.406200 <span class="bad">(-0.21bps)</span></td>
               <td>1.404590</td>
               <td>1.404570</td>
               <td>1.404610</td>
               <td>+0.14</td>
               <td>1.404610</td>
+              <td>—</td>
               <td>1.404650 <span class="bad">(+0.28bps)</span></td>
               <td><span class="bad">+0.50bps</span></td>
               <td><span class="good">+11.02bps</span></td>
@@ -2369,7 +2656,9 @@
                 data-gross-pnl-eur="4.346068763499497"
                 data-profit-bps="2.8506271379700396"
                 data-entry-slip-bps="0.4275757878080255"
-                data-exit-slip-bps="0.14257403156682463">
+                data-exit-slip-bps="0.14257403156682463"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>04/08/2026, 02:15:03</td>
               <td>04/08/2026, 06:45:04</td>
               <td>4h 30m</td>
@@ -2384,12 +2673,14 @@
               <td>0.701660</td>
               <td>+0.21</td>
               <td>0.701630</td>
+              <td>—</td>
               <td>0.701600 <span class="bad">(-0.43bps)</span></td>
               <td>0.701385</td>
               <td>0.701380</td>
               <td>0.701390</td>
               <td>+0.07</td>
               <td>0.701390</td>
+              <td>—</td>
               <td>0.701400 <span class="bad">(+0.14bps)</span></td>
               <td><span class="bad">+0.57bps</span></td>
               <td><span class="good">+2.85bps</span></td>
@@ -2400,7 +2691,9 @@
                 data-gross-pnl-eur="-7.599519157697873"
                 data-profit-bps="-3.4995068876662634"
                 data-entry-slip-bps="0.6362334976948831"
-                data-exit-slip-bps="0.254427030327109">
+                data-exit-slip-bps="0.254427030327109"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>03/08/2026, 20:30:05</td>
               <td>03/08/2026, 21:30:06</td>
               <td>1h 0m</td>
@@ -2415,12 +2708,14 @@
               <td>157.183000</td>
               <td>+0.25</td>
               <td>157.175000</td>
+              <td>—</td>
               <td>157.165000 <span class="bad">(-0.64bps)</span></td>
               <td>157.191000</td>
               <td>157.166000</td>
               <td>157.216000</td>
               <td>+1.59</td>
               <td>157.216000</td>
+              <td>—</td>
               <td>157.220000 <span class="bad">(+0.25bps)</span></td>
               <td><span class="bad">+0.89bps</span></td>
               <td><span class="bad">-3.50bps</span></td>
@@ -2431,7 +2726,9 @@
                 data-gross-pnl-eur="-2.1715243666746793"
                 data-profit-bps="-0.8685456203586136"
                 data-entry-slip-bps="-0.17370610663738834"
-                data-exit-slip-bps="0.08686135190872146">
+                data-exit-slip-bps="0.08686135190872146"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>03/08/2026, 14:45:04</td>
               <td>03/08/2026, 19:45:05</td>
               <td>5h 0m</td>
@@ -2446,12 +2743,14 @@
               <td>1.151370</td>
               <td>+0.04</td>
               <td>1.151370</td>
+              <td>—</td>
               <td>1.151350 <span class="good">(-0.17bps)</span></td>
               <td>1.151265</td>
               <td>1.151260</td>
               <td>1.151270</td>
               <td>+0.04</td>
               <td>1.151260</td>
+              <td>—</td>
               <td>1.151250 <span class="bad">(-0.09bps)</span></td>
               <td><span class="good">-0.09bps</span></td>
               <td><span class="bad">-0.87bps</span></td>
@@ -2462,7 +2761,9 @@
                 data-gross-pnl-eur="9.284706231893798"
                 data-profit-bps="4.271830835498443"
                 data-entry-slip-bps="-0.0"
-                data-exit-slip-bps="0.49861811550855123">
+                data-exit-slip-bps="0.49861811550855123"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>03/08/2026, 13:45:05</td>
               <td>03/08/2026, 16:15:05</td>
               <td>2h 29m</td>
@@ -2477,12 +2778,14 @@
               <td>1.404580</td>
               <td>+0.11</td>
               <td>1.404550</td>
+              <td>—</td>
               <td>1.404550 <span class="good">(+0.00bps)</span></td>
               <td>1.403870</td>
               <td>1.403860</td>
               <td>1.403880</td>
               <td>+0.07</td>
               <td>1.403880</td>
+              <td>—</td>
               <td>1.403950 <span class="bad">(+0.50bps)</span></td>
               <td><span class="bad">+0.50bps</span></td>
               <td><span class="good">+4.27bps</span></td>
@@ -2493,7 +2796,9 @@
                 data-gross-pnl-eur="5.074881091864628"
                 data-profit-bps="2.339363693075226"
                 data-entry-slip-bps="0.07797818170526986"
-                data-exit-slip-bps="0.3119978784147388">
+                data-exit-slip-bps="0.3119978784147388"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>03/08/2026, 13:15:05</td>
               <td>03/08/2026, 13:45:08</td>
               <td>30m</td>
@@ -2508,12 +2813,14 @@
               <td>1.282450</td>
               <td>+0.16</td>
               <td>1.282410</td>
+              <td>—</td>
               <td>1.282400 <span class="bad">(-0.08bps)</span></td>
               <td>1.282025</td>
               <td>1.281990</td>
               <td>1.282060</td>
               <td>+0.27</td>
               <td>1.282060</td>
+              <td>—</td>
               <td>1.282100 <span class="bad">(+0.31bps)</span></td>
               <td><span class="bad">+0.39bps</span></td>
               <td><span class="good">+2.34bps</span></td>
@@ -2524,7 +2831,9 @@
                 data-gross-pnl-eur="-19.542106725959126"
                 data-profit-bps="-12.842465753424829"
                 data-entry-slip-bps="1.1416828405064645"
-                data-exit-slip-bps="0.5714775552195903">
+                data-exit-slip-bps="0.5714775552195903"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>03/08/2026, 09:30:04</td>
               <td>03/08/2026, 19:15:04</td>
               <td>9h 45m</td>
@@ -2539,12 +2848,14 @@
               <td>0.700720</td>
               <td>+0.14</td>
               <td>0.700720</td>
+              <td>—</td>
               <td>0.700800 <span class="bad">(+1.14bps)</span></td>
               <td>0.699945</td>
               <td>0.699940</td>
               <td>0.699950</td>
               <td>+0.07</td>
               <td>0.699940</td>
+              <td>—</td>
               <td>0.699900 <span class="bad">(-0.57bps)</span></td>
               <td><span class="bad">+1.71bps</span></td>
               <td><span class="bad">-12.84bps</span></td>
@@ -2555,7 +2866,9 @@
                 data-gross-pnl-eur="-7.5864969025432645"
                 data-profit-bps="-3.0338490876788664"
                 data-entry-slip-bps="0.3467376323024246"
-                data-exit-slip-bps="0.5202191856831256">
+                data-exit-slip-bps="0.5202191856831256"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>03/08/2026, 04:45:06</td>
               <td>03/08/2026, 05:30:05</td>
               <td>44m</td>
@@ -2570,12 +2883,14 @@
               <td>1.153610</td>
               <td>+0.04</td>
               <td>1.153610</td>
+              <td>—</td>
               <td>1.153650 <span class="bad">(+0.35bps)</span></td>
               <td>1.153365</td>
               <td>1.153360</td>
               <td>1.153370</td>
               <td>+0.04</td>
               <td>1.153360</td>
+              <td>—</td>
               <td>1.153300 <span class="bad">(-0.52bps)</span></td>
               <td><span class="bad">+0.87bps</span></td>
               <td><span class="bad">-3.03bps</span></td>
@@ -2586,7 +2901,9 @@
                 data-gross-pnl-eur="1.0838557518031777"
                 data-profit-bps="0.43355733795693446"
                 data-entry-slip-bps="0.17342594278791762"
-                data-exit-slip-bps="-0.1734184239725737">
+                data-exit-slip-bps="-0.1734184239725737"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>03/08/2026, 02:00:05</td>
               <td>03/08/2026, 02:30:05</td>
               <td>30m</td>
@@ -2601,12 +2918,14 @@
               <td>1.153230</td>
               <td>+0.04</td>
               <td>1.153230</td>
+              <td>—</td>
               <td>1.153250 <span class="bad">(+0.17bps)</span></td>
               <td>1.153290</td>
               <td>1.153280</td>
               <td>1.153300</td>
               <td>+0.09</td>
               <td>1.153280</td>
+              <td>—</td>
               <td>1.153300 <span class="good">(+0.17bps)</span></td>
               <td><span class="bad">+0.00bps</span></td>
               <td><span class="good">+0.43bps</span></td>
@@ -2617,7 +2936,9 @@
                 data-gross-pnl-eur="-3.8630442643042566"
                 data-profit-bps="-1.7821499857418124"
                 data-entry-slip-bps="0.0712854912628472"
-                data-exit-slip-bps="-0.21381532058183808">
+                data-exit-slip-bps="-0.21381532058183808"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>03/08/2026, 01:30:06</td>
               <td>03/08/2026, 12:15:05</td>
               <td>10h 44m</td>
@@ -2632,12 +2953,14 @@
               <td>1.402860</td>
               <td>+0.18</td>
               <td>1.402810</td>
+              <td>—</td>
               <td>1.402800 <span class="bad">(-0.07bps)</span></td>
               <td>1.403070</td>
               <td>1.403060</td>
               <td>1.403080</td>
               <td>+0.07</td>
               <td>1.403080</td>
+              <td>—</td>
               <td>1.403050 <span class="good">(-0.21bps)</span></td>
               <td><span class="good">-0.14bps</span></td>
               <td><span class="bad">-1.78bps</span></td>
@@ -2648,7 +2971,9 @@
                 data-gross-pnl-eur="-30.50116181698178"
                 data-profit-bps="-14.090370512697273"
                 data-entry-slip-bps="-0.896740348830816"
-                data-exit-slip-bps="-0.5755800567914963">
+                data-exit-slip-bps="-0.5755800567914963"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>03/08/2026, 01:00:06</td>
               <td>03/08/2026, 01:45:06</td>
               <td>45m</td>
@@ -2663,12 +2988,14 @@
               <td>156.133000</td>
               <td>+0.38</td>
               <td>156.121000</td>
+              <td>—</td>
               <td>156.135000 <span class="good">(+0.90bps)</span></td>
               <td>156.361000</td>
               <td>156.358000</td>
               <td>156.364000</td>
               <td>+0.19</td>
               <td>156.364000</td>
+              <td>—</td>
               <td>156.355000 <span class="good">(-0.58bps)</span></td>
               <td><span class="good">-1.47bps</span></td>
               <td><span class="bad">-14.09bps</span></td>
@@ -2679,7 +3006,9 @@
                 data-gross-pnl-eur="43.37209352758252"
                 data-profit-bps="28.372818839551734"
                 data-entry-slip-bps="-0.14186610676778633"
-                data-exit-slip-bps="-0.0">
+                data-exit-slip-bps="-0.0"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>03/08/2026, 00:45:05</td>
               <td>03/08/2026, 03:15:05</td>
               <td>2h 30m</td>
@@ -2694,12 +3023,14 @@
               <td>0.704920</td>
               <td>+0.21</td>
               <td>0.704890</td>
+              <td>—</td>
               <td>0.704900 <span class="good">(+0.14bps)</span></td>
               <td>0.702885</td>
               <td>0.702870</td>
               <td>0.702900</td>
               <td>+0.21</td>
               <td>0.702900</td>
+              <td>—</td>
               <td>0.702900 <span class="good">(+0.00bps)</span></td>
               <td><span class="good">-0.14bps</span></td>
               <td><span class="good">+28.37bps</span></td>
@@ -2710,7 +3041,9 @@
                 data-gross-pnl-eur="0.0"
                 data-profit-bps="0.0"
                 data-entry-slip-bps="0.9522298047920239"
-                data-exit-slip-bps="0.7616532954199537">
+                data-exit-slip-bps="0.7616532954199537"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>02/08/2026, 21:45:07</td>
               <td>02/08/2026, 23:15:06</td>
               <td>1h 29m</td>
@@ -2725,12 +3058,14 @@
               <td>157.525000</td>
               <td>+2.03</td>
               <td>157.525000</td>
+              <td>—</td>
               <td>157.540000 <span class="bad">(+0.95bps)</span></td>
               <td>157.556000</td>
               <td>157.552000</td>
               <td>157.560000</td>
               <td>+0.25</td>
               <td>157.552000</td>
+              <td>—</td>
               <td>157.540000 <span class="bad">(-0.76bps)</span></td>
               <td><span class="bad">+1.71bps</span></td>
               <td><span class="good">+0.00bps</span></td>
@@ -2741,7 +3076,9 @@
                 data-gross-pnl-eur="-5.412544112233919"
                 data-profit-bps="-3.548364204101518"
                 data-entry-slip-bps="2.413470001987613"
-                data-exit-slip-bps="0.8518371287402604">
+                data-exit-slip-bps="0.8518371287402604"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>02/08/2026, 21:45:06</td>
               <td>03/08/2026, 00:30:04</td>
               <td>2h 44m</td>
@@ -2756,12 +3093,14 @@
               <td>0.704380</td>
               <td>+1.63</td>
               <td>0.704380</td>
+              <td>—</td>
               <td>0.704550 <span class="bad">(+2.41bps)</span></td>
               <td>0.704375</td>
               <td>0.704360</td>
               <td>0.704390</td>
               <td>+0.21</td>
               <td>0.704360</td>
+              <td>—</td>
               <td>0.704300 <span class="bad">(-0.85bps)</span></td>
               <td><span class="bad">+3.27bps</span></td>
               <td><span class="bad">-3.55bps</span></td>
@@ -2772,7 +3111,9 @@
                 data-gross-pnl-eur="-11.680264441185662"
                 data-profit-bps="-4.673989249824211"
                 data-entry-slip-bps="-0.0"
-                data-exit-slip-bps="0.5840098113647667">
+                data-exit-slip-bps="0.5840098113647667"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>02/08/2026, 21:30:06</td>
               <td>03/08/2026, 04:15:06</td>
               <td>6h 44m</td>
@@ -2787,12 +3128,14 @@
               <td>0.856060</td>
               <td>+1.52</td>
               <td>0.855800</td>
+              <td>—</td>
               <td>0.855800 <span class="good">(+0.00bps)</span></td>
               <td>0.856145</td>
               <td>0.856140</td>
               <td>0.856150</td>
               <td>+0.06</td>
               <td>0.856150</td>
+              <td>—</td>
               <td>0.856200 <span class="bad">(+0.58bps)</span></td>
               <td><span class="bad">+0.58bps</span></td>
               <td><span class="bad">-4.67bps</span></td>
@@ -2803,7 +3146,9 @@
                 data-gross-pnl-eur="-22.803426465626725"
                 data-profit-bps="-10.527547081531441"
                 data-entry-slip-bps="0.6238935637586468"
-                data-exit-slip-bps="0.3122462998816587">
+                data-exit-slip-bps="0.3122462998816587"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>31/07/2026, 19:30:07</td>
               <td>02/08/2026, 22:00:12</td>
               <td>50h 30m</td>
@@ -2818,12 +3163,14 @@
               <td>1.282270</td>
               <td>+0.23</td>
               <td>1.282270</td>
+              <td>—</td>
               <td>1.282350 <span class="bad">(+0.62bps)</span></td>
               <td>1.281415</td>
               <td>1.281040</td>
               <td>1.281790</td>
               <td>+2.93</td>
               <td>1.281040</td>
+              <td>—</td>
               <td>1.281000 <span class="bad">(-0.31bps)</span></td>
               <td><span class="bad">+0.94bps</span></td>
               <td><span class="bad">-10.53bps</span></td>
@@ -2834,7 +3181,9 @@
                 data-gross-pnl-eur="-10.835081393130233"
                 data-profit-bps="-4.335573379578971"
                 data-entry-slip-bps="0.08671071570889016"
-                data-exit-slip-bps="0.6934391983849801">
+                data-exit-slip-bps="0.6934391983849801"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>31/07/2026, 19:15:06</td>
               <td>03/08/2026, 00:15:06</td>
               <td>52h 59m</td>
@@ -2849,12 +3198,14 @@
               <td>1.153270</td>
               <td>+0.04</td>
               <td>1.153260</td>
+              <td>—</td>
               <td>1.153250 <span class="bad">(-0.09bps)</span></td>
               <td>1.153660</td>
               <td>1.153650</td>
               <td>1.153670</td>
               <td>+0.09</td>
               <td>1.153670</td>
+              <td>—</td>
               <td>1.153750 <span class="bad">(+0.69bps)</span></td>
               <td><span class="bad">+0.78bps</span></td>
               <td><span class="bad">-4.34bps</span></td>
@@ -2865,7 +3216,9 @@
                 data-gross-pnl-eur="-30.32955224915441"
                 data-profit-bps="-10.387683175663645"
                 data-entry-slip-bps="-0.44520624179113133"
-                data-exit-slip-bps="0.07412129208284916">
+                data-exit-slip-bps="0.07412129208284916"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>31/07/2026, 17:30:06</td>
               <td>31/07/2026, 20:45:06</td>
               <td>3h 15m</td>
@@ -2880,12 +3233,14 @@
               <td>1.347720</td>
               <td>+0.11</td>
               <td>1.347690</td>
+              <td>—</td>
               <td>1.347750 <span class="good">(+0.45bps)</span></td>
               <td>1.349105</td>
               <td>1.349070</td>
               <td>1.349140</td>
               <td>+0.26</td>
               <td>1.349140</td>
+              <td>—</td>
               <td>1.349150 <span class="bad">(+0.07bps)</span></td>
               <td><span class="good">-0.37bps</span></td>
               <td><span class="bad">-10.39bps</span></td>
@@ -2896,7 +3251,9 @@
                 data-gross-pnl-eur="-44.385552394438086"
                 data-profit-bps="-29.179417835029483"
                 data-entry-slip-bps="0.42699763727937734"
-                data-exit-slip-bps="1.7033840563253604">
+                data-exit-slip-bps="1.7033840563253604"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>31/07/2026, 16:45:06</td>
               <td>02/08/2026, 21:30:05</td>
               <td>52h 44m</td>
@@ -2911,12 +3268,14 @@
               <td>0.702600</td>
               <td>+0.14</td>
               <td>0.702580</td>
+              <td>—</td>
               <td>0.702550 <span class="bad">(-0.43bps)</span></td>
               <td>0.704340</td>
               <td>0.704200</td>
               <td>0.704480</td>
               <td>+1.99</td>
               <td>0.704480</td>
+              <td>—</td>
               <td>0.704600 <span class="bad">(+1.70bps)</span></td>
               <td><span class="bad">+2.13bps</span></td>
               <td><span class="bad">-29.18bps</span></td>
@@ -2927,7 +3286,9 @@
                 data-gross-pnl-eur="-59.48610188347108"
                 data-profit-bps="-23.85008517887645"
                 data-entry-slip-bps="-0.24779923306162152"
-                data-exit-slip-bps="0.24720962139871205">
+                data-exit-slip-bps="0.24720962139871205"
+                data-entry-spot-vs-cfd-bps=""
+                data-exit-spot-vs-cfd-bps="">
               <td>31/07/2026, 15:45:06</td>
               <td>03/08/2026, 09:30:05</td>
               <td>65h 44m</td>
@@ -2942,12 +3303,14 @@
               <td>1.614290</td>
               <td>+0.25</td>
               <td>1.614210</td>
+              <td>—</td>
               <td>1.614250 <span class="good">(+0.25bps)</span></td>
               <td>1.618025</td>
               <td>1.617990</td>
               <td>1.618060</td>
               <td>+0.22</td>
               <td>1.618060</td>
+              <td>—</td>
               <td>1.618100 <span class="bad">(+0.25bps)</span></td>
               <td><span class="good">-0.00bps</span></td>
               <td><span class="bad">-23.85bps</span></td>
@@ -2966,6 +3329,7 @@
       const totalEl = document.getElementById('summary-total-gross');
       const profitEl = document.getElementById('summary-profit-bps');
       const slipEl = document.getElementById('summary-slippage-bps');
+      const spotVsCfdEl = document.getElementById('summary-spot-vs-cfd-bps');
       const winEl = document.getElementById('summary-win-rate');
 
       function formatSigned(value, digits) {
@@ -3002,6 +3366,7 @@
         let totalGrossCount = 0;
         const pnlSamples = [];
         const slippageSamples = [];
+        const spotVsCfdSamples = [];
         for (const row of visibleRows) {
           const gross = readNumber(row, 'data-gross-pnl-eur');
           if (gross != null) {
@@ -3020,15 +3385,25 @@
           if (exitSlip != null) {
             slippageSamples.push(exitSlip);
           }
+          const entrySpotVsCfd = readNumber(row, 'data-entry-spot-vs-cfd-bps');
+          if (entrySpotVsCfd != null) {
+            spotVsCfdSamples.push(entrySpotVsCfd);
+          }
+          const exitSpotVsCfd = readNumber(row, 'data-exit-spot-vs-cfd-bps');
+          if (exitSpotVsCfd != null) {
+            spotVsCfdSamples.push(exitSpotVsCfd);
+          }
         }
 
         const avgPnl = pnlSamples.length ? pnlSamples.reduce((a, b) => a + b, 0) / pnlSamples.length : null;
         const avgSlip = slippageSamples.length ? slippageSamples.reduce((a, b) => a + b, 0) / slippageSamples.length : null;
+        const avgSpotVsCfd = spotVsCfdSamples.length ? spotVsCfdSamples.reduce((a, b) => a + b, 0) / spotVsCfdSamples.length : null;
         const winRate = pnlSamples.length ? (pnlSamples.filter((value) => value > 0).length / pnlSamples.length) * 100 : null;
 
         totalEl.textContent = totalGrossCount ? formatSigned(totalGross, 2) : '—';
         profitEl.textContent = formatSigned(avgPnl, 2);
         slipEl.textContent = formatSigned(avgSlip, 2);
+        spotVsCfdEl.textContent = formatSigned(avgSpotVsCfd, 2);
         winEl.textContent = formatPercent(winRate, 1);
       }
 
