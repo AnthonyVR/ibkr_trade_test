@@ -127,7 +127,7 @@
       <div class="eyebrow">Trade Ledger</div>
       <h1>IBKR Probe Trades</h1>
       <p>Static export of the probe ledger. Updated from the trading server after trade events.</p>
-      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-08-10 18:00:07 UTC | Rows: 94</p>
+      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-08-10 18:15:07 UTC | Rows: 95</p>
       <p class="meta"><a href="./archive_index.html" style="color:#7dd3fc;">View archived probe ledgers</a></p>
       <div class="filters">
         <label class="filter-label">
@@ -137,18 +137,18 @@
             <option value="826657e4-23bd-4123-9fff-a5ea960fcd7a">forex-v1-test-daily</option><option value="4af43c67-4f80-43b2-b0a5-15aaa15af27f">forex-v1-test-daily-mon-wed</option>
           </select>
         </label>
-        <p class="meta" id="row-count">Showing 94 of 94 trade rows.</p>
+        <p class="meta" id="row-count">Showing 95 of 95 trade rows.</p>
       </div>
     </section>
 
     <section class="grid">
       <div class="summary">
         <div class="label">Total PnL (Gross, EUR)</div>
-        <div class="value" id="summary-total-gross">-568.84</div>
+        <div class="value" id="summary-total-gross">-556.93</div>
       </div>
       <div class="summary">
         <div class="label">Profit / Trade (bps)</div>
-        <div class="value" id="summary-profit-bps">-3.23</div>
+        <div class="value" id="summary-profit-bps">-3.14</div>
       </div>
       <div class="summary">
         <div class="label">Avg Slippage (bps)</div>
@@ -160,7 +160,7 @@
       </div>
       <div class="summary">
         <div class="label">Win Rate</div>
-        <div class="value" id="summary-win-rate">37.2%</div>
+        <div class="value" id="summary-win-rate">37.9%</div>
       </div>
     </section>
 
@@ -200,6 +200,41 @@
             </tr>
           </thead>
           <tbody>
+            
+            <tr class="ledger-row sell-row"
+                data-strategy-id="4af43c67-4f80-43b2-b0a5-15aaa15af27f"
+                data-gross-pnl-eur=""
+                data-profit-bps=""
+                data-entry-slip-bps="0.18851562794645682"
+                data-exit-slip-bps=""
+                data-entry-bar-vs-live-ibkr-spot-bps="-0.06283854264881894"
+                data-exit-bar-vs-live-ibkr-spot-bps="">
+              <td>10/08/2026, 18:15:07</td>
+              <td>—</td>
+              <td>—</td>
+              <td>USD-JPY</td>
+              <td>forex-v1-test-daily-mon-wed</td>
+              <td>SELL</td>
+              <td>short</td>
+              <td>25000</td>
+              <td>0.3994</td>
+              <td>159.140000</td>
+              <td>159.138000</td>
+              <td>159.142000</td>
+              <td>+0.13</td>
+              <td>159.138000</td>
+              <td>159.139000 <span class="good">(-0.06bps)</span></td>
+              <td>159.135000 <span class="bad">(-0.19bps)</span></td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="bad">+0.19bps</span></td>
+              <td>—</td>
+            </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="4af43c67-4f80-43b2-b0a5-15aaa15af27f"
@@ -1988,19 +2023,19 @@
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="826657e4-23bd-4123-9fff-a5ea960fcd7a"
-                data-gross-pnl-eur=""
-                data-profit-bps=""
+                data-gross-pnl-eur="11.911207363292917"
+                data-profit-bps="4.070004070004443"
                 data-entry-slip-bps="0.22199529369958482"
-                data-exit-slip-bps=""
+                data-exit-slip-bps="-0.14805821649005033"
                 data-entry-bar-vs-live-ibkr-spot-bps="-0.07399843123374263"
-                data-exit-bar-vs-live-ibkr-spot-bps="">
+                data-exit-bar-vs-live-ibkr-spot-bps="-0.14805821649005033">
               <td>10/08/2026, 17:00:06</td>
-              <td>—</td>
-              <td>—</td>
+              <td>10/08/2026, 18:15:07</td>
+              <td>1h 15m</td>
               <td>GBP-USD</td>
               <td>forex-v1-test-daily</td>
               <td>SELL</td>
-              <td>short</td>
+              <td>closed</td>
               <td>25000</td>
               <td>0.3344</td>
               <td>1.351385</td>
@@ -2010,15 +2045,15 @@
               <td>1.351380</td>
               <td>1.351390 <span class="good">(-0.07bps)</span></td>
               <td>1.351350 <span class="bad">(-0.22bps)</span></td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td><span class="bad">+0.22bps</span></td>
-              <td>—</td>
+              <td>1.350810</td>
+              <td>1.350800</td>
+              <td>1.350820</td>
+              <td>+0.07</td>
+              <td>1.350820</td>
+              <td>1.350800 <span class="good">(-0.15bps)</span></td>
+              <td>1.350800 <span class="good">(-0.15bps)</span></td>
+              <td><span class="bad">+0.07bps</span></td>
+              <td><span class="good">+4.07bps</span></td>
             </tr>
             
             <tr class="ledger-row sell-row"
@@ -3535,7 +3570,7 @@
           }
         }
 
-        rowCount.textContent = `Showing ${visibleRows.length} of 94 trade rows.`;
+        rowCount.textContent = `Showing ${visibleRows.length} of 95 trade rows.`;
 
         let totalGross = 0;
         let totalGrossCount = 0;
