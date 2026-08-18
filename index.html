@@ -127,7 +127,7 @@
       <div class="eyebrow">Trade Ledger</div>
       <h1>IBKR Probe Trades</h1>
       <p>Static export of the probe ledger. Updated from the trading server after trade events.</p>
-      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-08-18 05:15:11 UTC | Rows: 125</p>
+      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-08-18 05:45:07 UTC | Rows: 126</p>
       <p class="meta"><a href="./archive_index.html" style="color:#7dd3fc;">View archived probe ledgers</a></p>
       <div class="filters">
         <label class="filter-label">
@@ -137,7 +137,7 @@
             <option value="826657e4-23bd-4123-9fff-a5ea960fcd7a">forex-v1-test-daily</option><option value="4af43c67-4f80-43b2-b0a5-15aaa15af27f">forex-v1-test-daily-mon-wed</option>
           </select>
         </label>
-        <p class="meta" id="row-count">Showing 125 of 125 trade rows.</p>
+        <p class="meta" id="row-count">Showing 126 of 126 trade rows.</p>
       </div>
     </section>
 
@@ -200,6 +200,41 @@
             </tr>
           </thead>
           <tbody>
+            
+            <tr class="ledger-row sell-row"
+                data-strategy-id="4af43c67-4f80-43b2-b0a5-15aaa15af27f"
+                data-gross-pnl-eur=""
+                data-profit-bps=""
+                data-entry-slip-bps="0.36962655397132305"
+                data-exit-slip-bps=""
+                data-entry-bar-vs-live-ibkr-spot-bps="0.12320885132331838"
+                data-exit-bar-vs-live-ibkr-spot-bps="">
+              <td>18/08/2026, 05:45:06</td>
+              <td>—</td>
+              <td>—</td>
+              <td>USD-CHF</td>
+              <td>forex-v1-test-daily-mon-wed</td>
+              <td>SELL</td>
+              <td>short</td>
+              <td>25000</td>
+              <td>0.3862</td>
+              <td>0.811635</td>
+              <td>0.811630</td>
+              <td>0.811640</td>
+              <td>+0.06</td>
+              <td>0.811630</td>
+              <td>0.811620 <span class="bad">(+0.12bps)</span></td>
+              <td>0.811600 <span class="bad">(-0.37bps)</span></td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="bad">+0.37bps</span></td>
+              <td>—</td>
+            </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="4af43c67-4f80-43b2-b0a5-15aaa15af27f"
@@ -4620,7 +4655,7 @@
           }
         }
 
-        rowCount.textContent = `Showing ${visibleRows.length} of 125 trade rows.`;
+        rowCount.textContent = `Showing ${visibleRows.length} of 126 trade rows.`;
 
         let totalGross = 0;
         let totalGrossCount = 0;
