@@ -127,7 +127,7 @@
       <div class="eyebrow">Trade Ledger</div>
       <h1>IBKR Probe Trades</h1>
       <p>Static export of the probe ledger. Updated from the trading server after trade events.</p>
-      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-08-19 06:45:06 UTC | Rows: 156</p>
+      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-08-19 06:45:13 UTC | Rows: 156</p>
       <p class="meta"><a href="./archive_index.html" style="color:#7dd3fc;">View archived probe ledgers</a></p>
       <div class="filters">
         <label class="filter-label">
@@ -144,11 +144,11 @@
     <section class="grid">
       <div class="summary">
         <div class="label">Total PnL (Gross, EUR)</div>
-        <div class="value" id="summary-total-gross">-586.99</div>
+        <div class="value" id="summary-total-gross">-604.72</div>
       </div>
       <div class="summary">
         <div class="label">Profit / Trade (bps)</div>
-        <div class="value" id="summary-profit-bps">-2.08</div>
+        <div class="value" id="summary-profit-bps">-2.09</div>
       </div>
       <div class="summary">
         <div class="label">Avg Slippage (bps)</div>
@@ -156,11 +156,11 @@
       </div>
       <div class="summary">
         <div class="label">Avg Bar vs Live IBKR SPOT (bps)</div>
-        <div class="value" id="summary-bar-vs-live-ibkr-spot-bps">+0.03</div>
+        <div class="value" id="summary-bar-vs-live-ibkr-spot-bps">+0.02</div>
       </div>
       <div class="summary">
         <div class="label">Win Rate</div>
-        <div class="value" id="summary-win-rate">43.1%</div>
+        <div class="value" id="summary-win-rate">43.2%</div>
       </div>
     </section>
 
@@ -203,19 +203,19 @@
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="4af43c67-4f80-43b2-b0a5-15aaa15af27f"
-                data-gross-pnl-eur=""
-                data-profit-bps=""
+                data-gross-pnl-eur="7.545737951611587"
+                data-profit-bps="5.954406260632212"
                 data-entry-slip-bps="0.1701229989293396"
-                data-exit-slip-bps=""
+                data-exit-slip-bps="0.3404660980886233"
                 data-entry-bar-vs-live-ibkr-spot-bps="-0.17012299892745086"
-                data-exit-bar-vs-live-ibkr-spot-bps="">
+                data-exit-bar-vs-live-ibkr-spot-bps="-0.3404660980886233">
               <td>19/08/2026, 06:30:05</td>
-              <td>—</td>
-              <td>—</td>
+              <td>19/08/2026, 06:45:07</td>
+              <td>15m</td>
               <td>NZD-USD</td>
               <td>forex-v1-test-daily-mon-wed</td>
               <td>SELL</td>
-              <td>short</td>
+              <td>closed</td>
               <td>25000</td>
               <td>0.3897</td>
               <td>0.587825</td>
@@ -225,15 +225,15 @@
               <td>0.587810</td>
               <td>0.587820 <span class="good">(-0.17bps)</span></td>
               <td>0.587800 <span class="bad">(-0.17bps)</span></td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td><span class="bad">+0.17bps</span></td>
-              <td>—</td>
+              <td>0.587420</td>
+              <td>0.587410</td>
+              <td>0.587430</td>
+              <td>+0.17</td>
+              <td>0.587430</td>
+              <td>0.587410 <span class="good">(-0.34bps)</span></td>
+              <td>0.587450 <span class="bad">(+0.34bps)</span></td>
+              <td><span class="bad">+0.51bps</span></td>
+              <td><span class="good">+5.95bps</span></td>
             </tr>
             
             <tr class="ledger-row buy-row"
@@ -273,19 +273,19 @@
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="4af43c67-4f80-43b2-b0a5-15aaa15af27f"
-                data-gross-pnl-eur=""
-                data-profit-bps=""
+                data-gross-pnl-eur="-25.276803976162892"
+                data-profit-bps="-11.711045364891598"
                 data-entry-slip-bps="0.4931209625726121"
-                data-exit-slip-bps=""
+                data-exit-slip-bps="0.24683130314611182"
                 data-entry-bar-vs-live-ibkr-spot-bps="0.0"
-                data-exit-bar-vs-live-ibkr-spot-bps="">
+                data-exit-bar-vs-live-ibkr-spot-bps="-0.1234156515723708">
               <td>19/08/2026, 05:00:05</td>
-              <td>—</td>
-              <td>—</td>
+              <td>19/08/2026, 06:45:07</td>
+              <td>1h 45m</td>
               <td>USD-CHF</td>
               <td>forex-v1-test-daily-mon-wed</td>
               <td>BUY</td>
-              <td>long</td>
+              <td>closed</td>
               <td>25000</td>
               <td>0.6115</td>
               <td>0.811155</td>
@@ -295,15 +295,15 @@
               <td>0.811160</td>
               <td>0.811160 <span class="good">(+0.00bps)</span></td>
               <td>0.811200 <span class="bad">(+0.49bps)</span></td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td><span class="bad">+0.49bps</span></td>
-              <td>—</td>
+              <td>0.810280</td>
+              <td>0.810270</td>
+              <td>0.810290</td>
+              <td>+0.12</td>
+              <td>0.810270</td>
+              <td>0.810280 <span class="good">(-0.12bps)</span></td>
+              <td>0.810250 <span class="bad">(-0.25bps)</span></td>
+              <td><span class="bad">+0.74bps</span></td>
+              <td><span class="bad">-11.71bps</span></td>
             </tr>
             
             <tr class="ledger-row sell-row"
