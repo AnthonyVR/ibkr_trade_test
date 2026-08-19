@@ -127,7 +127,7 @@
       <div class="eyebrow">Trade Ledger</div>
       <h1>IBKR Probe Trades</h1>
       <p>Static export of the probe ledger. Updated from the trading server after trade events.</p>
-      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-08-19 00:15:06 UTC | Rows: 144</p>
+      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-08-19 00:15:13 UTC | Rows: 145</p>
       <p class="meta"><a href="./archive_index.html" style="color:#7dd3fc;">View archived probe ledgers</a></p>
       <div class="filters">
         <label class="filter-label">
@@ -137,7 +137,7 @@
             <option value="826657e4-23bd-4123-9fff-a5ea960fcd7a">forex-v1-test-daily</option><option value="4af43c67-4f80-43b2-b0a5-15aaa15af27f">forex-v1-test-daily-mon-wed</option>
           </select>
         </label>
-        <p class="meta" id="row-count">Showing 144 of 144 trade rows.</p>
+        <p class="meta" id="row-count">Showing 145 of 145 trade rows.</p>
       </div>
     </section>
 
@@ -2725,6 +2725,41 @@
                 data-strategy-id="826657e4-23bd-4123-9fff-a5ea960fcd7a"
                 data-gross-pnl-eur=""
                 data-profit-bps=""
+                data-entry-slip-bps="0.313568091310743"
+                data-exit-slip-bps=""
+                data-entry-bar-vs-live-ibkr-spot-bps="0.2508544730482379"
+                data-exit-bar-vs-live-ibkr-spot-bps="">
+              <td>19/08/2026, 00:15:06</td>
+              <td>—</td>
+              <td>—</td>
+              <td>USD-JPY</td>
+              <td>forex-v1-test-daily</td>
+              <td>BUY</td>
+              <td>long</td>
+              <td>25000</td>
+              <td>0.6127</td>
+              <td>159.453500</td>
+              <td>159.452000</td>
+              <td>159.455000</td>
+              <td>+0.09</td>
+              <td>159.455000</td>
+              <td>159.459000 <span class="bad">(+0.25bps)</span></td>
+              <td>159.460000 <span class="bad">(+0.31bps)</span></td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="bad">+0.31bps</span></td>
+              <td>—</td>
+            </tr>
+            
+            <tr class="ledger-row buy-row"
+                data-strategy-id="826657e4-23bd-4123-9fff-a5ea960fcd7a"
+                data-gross-pnl-eur=""
+                data-profit-bps=""
                 data-entry-slip-bps="0.433235674790631"
                 data-exit-slip-bps=""
                 data-entry-bar-vs-live-ibkr-spot-bps="0.2707722967445292"
@@ -5285,7 +5320,7 @@
           }
         }
 
-        rowCount.textContent = `Showing ${visibleRows.length} of 144 trade rows.`;
+        rowCount.textContent = `Showing ${visibleRows.length} of 145 trade rows.`;
 
         let totalGross = 0;
         let totalGrossCount = 0;
