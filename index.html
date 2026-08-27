@@ -127,7 +127,7 @@
       <div class="eyebrow">Trade Ledger</div>
       <h1>IBKR Probe Trades</h1>
       <p>Static export of the probe ledger. Updated from the trading server after trade events.</p>
-      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-08-27 22:30:14 UTC | Rows: 250</p>
+      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-08-27 23:00:07 UTC | Rows: 250</p>
       <p class="meta"><a href="./archive_index.html" style="color:#7dd3fc;">View archived probe ledgers</a></p>
       <div class="filters">
         <label class="filter-label">
@@ -144,11 +144,11 @@
     <section class="grid">
       <div class="summary">
         <div class="label">Total PnL (Gross, EUR)</div>
-        <div class="value" id="summary-total-gross">-1289.36</div>
+        <div class="value" id="summary-total-gross">-1229.87</div>
       </div>
       <div class="summary">
         <div class="label">Profit / Trade (bps)</div>
-        <div class="value" id="summary-profit-bps">-2.85</div>
+        <div class="value" id="summary-profit-bps">-2.76</div>
       </div>
       <div class="summary">
         <div class="label">Avg Slippage (bps)</div>
@@ -160,7 +160,7 @@
       </div>
       <div class="summary">
         <div class="label">Win Rate</div>
-        <div class="value" id="summary-win-rate">46.3%</div>
+        <div class="value" id="summary-win-rate">46.5%</div>
       </div>
     </section>
 
@@ -200,6 +200,41 @@
             </tr>
           </thead>
           <tbody>
+            
+            <tr class="ledger-row buy-row"
+                data-strategy-id="4af43c67-4f80-43b2-b0a5-15aaa15af27f"
+                data-gross-pnl-eur=""
+                data-profit-bps=""
+                data-entry-slip-bps="0.18825064946563952"
+                data-exit-slip-bps=""
+                data-entry-bar-vs-live-ibkr-spot-bps="-0.18825064946385608"
+                data-exit-bar-vs-live-ibkr-spot-bps="">
+              <td>27/08/2026, 23:00:07</td>
+              <td>—</td>
+              <td>—</td>
+              <td>USD-JPY</td>
+              <td>forex-v1-test-daily-mon-wed</td>
+              <td>BUY</td>
+              <td>long</td>
+              <td>25000</td>
+              <td>0.6353</td>
+              <td>159.360000</td>
+              <td>159.358000</td>
+              <td>159.362000</td>
+              <td>+0.13</td>
+              <td>159.362000</td>
+              <td>159.359000 <span class="good">(-0.19bps)</span></td>
+              <td>159.365000 <span class="bad">(+0.19bps)</span></td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="bad">+0.19bps</span></td>
+              <td>—</td>
+            </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="4af43c67-4f80-43b2-b0a5-15aaa15af27f"
@@ -8914,41 +8949,6 @@
               <td>0.704600 <span class="bad">(+1.70bps)</span></td>
               <td><span class="bad">+2.13bps</span></td>
               <td><span class="bad">-29.18bps</span></td>
-            </tr>
-            
-            <tr class="ledger-row sell-row"
-                data-strategy-id="826657e4-23bd-4123-9fff-a5ea960fcd7a"
-                data-gross-pnl-eur="-59.48610188347108"
-                data-profit-bps="-23.85008517887645"
-                data-entry-slip-bps="-0.24779923306162152"
-                data-exit-slip-bps="0.24720962139871205"
-                data-entry-bar-vs-live-ibkr-spot-bps=""
-                data-exit-bar-vs-live-ibkr-spot-bps="">
-              <td>31/07/2026, 15:45:06</td>
-              <td>03/08/2026, 09:30:05</td>
-              <td>65h 44m</td>
-              <td>EUR-CAD</td>
-              <td>forex-v1-test-daily</td>
-              <td>SELL</td>
-              <td>closed</td>
-              <td>25000</td>
-              <td>0.3829</td>
-              <td>1.614250</td>
-              <td>1.614210</td>
-              <td>1.614290</td>
-              <td>+0.25</td>
-              <td>1.614210</td>
-              <td>—</td>
-              <td>1.614250 <span class="good">(+0.25bps)</span></td>
-              <td>1.618025</td>
-              <td>1.617990</td>
-              <td>1.618060</td>
-              <td>+0.22</td>
-              <td>1.618060</td>
-              <td>—</td>
-              <td>1.618100 <span class="bad">(+0.25bps)</span></td>
-              <td><span class="good">-0.00bps</span></td>
-              <td><span class="bad">-23.85bps</span></td>
             </tr>
             
           </tbody>
