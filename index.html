@@ -127,7 +127,7 @@
       <div class="eyebrow">Trade Ledger</div>
       <h1>IBKR Probe Trades</h1>
       <p>Static export of the probe ledger. Updated from the trading server after trade events.</p>
-      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-09-21 16:15:06 UTC | Rows: 79</p>
+      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-09-21 16:15:13 UTC | Rows: 80</p>
       <p class="meta"><a href="./archive_index.html" style="color:#7dd3fc;">View archived probe ledgers</a></p>
       <div class="filters">
         <label class="filter-label">
@@ -137,14 +137,14 @@
             <option value="525fe219-14e3-4e47-895a-73ff9fc0c4c8">strategy-promotion-5-symbol-test</option>
           </select>
         </label>
-        <p class="meta" id="row-count">Showing 79 of 79 trade rows.</p>
+        <p class="meta" id="row-count">Showing 80 of 80 trade rows.</p>
       </div>
     </section>
 
     <section class="grid">
       <div class="summary">
         <div class="label">Total PnL (Gross, EUR)</div>
-        <div class="value" id="summary-total-gross">+590.64</div>
+        <div class="value" id="summary-total-gross">+564.49</div>
       </div>
       <div class="summary">
         <div class="label">Profit / Trade (bps)</div>
@@ -201,6 +201,41 @@
           </thead>
           <tbody>
             
+            <tr class="ledger-row sell-row"
+                data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
+                data-gross-pnl-eur=""
+                data-profit-bps=""
+                data-entry-slip-bps="0.14034890738311728"
+                data-exit-slip-bps=""
+                data-entry-bar-vs-live-ibkr-spot-bps="-0.14034890738467548"
+                data-exit-bar-vs-live-ibkr-spot-bps="">
+              <td>21/09/2026, 16:15:06</td>
+              <td>—</td>
+              <td>—</td>
+              <td>AUD-USD</td>
+              <td>strategy-promotion-5-symbol-test</td>
+              <td>SELL</td>
+              <td>short</td>
+              <td>25000</td>
+              <td>0.2930</td>
+              <td>0.712515</td>
+              <td>0.712510</td>
+              <td>0.712520</td>
+              <td>+0.07</td>
+              <td>0.712510</td>
+              <td>0.712520 <span class="good">(-0.14bps)</span></td>
+              <td>0.712500 <span class="bad">(-0.14bps)</span></td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="bad">+0.14bps</span></td>
+              <td>—</td>
+            </tr>
+            
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-7.629095189309709"
@@ -238,7 +273,7 @@
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
-                data-gross-pnl-eur=""
+                data-gross-pnl-eur="-26.155073430368194"
                 data-profit-bps="-16.81378730559029"
                 data-entry-slip-bps="-0.0"
                 data-exit-slip-bps="0.14034890738311728"
@@ -3010,7 +3045,7 @@
           }
         }
 
-        rowCount.textContent = `Showing ${visibleRows.length} of 79 trade rows.`;
+        rowCount.textContent = `Showing ${visibleRows.length} of 80 trade rows.`;
 
         let totalGross = 0;
         let totalGrossCount = 0;
