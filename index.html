@@ -127,7 +127,7 @@
       <div class="eyebrow">Trade Ledger</div>
       <h1>IBKR Probe Trades</h1>
       <p>Static export of the probe ledger. Updated from the trading server after trade events.</p>
-      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-09-28 16:45:07 UTC | Rows: 142</p>
+      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-09-28 16:45:16 UTC | Rows: 144</p>
       <p class="meta"><a href="./archive_index.html" style="color:#7dd3fc;">View archived probe ledgers</a></p>
       <div class="filters">
         <label class="filter-label">
@@ -137,7 +137,7 @@
             <option value="525fe219-14e3-4e47-895a-73ff9fc0c4c8">strategy-promotion-5-symbol-test</option>
           </select>
         </label>
-        <p class="meta" id="row-count">Showing 142 of 142 trade rows.</p>
+        <p class="meta" id="row-count">Showing 144 of 144 trade rows.</p>
       </div>
     </section>
 
@@ -200,6 +200,76 @@
             </tr>
           </thead>
           <tbody>
+            
+            <tr class="ledger-row sell-row"
+                data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
+                data-gross-pnl-eur=""
+                data-profit-bps=""
+                data-entry-slip-bps="0.42347162034321656"
+                data-exit-slip-bps=""
+                data-entry-bar-vs-live-ibkr-spot-bps="0.0"
+                data-exit-bar-vs-live-ibkr-spot-bps="">
+              <td>28/09/2026, 16:45:10</td>
+              <td>—</td>
+              <td>—</td>
+              <td>USD-CAD</td>
+              <td>strategy-promotion-5-symbol-test</td>
+              <td>SELL</td>
+              <td>short</td>
+              <td>100000</td>
+              <td>0.2984</td>
+              <td>1.416875</td>
+              <td>1.416860</td>
+              <td>1.416890</td>
+              <td>+0.11</td>
+              <td>1.416860</td>
+              <td>1.416860 <span class="good">(+0.00bps)</span></td>
+              <td>1.416800 <span class="bad">(-0.42bps)</span></td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="bad">+0.42bps</span></td>
+              <td>—</td>
+            </tr>
+            
+            <tr class="ledger-row buy-row"
+                data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
+                data-gross-pnl-eur=""
+                data-profit-bps=""
+                data-entry-slip-bps="0.3516452602617999"
+                data-exit-slip-bps=""
+                data-entry-bar-vs-live-ibkr-spot-bps="0.0"
+                data-exit-bar-vs-live-ibkr-spot-bps="">
+              <td>28/09/2026, 16:45:08</td>
+              <td>—</td>
+              <td>—</td>
+              <td>EUR-USD</td>
+              <td>strategy-promotion-5-symbol-test</td>
+              <td>BUY</td>
+              <td>long</td>
+              <td>100000</td>
+              <td>0.7149</td>
+              <td>1.137505</td>
+              <td>1.137500</td>
+              <td>1.137510</td>
+              <td>+0.04</td>
+              <td>1.137510</td>
+              <td>1.137510 <span class="good">(+0.00bps)</span></td>
+              <td>1.137550 <span class="bad">(+0.35bps)</span></td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="bad">+0.35bps</span></td>
+              <td>—</td>
+            </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
@@ -5215,7 +5285,7 @@
           }
         }
 
-        rowCount.textContent = `Showing ${visibleRows.length} of 142 trade rows.`;
+        rowCount.textContent = `Showing ${visibleRows.length} of 144 trade rows.`;
 
         let totalGross = 0;
         let totalGrossCount = 0;
