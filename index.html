@@ -127,7 +127,7 @@
       <div class="eyebrow">Trade Ledger</div>
       <h1>IBKR Probe Trades</h1>
       <p>Static export of the probe ledger. Updated from the trading server after trade events.</p>
-      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-10-02 13:58:18 UTC | Rows: 210</p>
+      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-10-02 13:59:43 UTC | Rows: 210</p>
       <p class="meta"><a href="./archive_index.html" style="color:#7dd3fc;">View archived probe ledgers</a></p>
       <div class="filters">
         <label class="filter-label">
@@ -210,7 +210,7 @@
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur=""
                 data-is-open="1"
-                data-unrealized-pnl-eur=""
+                data-unrealized-pnl-eur="-7.558882191162256"
                 data-profit-bps=""
                 data-entry-slip-bps="0.07558807522406927"
                 data-exit-slip-bps=""
@@ -240,7 +240,7 @@
               <td>—</td>
               <td>—</td>
               <td><span class="bad">+0.08bps</span></td>
-              <td style="color: var(--good)">—</td>
+              <td style="color: var(--bad)">-7.56</td>
               <td>—</td>
             </tr>
             
@@ -8238,10 +8238,9 @@
         const openRows = visibleRows.filter(row => row.getAttribute('data-is-open') === '1');
         const unrealized = openRows.map(row => readNumber(row, 'data-unrealized-pnl-eur'));
         const priced = unrealized.filter(value => value != null);
-        const partial = priced.length > 0 && priced.length < openRows.length;
         const unrealizedTotal = priced.length || !openRows.length ? priced.reduce((sum, value) => sum + value, 0) : null;
         const unrealizedEl = document.getElementById('summary-unrealized');
-        unrealizedEl.textContent = formatSigned(unrealizedTotal, 2) + (partial ? ' (partial)' : '');
+        unrealizedEl.textContent = formatSigned(unrealizedTotal, 2);
         unrealizedEl.title = `${priced.length}/${openRows.length} open trades priced`;
         unrealizedEl.style.color = unrealizedTotal == null ? '' : unrealizedTotal < 0 ? 'var(--bad)' : 'var(--good)';
         const slippageSamples = [];
