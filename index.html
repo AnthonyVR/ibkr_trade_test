@@ -132,7 +132,7 @@
       <div class="eyebrow">Trade Ledger</div>
       <h1>IBKR Probe Trades</h1>
       <p>Static export of the probe ledger. Updated from the trading server after trade events.</p>
-      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-10-02 18:45:10 UTC | Rows: 216</p>
+      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-10-02 18:45:19 UTC | Rows: 217</p>
       <p class="meta"><a href="./archive_index.html" style="color:#7dd3fc;">View archived probe ledgers</a></p>
       <div class="filters">
         <label class="filter-label">
@@ -142,7 +142,7 @@
             <option value="525fe219-14e3-4e47-895a-73ff9fc0c4c8">strategy-promotion-5-symbol-test</option>
           </select>
         </label>
-        <p class="meta" id="row-count">Showing 216 of 216 trade rows.</p>
+        <p class="meta" id="row-count">Showing 217 of 217 trade rows.</p>
       </div>
     </section>
 
@@ -177,7 +177,7 @@
       <div class="leverage-heading"><div class="label">Gross Leverage · Account-wide</div><div class="value" id="leverage-updated" data-timestamp="1790966708247" data-stale="0" title="Updated 02/10/2026, 18:45:08">4.80×</div></div>
       <div class="leverage-track" role="img" aria-label="Account gross leverage 4.80×; scale zero to ten"><span class="leverage-arrow" style="left:47.95979697394975%" aria-hidden="true">▼</span></div>
       <div class="leverage-ticks"><span>0×</span><span>1×</span><span>2×</span><span>3×</span><span>4×</span><span>5×</span><span>6×</span><span>7×</span><span>8×</span><span>9×</span><span>10×</span></div>
-      <div style="margin-top:8px;font-size:12px;color:var(--muted)">Open trades: 14</div>
+      <div style="margin-top:8px;font-size:12px;color:var(--muted)">Open trades: 15</div>
     </section>
 
     <section class="panel">
@@ -217,6 +217,44 @@
             </tr>
           </thead>
           <tbody>
+            
+            <tr class="ledger-row buy-row"
+                data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
+                data-gross-pnl-eur=""
+                data-is-open="1"
+                data-unrealized-pnl-eur="-7.1931935847029145"
+                data-profit-bps=""
+                data-entry-slip-bps="-0.0"
+                data-exit-slip-bps=""
+                data-entry-bar-vs-live-ibkr-spot-bps="0.1438538444933394"
+                data-exit-bar-vs-live-ibkr-spot-bps="">
+              <td>02/10/2026, 18:45:14</td>
+              <td>—</td>
+              <td>—</td>
+              <td>AUD-USD</td>
+              <td>strategy-promotion-5-symbol-test</td>
+              <td>BUY</td>
+              <td>long</td>
+              <td>809317</td>
+              <td>0.7275</td>
+              <td>0.695145</td>
+              <td>0.695140</td>
+              <td>0.695150</td>
+              <td>+0.07</td>
+              <td>0.695150</td>
+              <td>0.695160 <span class="bad">(+0.14bps)</span></td>
+              <td>0.695150 <span class="good">(+0.00bps)</span></td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="good">+0.00bps</span></td>
+              <td style="color: var(--bad)">-7.19</td>
+              <td>—</td>
+            </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
@@ -8470,7 +8508,7 @@
           }
         }
 
-        rowCount.textContent = `Showing ${visibleRows.length} of 216 trade rows.`;
+        rowCount.textContent = `Showing ${visibleRows.length} of 217 trade rows.`;
 
         let totalGross = 0;
         let totalGrossCount = 0;
