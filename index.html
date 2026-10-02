@@ -48,6 +48,11 @@
     p, .meta { margin: 0; color: var(--muted); }
     .grid { display: grid; gap: 12px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .summary { padding: 14px; }
+    .leverage-panel { margin: 18px 0; padding: 20px; }
+    .leverage-heading, .leverage-ticks { display: flex; justify-content: space-between; align-items: baseline; }
+    .leverage-track { position: relative; height: 12px; border-radius: 999px; margin-top: 28px; background: linear-gradient(to right, #22c55e 0%, #eab308 40%, #f97316 65%, #dc2626 85%, #7f1d1d 100%); }
+    .leverage-arrow { position: absolute; top: -18px; transform: translateX(-50%); color: white; font-size: 14px; line-height: 1; }
+    .leverage-ticks { margin-top: 8px; color: var(--muted); font-size: 12px; }
     .summary .label {
       color: var(--muted);
       font-size: 10px;
@@ -127,7 +132,7 @@
       <div class="eyebrow">Trade Ledger</div>
       <h1>IBKR Probe Trades</h1>
       <p>Static export of the probe ledger. Updated from the trading server after trade events.</p>
-      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-10-02 15:32:01 UTC | Rows: 215</p>
+      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-10-02 15:35:30 UTC | Rows: 215</p>
       <p class="meta"><a href="./archive_index.html" style="color:#7dd3fc;">View archived probe ledgers</a></p>
       <div class="filters">
         <label class="filter-label">
@@ -166,6 +171,13 @@
         <div class="label">Win Rate</div>
         <div class="value" id="summary-win-rate">56.3%</div>
       </div>
+    </section>
+
+    <section class="summary leverage-panel">
+      <div class="leverage-heading"><div class="label">Gross Leverage · Account-wide</div><div class="value">7.67×</div></div>
+      <div class="leverage-track" role="img" aria-label="Account gross leverage 7.67×; scale zero to ten"><span class="leverage-arrow" style="left:76.74839846105768%" aria-hidden="true">▼</span></div>
+      <div class="leverage-ticks"><span>0×</span><span>1×</span><span>2×</span><span>3×</span><span>4×</span><span>5×</span><span>6×</span><span>7×</span><span>8×</span><span>9×</span><span>10×</span></div>
+      <div class="meta"><span id="leverage-updated" data-timestamp="1790955279051" data-stale="0">Updated 02/10/2026, 15:34:39</span> · Visual scale, not a margin limit</div>
     </section>
 
     <section class="panel">
@@ -8476,6 +8488,15 @@
         winEl.textContent = formatPercent(winRate, 1);
       }
 
+      const leverageUpdated = document.getElementById('leverage-updated');
+      function updateLeverageAge() {
+        const timestamp = Number(leverageUpdated.dataset.timestamp);
+        if (timestamp && (leverageUpdated.dataset.stale === '1' || Date.now() - timestamp > 1200000)) {
+          if (!leverageUpdated.textContent.includes('(stale)')) leverageUpdated.textContent += ' (stale)';
+        }
+      }
+      updateLeverageAge();
+      setInterval(updateLeverageAge, 60000);
       select.addEventListener('change', applyFilter);
       applyFilter();
     })();
