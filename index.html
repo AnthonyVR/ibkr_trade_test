@@ -127,7 +127,7 @@
       <div class="eyebrow">Trade Ledger</div>
       <h1>IBKR Probe Trades</h1>
       <p>Static export of the probe ledger. Updated from the trading server after trade events.</p>
-      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-10-02 13:54:50 UTC | Rows: 210</p>
+      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-10-02 13:58:18 UTC | Rows: 210</p>
       <p class="meta"><a href="./archive_index.html" style="color:#7dd3fc;">View archived probe ledgers</a></p>
       <div class="filters">
         <label class="filter-label">
@@ -8237,10 +8237,12 @@
         const pnlSamples = [];
         const openRows = visibleRows.filter(row => row.getAttribute('data-is-open') === '1');
         const unrealized = openRows.map(row => readNumber(row, 'data-unrealized-pnl-eur'));
-        const complete = unrealized.every(value => value != null);
-        const unrealizedTotal = complete ? unrealized.reduce((sum, value) => sum + value, 0) : null;
+        const priced = unrealized.filter(value => value != null);
+        const partial = priced.length > 0 && priced.length < openRows.length;
+        const unrealizedTotal = priced.length || !openRows.length ? priced.reduce((sum, value) => sum + value, 0) : null;
         const unrealizedEl = document.getElementById('summary-unrealized');
-        unrealizedEl.textContent = formatSigned(unrealizedTotal, 2);
+        unrealizedEl.textContent = formatSigned(unrealizedTotal, 2) + (partial ? ' (partial)' : '');
+        unrealizedEl.title = `${priced.length}/${openRows.length} open trades priced`;
         unrealizedEl.style.color = unrealizedTotal == null ? '' : unrealizedTotal < 0 ? 'var(--bad)' : 'var(--good)';
         const slippageSamples = [];
         const barVsLiveIbkrSpotSamples = [];
