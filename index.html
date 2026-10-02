@@ -46,7 +46,7 @@
     }
     h1 { margin: 8px 0 6px; font-size: 28px; }
     p, .meta { margin: 0; color: var(--muted); }
-    .grid { display: grid; gap: 12px; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    .grid { display: grid; gap: 12px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .summary { padding: 14px; }
     .summary .label {
       color: var(--muted);
@@ -107,13 +107,13 @@
     .empty { color: var(--muted); text-align: center; padding: 28px; }
     @media (max-width: 1100px) {
       body { padding: 12px; }
-      .grid { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+      .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
       .summary { padding: 12px; }
       .summary .value { font-size: 18px; }
     }
     @media (max-width: 720px) {
       body { padding: 10px; }
-      .grid { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
       .summary { padding: 10px; border-radius: 12px; }
       .summary .label { font-size: 9px; letter-spacing: 0.08em; }
       .summary .value { margin-top: 6px; font-size: 16px; }
@@ -127,7 +127,7 @@
       <div class="eyebrow">Trade Ledger</div>
       <h1>IBKR Probe Trades</h1>
       <p>Static export of the probe ledger. Updated from the trading server after trade events.</p>
-      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-10-02 13:45:09 UTC | Rows: 210</p>
+      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-10-02 13:50:29 UTC | Rows: 210</p>
       <p class="meta"><a href="./archive_index.html" style="color:#7dd3fc;">View archived probe ledgers</a></p>
       <div class="filters">
         <label class="filter-label">
@@ -142,6 +142,11 @@
     </section>
 
     <section class="grid">
+      <div class="summary">
+        <div class="label">Estimated Unrealized PnL (EUR)</div>
+        <div class="value" id="summary-unrealized">—</div>
+        <small id="summary-unrealized-note"></small>
+      </div>
       <div class="summary">
         <div class="label">Total PnL (Gross, EUR)</div>
         <div class="value" id="summary-total-gross">+4707.95</div>
@@ -197,6 +202,7 @@
               <th>Actual Exit</th>
               <th>Round Trip Slippage</th>
               <th>PnL (bps)</th>
+              <th>Est. Unrealized PnL (EUR) / Price Time</th>
             </tr>
           </thead>
           <tbody>
@@ -204,6 +210,9 @@
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur=""
+                data-is-open="1"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps=""
                 data-entry-slip-bps="0.07558807522406927"
                 data-exit-slip-bps=""
@@ -234,11 +243,15 @@
               <td>—</td>
               <td><span class="bad">+0.08bps</span></td>
               <td>—</td>
+              <td style="color: var(--good)">—<br><small>—</small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur=""
+                data-is-open="1"
+                data-unrealized-pnl-eur="380.67300333275347"
+                data-unrealized-price-ts="1790948699999"
                 data-profit-bps=""
                 data-entry-slip-bps="1.1433870937006156"
                 data-exit-slip-bps=""
@@ -269,11 +282,15 @@
               <td>—</td>
               <td><span class="bad">+1.14bps</span></td>
               <td>—</td>
+              <td style="color: var(--good)">+380.67<br><small>02/10/2026, 13:44:59</small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur=""
+                data-is-open="1"
+                data-unrealized-pnl-eur="491.43432808195604"
+                data-unrealized-price-ts="1790948699999"
                 data-profit-bps=""
                 data-entry-slip-bps="0.31765191702903034"
                 data-exit-slip-bps=""
@@ -304,11 +321,15 @@
               <td>—</td>
               <td><span class="bad">+0.32bps</span></td>
               <td>—</td>
+              <td style="color: var(--good)">+491.43<br><small>02/10/2026, 13:44:59</small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur=""
+                data-is-open="1"
+                data-unrealized-pnl-eur="288.73617953173186"
+                data-unrealized-price-ts="1790948699999"
                 data-profit-bps=""
                 data-entry-slip-bps="-1.8649426308127908"
                 data-exit-slip-bps=""
@@ -339,11 +360,15 @@
               <td>—</td>
               <td><span class="good">-1.86bps</span></td>
               <td>—</td>
+              <td style="color: var(--good)">+288.74<br><small>02/10/2026, 13:44:59</small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur=""
+                data-is-open="1"
+                data-unrealized-pnl-eur="288.73617953173186"
+                data-unrealized-price-ts="1790948699999"
                 data-profit-bps=""
                 data-entry-slip-bps="-1.8649426308127908"
                 data-exit-slip-bps=""
@@ -374,11 +399,15 @@
               <td>—</td>
               <td><span class="good">-1.86bps</span></td>
               <td>—</td>
+              <td style="color: var(--good)">+288.74<br><small>02/10/2026, 13:44:59</small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur=""
+                data-is-open="1"
+                data-unrealized-pnl-eur="998.0997475537935"
+                data-unrealized-price-ts="1790948699999"
                 data-profit-bps=""
                 data-entry-slip-bps="0.1271876271882345"
                 data-exit-slip-bps=""
@@ -409,11 +438,15 @@
               <td>—</td>
               <td><span class="bad">+0.13bps</span></td>
               <td>—</td>
+              <td style="color: var(--good)">+998.10<br><small>02/10/2026, 13:44:59</small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur=""
+                data-is-open="1"
+                data-unrealized-pnl-eur="-366.3257121788601"
+                data-unrealized-price-ts="1790948699999"
                 data-profit-bps=""
                 data-entry-slip-bps="1.8151016456922946"
                 data-exit-slip-bps=""
@@ -444,11 +477,15 @@
               <td>—</td>
               <td><span class="bad">+1.82bps</span></td>
               <td>—</td>
+              <td style="color: var(--bad)">-366.33<br><small>02/10/2026, 13:44:59</small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur=""
+                data-is-open="1"
+                data-unrealized-pnl-eur="-755.1561618521914"
+                data-unrealized-price-ts="1790948699999"
                 data-profit-bps=""
                 data-entry-slip-bps="2.2239025041149625"
                 data-exit-slip-bps=""
@@ -479,11 +516,15 @@
               <td>—</td>
               <td><span class="bad">+2.22bps</span></td>
               <td>—</td>
+              <td style="color: var(--bad)">-755.16<br><small>02/10/2026, 13:44:59</small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur=""
+                data-is-open="1"
+                data-unrealized-pnl-eur="-150.70477391960264"
+                data-unrealized-price-ts="1790948699999"
                 data-profit-bps=""
                 data-entry-slip-bps="-25.755025107551806"
                 data-exit-slip-bps=""
@@ -514,11 +555,15 @@
               <td>—</td>
               <td><span class="good">-25.76bps</span></td>
               <td>—</td>
+              <td style="color: var(--bad)">-150.70<br><small>02/10/2026, 13:44:59</small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur=""
+                data-is-open="1"
+                data-unrealized-pnl-eur="-150.73052030262673"
+                data-unrealized-price-ts="1790948699999"
                 data-profit-bps=""
                 data-entry-slip-bps="-25.755025107551806"
                 data-exit-slip-bps=""
@@ -549,11 +594,15 @@
               <td>—</td>
               <td><span class="good">-25.76bps</span></td>
               <td>—</td>
+              <td style="color: var(--bad)">-150.73<br><small>02/10/2026, 13:44:59</small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur=""
+                data-is-open="1"
+                data-unrealized-pnl-eur="-43.05882666505135"
+                data-unrealized-price-ts="1790948699999"
                 data-profit-bps=""
                 data-entry-slip-bps="-27.913267435000098"
                 data-exit-slip-bps=""
@@ -584,11 +633,15 @@
               <td>—</td>
               <td><span class="good">-27.91bps</span></td>
               <td>—</td>
+              <td style="color: var(--bad)">-43.06<br><small>02/10/2026, 13:44:59</small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-17.78267789346202"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-2.88517022504296"
                 data-entry-slip-bps="0.5770007500999507"
                 data-exit-slip-bps="1.730902377106061"
@@ -619,11 +672,15 @@
               <td>0.693400 <span class="bad">(+1.73bps)</span></td>
               <td><span class="bad">+2.31bps</span></td>
               <td><span class="bad">-2.89bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur=""
+                data-is-open="1"
+                data-unrealized-pnl-eur="-272.74463728071873"
+                data-unrealized-price-ts="1790948699999"
                 data-profit-bps=""
                 data-entry-slip-bps="0.3030440777597312"
                 data-exit-slip-bps=""
@@ -654,11 +711,15 @@
               <td>—</td>
               <td><span class="bad">+0.30bps</span></td>
               <td>—</td>
+              <td style="color: var(--bad)">-272.74<br><small>02/10/2026, 13:44:59</small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-183.6449551503824"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-20.572875454976334"
                 data-entry-slip-bps="-0.06330075454529643"
                 data-exit-slip-bps="-0.06343205475485254"
@@ -689,11 +750,15 @@
               <td>157.650000 <span class="good">(+0.06bps)</span></td>
               <td><span class="good">-0.13bps</span></td>
               <td><span class="bad">-20.57bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-17.78955841868419"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-2.887669650591654"
                 data-entry-slip-bps="0.7218652999349526"
                 data-exit-slip-bps="-0.0"
@@ -724,11 +789,15 @@
               <td>0.692800 <span class="good">(+0.00bps)</span></td>
               <td><span class="bad">+0.72bps</span></td>
               <td><span class="bad">-2.89bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="31.130758078438166"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="2.6513142943721872"
                 data-entry-slip-bps="-4.926295047179048"
                 data-exit-slip-bps="-0.07577135236759344"
@@ -759,11 +828,15 @@
               <td>1.319750 <span class="good">(-0.08bps)</span></td>
               <td><span class="good">-5.00bps</span></td>
               <td><span class="good">+2.65bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="236.40920461035756"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="26.64890073284578"
                 data-entry-slip-bps="0.12690113766750175"
                 data-exit-slip-bps="-0.5062746413366775"
@@ -794,11 +867,15 @@
               <td>158.025000 <span class="good">(+0.51bps)</span></td>
               <td><span class="good">-0.38bps</span></td>
               <td><span class="good">+26.65bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur=""
+                data-is-open="1"
+                data-unrealized-pnl-eur="-22.553428419492906"
+                data-unrealized-price-ts="1790948699999"
                 data-profit-bps=""
                 data-entry-slip-bps="0.12690113766750175"
                 data-exit-slip-bps=""
@@ -829,11 +906,15 @@
               <td>—</td>
               <td><span class="bad">+0.13bps</span></td>
               <td>—</td>
+              <td style="color: var(--bad)">-22.55<br><small>02/10/2026, 13:44:59</small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="332.17167434871243"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="37.43654822335047"
                 data-entry-slip-bps="-0.1903517065039577"
                 data-exit-slip-bps="-0.0"
@@ -864,11 +945,15 @@
               <td>158.190000 <span class="good">(+0.00bps)</span></td>
               <td><span class="good">-0.19bps</span></td>
               <td><span class="good">+37.44bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="154.82966954914923"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="17.448685003648723"
                 data-entry-slip-bps="0.12690113766750175"
                 data-exit-slip-bps="0.25335056117090254"
@@ -899,11 +984,15 @@
               <td>157.880000 <span class="bad">(-0.25bps)</span></td>
               <td><span class="bad">+0.38bps</span></td>
               <td><span class="good">+17.45bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="287.0415980967735"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="32.359379461312734"
                 data-entry-slip-bps="0.12690113766750175"
                 data-exit-slip-bps="0.06324470641837478"
@@ -934,11 +1023,15 @@
               <td>158.115000 <span class="bad">(-0.06bps)</span></td>
               <td><span class="bad">+0.19bps</span></td>
               <td><span class="good">+32.36bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="262.05909396979894"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="29.50414009707836"
                 data-entry-slip-bps="0.12690113766750175"
                 data-exit-slip-bps="0.06326271106052185"
@@ -969,11 +1062,15 @@
               <td>158.070000 <span class="bad">(-0.06bps)</span></td>
               <td><span class="bad">+0.19bps</span></td>
               <td><span class="good">+29.50bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-42.215929394698705"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-4.74383301707708"
                 data-entry-slip-bps="-0.2529980266166004"
                 data-exit-slip-bps="-0.5062746413366775"
@@ -1004,11 +1101,15 @@
               <td>158.025000 <span class="good">(+0.51bps)</span></td>
               <td><span class="good">-0.76bps</span></td>
               <td><span class="bad">-4.74bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="373.4362357627419"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="37.20435822482046"
                 data-entry-slip-bps="0.44288941051316244"
                 data-exit-slip-bps="-0.0"
@@ -1039,11 +1140,15 @@
               <td>1.124700 <span class="good">(+0.00bps)</span></td>
               <td><span class="bad">+0.44bps</span></td>
               <td><span class="good">+37.20bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-164.50585996549"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-13.998713631719626"
                 data-entry-slip-bps="0.15133973500343526"
                 data-exit-slip-bps="-0.3788883416065284"
@@ -1074,11 +1179,15 @@
               <td>1.319700 <span class="good">(+0.38bps)</span></td>
               <td><span class="good">-0.23bps</span></td>
               <td><span class="bad">-14.00bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="13.28662347037601"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="2.161539015778997"
                 data-entry-slip-bps="-0.0"
                 data-exit-slip-bps="0.4324199662708749"
@@ -1109,11 +1218,15 @@
               <td>0.693800 <span class="bad">(+0.43bps)</span></td>
               <td><span class="bad">+0.43bps</span></td>
               <td><span class="good">+2.16bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="22.0937836930177"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="3.5953117135251667"
                 data-entry-slip-bps="0.14381040036750015"
                 data-exit-slip-bps="1.0071507704705478"
@@ -1144,11 +1257,15 @@
               <td>0.695100 <span class="bad">(+1.01bps)</span></td>
               <td><span class="bad">+1.15bps</span></td>
               <td><span class="good">+3.60bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-488.4116561029653"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-55.58731973826314"
                 data-entry-slip-bps="0.1270551165101485"
                 data-exit-slip-bps="0.44225982132734826"
@@ -1179,11 +1296,15 @@
               <td>158.285000 <span class="bad">(+0.44bps)</span></td>
               <td><span class="bad">+0.57bps</span></td>
               <td><span class="bad">-55.59bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-288.9962310529815"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-32.717108188807245"
                 data-entry-slip-bps="0.1270551165101485"
                 data-exit-slip-bps="0.6332520659860892"
@@ -1214,11 +1335,15 @@
               <td>157.925000 <span class="bad">(+0.63bps)</span></td>
               <td><span class="bad">+0.76bps</span></td>
               <td><span class="bad">-32.72bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-159.48802249609594"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-18.102709054530223"
                 data-entry-slip-bps="0.06351787393002711"
                 data-exit-slip-bps="-0.5072022722667996"
@@ -1249,11 +1374,15 @@
               <td>157.720000 <span class="good">(-0.51bps)</span></td>
               <td><span class="good">-0.44bps</span></td>
               <td><span class="bad">-18.10bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-417.12714634708044"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-47.32111665131671"
                 data-entry-slip-bps="0.06351787393002711"
                 data-exit-slip-bps="-0.31608559597910374"
@@ -1284,11 +1413,15 @@
               <td>158.180000 <span class="good">(-0.32bps)</span></td>
               <td><span class="good">-0.25bps</span></td>
               <td><span class="bad">-47.32bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-146.19249736564117"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-16.515566800195742"
                 data-entry-slip-bps="0.21083257784975012"
                 data-exit-slip-bps="-0.9120374917578857"
@@ -1319,11 +1452,15 @@
               <td>1.425250 <span class="good">(-0.91bps)</span></td>
               <td><span class="good">-0.70bps</span></td>
               <td><span class="bad">-16.52bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="299.93207420672985"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="25.5744856895714"
                 data-entry-slip-bps="0.5265058066070047"
                 data-exit-slip-bps="0.45249210024169856"
@@ -1354,11 +1491,15 @@
               <td>1.326050 <span class="bad">(+0.45bps)</span></td>
               <td><span class="bad">+0.98bps</span></td>
               <td><span class="good">+25.57bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="75.00650791760026"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="6.405425772419122"
                 data-entry-slip-bps="-0.15071817208932295"
                 data-exit-slip-bps="0.3016341027519588"
@@ -1389,11 +1530,15 @@
               <td>1.326150 <span class="bad">(+0.30bps)</span></td>
               <td><span class="bad">+0.15bps</span></td>
               <td><span class="good">+6.41bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="75.00650791760026"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="6.405425772419122"
                 data-entry-slip-bps="-0.15071817208932295"
                 data-exit-slip-bps="0.3016341027519588"
@@ -1424,11 +1569,15 @@
               <td>1.326150 <span class="bad">(+0.30bps)</span></td>
               <td><span class="bad">+0.15bps</span></td>
               <td><span class="good">+6.41bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-39.61843049387116"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-3.9633609300692396"
                 data-entry-slip-bps="0.6164848036497178"
                 data-exit-slip-bps="-0.0"
@@ -1459,11 +1608,15 @@
               <td>1.135850 <span class="good">(+0.00bps)</span></td>
               <td><span class="bad">+0.62bps</span></td>
               <td><span class="bad">-3.96bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="199.1667749242757"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="22.67211648997252"
                 data-entry-slip-bps="0.8303154560031953"
                 data-exit-slip-bps="-0.25488909138351745"
@@ -1494,11 +1647,15 @@
               <td>156.935000 <span class="good">(+0.25bps)</span></td>
               <td><span class="bad">+0.58bps</span></td>
               <td><span class="good">+22.67bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="308.49909130145454"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="35.15724878547759"
                 data-entry-slip-bps="-0.0"
                 data-exit-slip-bps="0.891697026826169"
@@ -1529,11 +1686,15 @@
               <td>156.990000 <span class="bad">(-0.89bps)</span></td>
               <td><span class="bad">+0.89bps</span></td>
               <td><span class="good">+35.16bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="92.61293705759171"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="10.49051085608876"
                 data-entry-slip-bps="-0.06357925790320534"
                 data-exit-slip-bps="-0.1909332179239133"
@@ -1564,11 +1725,15 @@
               <td>157.120000 <span class="good">(-0.19bps)</span></td>
               <td><span class="good">-0.25bps</span></td>
               <td><span class="good">+10.49bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="58.81962410011674"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="6.674506563264137"
                 data-entry-slip-bps="1.0807511856473642"
                 data-exit-slip-bps="-0.5082204660369829"
@@ -1599,11 +1764,15 @@
               <td>157.420000 <span class="good">(+0.51bps)</span></td>
               <td><span class="bad">+0.57bps</span></td>
               <td><span class="good">+6.67bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="48.53747755140148"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="4.85051591850982"
                 data-entry-slip-bps="0.3527523502128861"
                 data-exit-slip-bps="0.7059218015131434"
@@ -1634,11 +1803,15 @@
               <td>1.133350 <span class="bad">(+0.71bps)</span></td>
               <td><span class="bad">+1.06bps</span></td>
               <td><span class="good">+4.85bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="4.408199250605642"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="0.7156659271451298"
                 data-entry-slip-bps="0.42941799547643195"
                 data-exit-slip-bps="0.4293503928552444"
@@ -1669,11 +1842,15 @@
               <td>0.698700 <span class="bad">(-0.43bps)</span></td>
               <td><span class="bad">+0.86bps</span></td>
               <td><span class="good">+0.72bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-13.229438145770285"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-1.1341297444434788"
                 data-entry-slip-bps="0.4536313187058578"
                 data-exit-slip-bps="0.5292285360027709"
@@ -1704,11 +1881,15 @@
               <td>1.322750 <span class="bad">(+0.53bps)</span></td>
               <td><span class="bad">+0.98bps</span></td>
               <td><span class="bad">-1.13bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-0.0"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-0.0"
                 data-entry-slip-bps="0.4536313187058578"
                 data-exit-slip-bps="-0.0"
@@ -1739,11 +1920,15 @@
               <td>1.322600 <span class="good">(+0.00bps)</span></td>
               <td><span class="bad">+0.45bps</span></td>
               <td><span class="good">-0.00bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur=""
+                data-is-open="1"
+                data-unrealized-pnl-eur="706.2931160852814"
+                data-unrealized-price-ts="1790948699999"
                 data-profit-bps=""
                 data-entry-slip-bps="0.35286126377296906"
                 data-exit-slip-bps=""
@@ -1774,11 +1959,15 @@
               <td>—</td>
               <td><span class="bad">+0.35bps</span></td>
               <td>—</td>
+              <td style="color: var(--good)">+706.29<br><small>02/10/2026, 13:44:59</small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-26.45922633221913"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-2.646552864893185"
                 data-entry-slip-bps="0.35286126377296906"
                 data-exit-slip-bps="0.1763932864726725"
@@ -1809,11 +1998,15 @@
               <td>1.133850 <span class="bad">(+0.18bps)</span></td>
               <td><span class="bad">+0.53bps</span></td>
               <td><span class="bad">-2.65bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-17.640495521517256"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-1.7643685765954564"
                 data-entry-slip-bps="0.35286126377296906"
                 data-exit-slip-bps="-0.08820208862603647"
@@ -1844,11 +2037,15 @@
               <td>1.133750 <span class="good">(-0.09bps)</span></td>
               <td><span class="bad">+0.26bps</span></td>
               <td><span class="bad">-1.76bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-61.72376850059061"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-10.026498603450875"
                 data-entry-slip-bps="0.5729099528771392"
                 data-exit-slip-bps="0.7155123068115984"
@@ -1879,11 +2076,15 @@
               <td>0.698850 <span class="bad">(+0.72bps)</span></td>
               <td><span class="bad">+1.29bps</span></td>
               <td><span class="bad">-10.03bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="84.13574545560277"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="9.528044210125495"
                 data-entry-slip-bps="0.06351989125424946"
                 data-exit-slip-bps="0.4450859333773122"
@@ -1914,11 +2115,15 @@
               <td>157.280000 <span class="bad">(+0.45bps)</span></td>
               <td><span class="bad">+0.51bps</span></td>
               <td><span class="good">+9.53bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="39.76266109400878"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="3.407671046155477"
                 data-entry-slip-bps="-0.0"
                 data-exit-slip-bps="0.30279173984164"
@@ -1949,11 +2154,15 @@
               <td>1.321000 <span class="bad">(-0.30bps)</span></td>
               <td><span class="bad">+0.30bps</span></td>
               <td><span class="good">+3.41bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-189.71732119142348"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-30.71867409629926"
                 data-entry-slip-bps="0.714438808315989"
                 data-exit-slip-bps="0.4299349365125755"
@@ -1984,11 +2193,15 @@
               <td>0.697750 <span class="bad">(-0.43bps)</span></td>
               <td><span class="bad">+1.14bps</span></td>
               <td><span class="bad">-30.72bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="89.63840913306393"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="10.177469626613865"
                 data-entry-slip-bps="0.3180560414742185"
                 data-exit-slip-bps="-1.3981747464213945"
@@ -2019,11 +2232,15 @@
               <td>157.370000 <span class="good">(+1.40bps)</span></td>
               <td><span class="good">-1.08bps</span></td>
               <td><span class="good">+10.18bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="19.626311547271463"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="2.2263214808216136"
                 data-entry-slip-bps="0.3180560414742185"
                 data-exit-slip-bps="0.06359462243903023"
@@ -2054,11 +2271,15 @@
               <td>157.245000 <span class="bad">(-0.06bps)</span></td>
               <td><span class="bad">+0.38bps</span></td>
               <td><span class="good">+2.23bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="19.626311547271463"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="2.2263214808216136"
                 data-entry-slip-bps="0.3180560414742185"
                 data-exit-slip-bps="0.06359462243903023"
@@ -2089,11 +2310,15 @@
               <td>157.245000 <span class="bad">(-0.06bps)</span></td>
               <td><span class="bad">+0.38bps</span></td>
               <td><span class="good">+2.23bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-92.41409085940084"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-10.462572524651751"
                 data-entry-slip-bps="0.06340993253213456"
                 data-exit-slip-bps="0.44431185614483315"
@@ -2124,11 +2349,15 @@
               <td>157.540000 <span class="bad">(-0.44bps)</span></td>
               <td><span class="bad">+0.51bps</span></td>
               <td><span class="bad">-10.46bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-112.07713986139359"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-12.68190609048648"
                 data-entry-slip-bps="0.06340993253213456"
                 data-exit-slip-bps="0.5713777822932915"
@@ -2159,11 +2388,15 @@
               <td>157.505000 <span class="bad">(-0.57bps)</span></td>
               <td><span class="bad">+0.63bps</span></td>
               <td><span class="bad">-12.68bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="48.51393011348294"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="7.867257903018888"
                 data-entry-slip-bps="-0.7152564194278739"
                 data-exit-slip-bps="-0.2862991539862863"
@@ -2194,11 +2427,15 @@
               <td>0.698550 <span class="good">(-0.29bps)</span></td>
               <td><span class="good">-1.00bps</span></td>
               <td><span class="good">+7.87bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="145.4109622240079"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="14.518257809064243"
                 data-entry-slip-bps="0.35194537807767434"
                 data-exit-slip-bps="1.1456570783978735"
@@ -2229,11 +2466,15 @@
               <td>1.134850 <span class="bad">(+1.15bps)</span></td>
               <td><span class="bad">+1.50bps</span></td>
               <td><span class="good">+14.52bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="282.3699664244543"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="28.15662120545615"
                 data-entry-slip-bps="0.35194537807767434"
                 data-exit-slip-bps="0.26472067556693896"
@@ -2264,11 +2505,15 @@
               <td>1.133300 <span class="bad">(+0.26bps)</span></td>
               <td><span class="bad">+0.62bps</span></td>
               <td><span class="good">+28.16bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="419.05047573256917"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="67.70721972774616"
                 data-entry-slip-bps="0.5701335537855443"
                 data-exit-slip-bps="1.1482374555053534"
@@ -2299,11 +2544,15 @@
               <td>0.696800 <span class="bad">(+1.15bps)</span></td>
               <td><span class="bad">+1.72bps</span></td>
               <td><span class="good">+67.71bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="140.9958714646427"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="22.80664243460973"
                 data-entry-slip-bps="0.5701335537855443"
                 data-exit-slip-bps="0.4286204137612083"
@@ -2334,11 +2583,15 @@
               <td>0.699950 <span class="bad">(+0.43bps)</span></td>
               <td><span class="bad">+1.00bps</span></td>
               <td><span class="good">+22.81bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="233.36606329063142"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="37.75466590682334"
                 data-entry-slip-bps="-0.4274295809761707"
                 data-exit-slip-bps="0.2860289175238477"
@@ -2369,11 +2622,15 @@
               <td>0.699250 <span class="bad">(+0.29bps)</span></td>
               <td><span class="good">-0.14bps</span></td>
               <td><span class="good">+37.75bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="55.90101292638599"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="6.354855109303147"
                 data-entry-slip-bps="0.4448596467817583"
                 data-exit-slip-bps="-0.0"
@@ -2404,11 +2661,15 @@
               <td>157.460000 <span class="good">(+0.00bps)</span></td>
               <td><span class="bad">+0.44bps</span></td>
               <td><span class="good">+6.35bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="81.25592639949323"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="9.21453990848893"
                 data-entry-slip-bps="0.4448596467817583"
                 data-exit-slip-bps="0.5713777822932915"
@@ -2439,11 +2700,15 @@
               <td>157.505000 <span class="bad">(-0.57bps)</span></td>
               <td><span class="bad">+1.02bps</span></td>
               <td><span class="good">+9.21bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="72.64298488699639"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="8.263412153572048"
                 data-entry-slip-bps="0.38140279949656275"
                 data-exit-slip-bps="0.31755104633221387"
@@ -2474,11 +2739,15 @@
               <td>157.450000 <span class="bad">(-0.32bps)</span></td>
               <td><span class="bad">+0.70bps</span></td>
               <td><span class="good">+8.26bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-39.5727897497637"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-6.409799871803298"
                 data-entry-slip-bps="1.709572179560611"
                 data-exit-slip-bps="-0.0"
@@ -2509,11 +2778,15 @@
               <td>0.701600 <span class="good">(+0.00bps)</span></td>
               <td><span class="bad">+1.71bps</span></td>
               <td><span class="bad">-6.41bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-99.45026717161576"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-11.293054771315964"
                 data-entry-slip-bps="0.42347162034321656"
                 data-exit-slip-bps="0.5640476056184782"
@@ -2544,11 +2817,15 @@
               <td>1.418400 <span class="bad">(+0.56bps)</span></td>
               <td><span class="bad">+0.99bps</span></td>
               <td><span class="bad">-11.29bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-61.57500054978954"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-6.1535756670049215"
                 data-entry-slip-bps="0.3516452602617999"
                 data-exit-slip-bps="-0.2638940201612788"
@@ -2579,11 +2856,15 @@
               <td>1.136850 <span class="good">(+0.26bps)</span></td>
               <td><span class="bad">+0.09bps</span></td>
               <td><span class="bad">-6.15bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-52.77114473807095"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-5.274493428861641"
                 data-entry-slip-bps="0.3516452602617999"
                 data-exit-slip-bps="0.2638568840278328"
@@ -2614,11 +2895,15 @@
               <td>1.136950 <span class="bad">(-0.26bps)</span></td>
               <td><span class="bad">+0.62bps</span></td>
               <td><span class="bad">-5.27bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-61.57500054978954"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-6.1535756670049215"
                 data-entry-slip-bps="0.3516452602617999"
                 data-exit-slip-bps="-0.2638940201612788"
@@ -2649,11 +2934,15 @@
               <td>1.136850 <span class="good">(+0.26bps)</span></td>
               <td><span class="bad">+0.09bps</span></td>
               <td><span class="bad">-6.15bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="109.88962685878069"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="17.76325138553323"
                 data-entry-slip-bps="-1.4212620807275298"
                 data-exit-slip-bps="0.42709490048652504"
@@ -2684,11 +2973,15 @@
               <td>0.702450 <span class="bad">(+0.43bps)</span></td>
               <td><span class="good">-0.99bps</span></td>
               <td><span class="good">+17.76bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-92.20383067343235"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-10.475857909272216"
                 data-entry-slip-bps="0.6349407917705898"
                 data-exit-slip-bps="-0.0"
@@ -2719,11 +3012,15 @@
               <td>157.340000 <span class="good">(+0.00bps)</span></td>
               <td><span class="bad">+0.63bps</span></td>
               <td><span class="bad">-10.48bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="153.95646111280965"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="13.188138211689514"
                 data-entry-slip-bps="-0.3768181475627818"
                 data-exit-slip-bps="0.5282500584849373"
@@ -2754,11 +3051,15 @@
               <td>1.325200 <span class="bad">(+0.53bps)</span></td>
               <td><span class="bad">+0.15bps</span></td>
               <td><span class="good">+13.19bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="88.04948380991101"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="8.796622097115693"
                 data-entry-slip-bps="-0.3518772652102467"
                 data-exit-slip-bps="0.616343673232322"
@@ -2789,11 +3090,15 @@
               <td>1.135800 <span class="bad">(+0.62bps)</span></td>
               <td><span class="bad">+0.26bps</span></td>
               <td><span class="good">+8.80bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-207.09297619758715"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-23.498777428471914"
                 data-entry-slip-bps="-0.38104673538210904"
                 data-exit-slip-bps="-0.3183091418382641"
@@ -2824,11 +3129,15 @@
               <td>157.085000 <span class="good">(+0.32bps)</span></td>
               <td><span class="good">-0.70bps</span></td>
               <td><span class="bad">-23.50bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-58.582442553091106"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-6.658634028790017"
                 data-entry-slip-bps="-0.0"
                 data-exit-slip-bps="0.5076367605148298"
@@ -2859,11 +3168,15 @@
               <td>157.585000 <span class="bad">(-0.51bps)</span></td>
               <td><span class="bad">+0.51bps</span></td>
               <td><span class="bad">-6.66bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-243.05082996296886"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-27.563046508680923"
                 data-entry-slip-bps="0.8871652535379886"
                 data-exit-slip-bps="0.19061173660090505"
@@ -2894,11 +3207,15 @@
               <td>157.385000 <span class="bad">(-0.19bps)</span></td>
               <td><span class="bad">+1.08bps</span></td>
               <td><span class="bad">-27.56bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-26.349882523437515"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-2.635393332454579"
                 data-entry-slip-bps="0.0878456727227372"
                 data-exit-slip-bps="1.053990672181655"
@@ -2929,11 +3246,15 @@
               <td>1.138650 <span class="bad">(+1.05bps)</span></td>
               <td><span class="bad">+1.14bps</span></td>
               <td><span class="bad">-2.64bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-8.786342509202726"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-1.426126640045479"
                 data-entry-slip-bps="1.7110591456112614"
                 data-exit-slip-bps="0.14259436181986784"
@@ -2964,11 +3285,15 @@
               <td>0.701300 <span class="bad">(+0.14bps)</span></td>
               <td><span class="bad">+1.85bps</span></td>
               <td><span class="bad">-1.43bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="83.69762550114227"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="9.54593184204701"
                 data-entry-slip-bps="0.19092228190221613"
                 data-exit-slip-bps="0.6357481165956264"
@@ -2999,11 +3324,15 @@
               <td>157.285000 <span class="bad">(-0.64bps)</span></td>
               <td><span class="bad">+0.83bps</span></td>
               <td><span class="good">+9.55bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-8.777781679013113"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-0.8777319406652242"
                 data-entry-slip-bps="0.4388852315109367"
                 data-exit-slip-bps="0.2633357618740245"
@@ -3034,11 +3363,15 @@
               <td>1.139200 <span class="bad">(-0.26bps)</span></td>
               <td><span class="bad">+0.70bps</span></td>
               <td><span class="bad">-0.88bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-21.93453856311957"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-1.8870772946866206"
                 data-entry-slip-bps="-0.22645440340568168"
                 data-exit-slip-bps="0.07546941979159506"
@@ -3069,11 +3402,15 @@
               <td>1.325050 <span class="bad">(+0.08bps)</span></td>
               <td><span class="good">-0.15bps</span></td>
               <td><span class="bad">-1.89bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-79.01564070710323"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-12.820512820512992"
                 data-entry-slip-bps="0.7121999857559219"
                 data-exit-slip-bps="0.4268214605826752"
@@ -3104,11 +3441,15 @@
               <td>0.702900 <span class="bad">(+0.43bps)</span></td>
               <td><span class="bad">+1.14bps</span></td>
               <td><span class="bad">-12.82bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="150.7488756080951"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="17.194714217480133"
                 data-entry-slip-bps="-0.9551706571565434"
                 data-exit-slip-bps="1.9068806610520348"
@@ -3139,11 +3480,15 @@
               <td>157.295000 <span class="bad">(-1.91bps)</span></td>
               <td><span class="bad">+0.95bps</span></td>
               <td><span class="good">+17.19bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="236.8179396420843"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="27.064892058842982"
                 data-entry-slip-bps="-0.6367804381043624"
                 data-exit-slip-bps="-0.0"
@@ -3174,11 +3519,15 @@
               <td>157.455000 <span class="good">(+0.00bps)</span></td>
               <td><span class="good">-0.64bps</span></td>
               <td><span class="good">+27.06bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="145.07588420196936"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="16.55787295016659"
                 data-entry-slip-bps="-0.3184104948096193"
                 data-exit-slip-bps="0.6357481165956264"
@@ -3209,11 +3558,15 @@
               <td>157.285000 <span class="bad">(-0.64bps)</span></td>
               <td><span class="bad">+0.32bps</span></td>
               <td><span class="good">+16.56bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="119.96659655163462"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="13.688164512637895"
                 data-entry-slip-bps="0.31833954095409245"
                 data-exit-slip-bps="0.6357481165956264"
@@ -3244,11 +3597,15 @@
               <td>157.285000 <span class="bad">(-0.64bps)</span></td>
               <td><span class="bad">+0.95bps</span></td>
               <td><span class="good">+13.69bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="133.94255079472205"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="15.279811548991477"
                 data-entry-slip-bps="0.31833954095409245"
                 data-exit-slip-bps="0.06356834550697502"
@@ -3279,11 +3636,15 @@
               <td>157.310000 <span class="bad">(-0.06bps)</span></td>
               <td><span class="bad">+0.38bps</span></td>
               <td><span class="good">+15.28bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="78.93352043501244"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="12.792267784805798"
                 data-entry-slip-bps="-0.7107320540155578"
                 data-exit-slip-bps="-0.0"
@@ -3314,11 +3675,15 @@
               <td>0.702650 <span class="good">(+0.00bps)</span></td>
               <td><span class="good">-0.71bps</span></td>
               <td><span class="good">+12.79bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-39.53142089102412"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-3.4012320018127764"
                 data-entry-slip-bps="0.7557722102557456"
                 data-exit-slip-bps="-0.0"
@@ -3349,11 +3714,15 @@
               <td>1.323500 <span class="good">(+0.00bps)</span></td>
               <td><span class="bad">+0.76bps</span></td>
               <td><span class="bad">-3.40bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-184.1733685309096"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-18.450995035803636"
                 data-entry-slip-bps="0.0878611091592176"
                 data-exit-slip-bps="0.08770083491252292"
@@ -3384,11 +3753,15 @@
               <td>1.140250 <span class="bad">(+0.09bps)</span></td>
               <td><span class="bad">+0.18bps</span></td>
               <td><span class="bad">-18.45bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="30.529984733473857"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="3.472331828654844"
                 data-entry-slip-bps="-0.5050409398800121"
                 data-exit-slip-bps="0.12622119001398213"
@@ -3419,11 +3792,15 @@
               <td>158.450000 <span class="bad">(-0.13bps)</span></td>
               <td><span class="good">-0.38bps</span></td>
               <td><span class="good">+3.47bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-33.31978202804477"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-3.7871615224390753"
                 data-entry-slip-bps="0.063119757115476"
                 data-exit-slip-bps="0.6945277526973362"
@@ -3454,11 +3831,15 @@
               <td>158.370000 <span class="bad">(-0.69bps)</span></td>
               <td><span class="bad">+0.76bps</span></td>
               <td><span class="bad">-3.79bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="113.61683261628251"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="12.90850702096924"
                 data-entry-slip-bps="-0.818655264268546"
                 data-exit-slip-bps="-0.5674152344695016"
@@ -3489,11 +3870,15 @@
               <td>158.605000 <span class="good">(-0.57bps)</span></td>
               <td><span class="good">-1.39bps</span></td>
               <td><span class="good">+12.91bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="210.80641323129834"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="23.927964233990018"
                 data-entry-slip-bps="-0.818655264268546"
                 data-exit-slip-bps="0.063119757115476"
@@ -3524,11 +3909,15 @@
               <td>158.430000 <span class="bad">(+0.06bps)</span></td>
               <td><span class="good">-0.76bps</span></td>
               <td><span class="good">+23.93bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="11.066838808069543"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="1.258732456415244"
                 data-entry-slip-bps="0.1888063036140248"
                 data-exit-slip-bps="-0.0"
@@ -3559,11 +3948,15 @@
               <td>158.870000 <span class="good">(+0.00bps)</span></td>
               <td><span class="bad">+0.19bps</span></td>
               <td><span class="good">+1.26bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="70.33770892498781"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="7.028641714989755"
                 data-entry-slip-bps="-0.0"
                 data-exit-slip-bps="0.17584272626482778"
@@ -3594,11 +3987,15 @@
               <td>1.137400 <span class="bad">(+0.18bps)</span></td>
               <td><span class="bad">+0.18bps</span></td>
               <td><span class="good">+7.03bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-92.31296733439673"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-14.91583209034726"
                 data-entry-slip-bps="0.14205756172336406"
                 data-exit-slip-bps="0.9957750686375593"
@@ -3629,11 +4026,15 @@
               <td>0.702900 <span class="bad">(-1.00bps)</span></td>
               <td><span class="bad">+1.14bps</span></td>
               <td><span class="bad">-14.92bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-13.901686101463278"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-1.5824787947827108"
                 data-entry-slip-bps="0.06329955247066718"
                 data-exit-slip-bps="0.25323026861341724"
@@ -3664,11 +4065,15 @@
               <td>157.955000 <span class="bad">(-0.25bps)</span></td>
               <td><span class="bad">+0.32bps</span></td>
               <td><span class="bad">-1.58bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-57.10194454083795"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-9.247403613601358"
                 data-entry-slip-bps="0.9957750686375593"
                 data-exit-slip-bps="0.14213832902115714"
@@ -3699,11 +4104,15 @@
               <td>0.703550 <span class="bad">(+0.14bps)</span></td>
               <td><span class="bad">+1.14bps</span></td>
               <td><span class="bad">-9.25bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-79.1567171070869"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-12.805919180421343"
                 data-entry-slip-bps="0.853800836724094"
                 data-exit-slip-bps="0.14246840763154123"
@@ -3734,11 +4143,15 @@
               <td>0.701900 <span class="bad">(-0.14bps)</span></td>
               <td><span class="bad">+1.00bps</span></td>
               <td><span class="bad">-12.81bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-91.78796158059336"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-10.438083188359453"
                 data-entry-slip-bps="0.4428473821378508"
                 data-exit-slip-bps="0.5699124234585168"
@@ -3769,11 +4182,15 @@
               <td>157.910000 <span class="bad">(-0.57bps)</span></td>
               <td><span class="bad">+1.01bps</span></td>
               <td><span class="bad">-10.44bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="72.12159136347645"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="8.223944330224507"
                 data-entry-slip-bps="0.4428473821378508"
                 data-exit-slip-bps="0.3160356488208996"
@@ -3804,11 +4221,15 @@
               <td>158.205000 <span class="bad">(-0.32bps)</span></td>
               <td><span class="bad">+0.76bps</span></td>
               <td><span class="good">+8.22bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="428.99988014228006"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="49.02736043017592"
                 data-entry-slip-bps="0.4428473821378508"
                 data-exit-slip-bps="-0.0"
@@ -3839,11 +4260,15 @@
               <td>158.850000 <span class="good">(+0.00bps)</span></td>
               <td><span class="bad">+0.44bps</span></td>
               <td><span class="good">+49.03bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="19.421828456760192"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="2.2124593065518248"
                 data-entry-slip-bps="0.5689504760210214"
                 data-exit-slip-bps="-0.18960101626055623"
@@ -3874,11 +4299,15 @@
               <td>158.230000 <span class="good">(+0.19bps)</span></td>
               <td><span class="bad">+0.38bps</span></td>
               <td><span class="good">+2.21bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="66.52201714859699"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="7.584136514457548"
                 data-entry-slip-bps="-1.0743039142576503"
                 data-exit-slip-bps="0.1894561345905426"
@@ -3909,11 +4338,15 @@
               <td>158.345000 <span class="bad">(-0.19bps)</span></td>
               <td><span class="good">-0.88bps</span></td>
               <td><span class="good">+7.58bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="174.62029501505924"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="19.93292412832992"
                 data-entry-slip-bps="2.9750036396319253"
                 data-exit-slip-bps="0.1894561345905426"
@@ -3944,11 +4377,15 @@
               <td>158.345000 <span class="bad">(-0.19bps)</span></td>
               <td><span class="bad">+3.16bps</span></td>
               <td><span class="good">+19.93bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="296.5773264541484"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="33.901527152905174"
                 data-entry-slip-bps="0.38021849889738074"
                 data-exit-slip-bps="0.1894561345905426"
@@ -3979,11 +4416,15 @@
               <td>158.345000 <span class="bad">(-0.19bps)</span></td>
               <td><span class="bad">+0.57bps</span></td>
               <td><span class="good">+33.90bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="299.3654679477881"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="34.218363855268485"
                 data-entry-slip-bps="0.38021849889738074"
                 data-exit-slip-bps="-0.44207827311627307"
@@ -4014,11 +4455,15 @@
               <td>158.350000 <span class="good">(+0.44bps)</span></td>
               <td><span class="good">-0.06bps</span></td>
               <td><span class="good">+34.22bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-11.103725558279477"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-1.2667848999246412"
                 data-entry-slip-bps="-0.25336339912277217"
                 data-exit-slip-bps="0.8233736786439182"
@@ -4049,11 +4494,15 @@
               <td>157.900000 <span class="bad">(+0.82bps)</span></td>
               <td><span class="bad">+0.57bps</span></td>
               <td><span class="bad">-1.27bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="80.48553381184192"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="9.204888112996782"
                 data-entry-slip-bps="0.19044958799496736"
                 data-exit-slip-bps="0.06342320401372319"
@@ -4084,11 +4533,15 @@
               <td>157.670000 <span class="bad">(-0.06bps)</span></td>
               <td><span class="bad">+0.25bps</span></td>
               <td><span class="good">+9.20bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-275.8379123886238"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-23.63622720792366"
                 data-entry-slip-bps="0.22511199321643388"
                 data-exit-slip-bps="0.15042457335761925"
@@ -4119,11 +4572,15 @@
               <td>1.329550 <span class="bad">(-0.15bps)</span></td>
               <td><span class="bad">+0.38bps</span></td>
               <td><span class="bad">-23.64bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="19.419398236727936"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="2.2234221643424448"
                 data-entry-slip-bps="0.06352675111519782"
                 data-exit-slip-bps="-0.0"
@@ -4154,11 +4611,15 @@
               <td>157.450000 <span class="good">(+0.00bps)</span></td>
               <td><span class="bad">+0.06bps</span></td>
               <td><span class="good">+2.22bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="121.43357255382823"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="41.51550286120481"
                 data-entry-slip-bps="0.14960317757081076"
                 data-exit-slip-bps="-0.0"
@@ -4189,11 +4650,15 @@
               <td>1.331300 <span class="good">(+0.00bps)</span></td>
               <td><span class="bad">+0.15bps</span></td>
               <td><span class="good">+41.52bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="90.7417206379444"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="31.039640987284038"
                 data-entry-slip-bps="0.44874575561267993"
                 data-exit-slip-bps="-0.1500521431190512"
@@ -4224,11 +4689,15 @@
               <td>1.332850 <span class="good">(-0.15bps)</span></td>
               <td><span class="bad">+0.30bps</span></td>
               <td><span class="good">+31.04bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="74.24274510430324"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="34.06341525531622"
                 data-entry-slip-bps="-0.0"
                 data-exit-slip-bps="-0.0"
@@ -4259,11 +4728,15 @@
               <td>157.595000 <span class="good">(+0.00bps)</span></td>
               <td><span class="good">+0.00bps</span></td>
               <td><span class="good">+34.06bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="100.54792643895149"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="46.134266624243985"
                 data-entry-slip-bps="1.0182392098476176"
                 data-exit-slip-bps="0.12668089715471853"
@@ -4294,11 +4767,15 @@
               <td>157.875000 <span class="bad">(-0.13bps)</span></td>
               <td><span class="bad">+1.14bps</span></td>
               <td><span class="good">+46.13bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="16.388069485415237"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="5.615663958668926"
                 data-entry-slip-bps="1.1978648059828703"
                 data-exit-slip-bps="0.8990919171629002"
@@ -4329,11 +4806,15 @@
               <td>1.334800 <span class="bad">(+0.90bps)</span></td>
               <td><span class="bad">+2.10bps</span></td>
               <td><span class="good">+5.62bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="34.94197448362413"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="11.98008311182693"
                 data-entry-slip-bps="1.1978648059828703"
                 data-exit-slip-bps="0.52478483821644"
@@ -4364,11 +4845,15 @@
               <td>1.333950 <span class="bad">(+0.52bps)</span></td>
               <td><span class="bad">+1.72bps</span></td>
               <td><span class="good">+11.98bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="28.44998121706206"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="13.052336686615565"
                 data-entry-slip-bps="-1.8460872499026897"
                 data-exit-slip-bps="0.6994074111767912"
@@ -4399,11 +4884,15 @@
               <td>157.265000 <span class="bad">(-0.70bps)</span></td>
               <td><span class="good">-1.15bps</span></td>
               <td><span class="good">+13.05bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="72.16117281166112"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="33.10520452013435"
                 data-entry-slip-bps="-0.8912145344365299"
                 data-exit-slip-bps="-0.0"
@@ -4434,11 +4923,15 @@
               <td>157.595000 <span class="good">(+0.00bps)</span></td>
               <td><span class="good">-0.89bps</span></td>
               <td><span class="good">+33.11bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-56.70764157281169"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-22.733234239749564"
                 data-entry-slip-bps="0.34972983370381383"
                 data-exit-slip-bps="0.5234505862661487"
@@ -4469,11 +4962,15 @@
               <td>1.146300 <span class="bad">(+0.52bps)</span></td>
               <td><span class="bad">+0.87bps</span></td>
               <td><span class="bad">-22.73bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-38.172101646854166"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-24.66525722339717"
                 data-entry-slip-bps="0.5637455252688923"
                 data-exit-slip-bps="0.4218104102821281"
@@ -4504,11 +5001,15 @@
               <td>0.711250 <span class="bad">(+0.42bps)</span></td>
               <td><span class="bad">+0.99bps</span></td>
               <td><span class="bad">-24.67bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="36.069650207935275"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="16.49536860804409"
                 data-entry-slip-bps="-1.014996574385999"
                 data-exit-slip-bps="-0.25336339912277217"
@@ -4539,11 +5040,15 @@
               <td>157.880000 <span class="good">(+0.25bps)</span></td>
               <td><span class="good">-1.27bps</span></td>
               <td><span class="good">+16.50bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="108.22035128659013"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="49.48610582413399"
                 data-entry-slip-bps="-1.014996574385999"
                 data-exit-slip-bps=""
@@ -4574,11 +5079,15 @@
               <td>158.400000</td>
               <td><span class="good">-1.01bps</span></td>
               <td><span class="good">+49.49bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-23.580697858888428"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-10.785433320645598"
                 data-entry-slip-bps="-1.014996574385999"
                 data-exit-slip-bps="-0.0"
@@ -4609,11 +5118,15 @@
               <td>157.450000 <span class="good">(+0.00bps)</span></td>
               <td><span class="good">-1.01bps</span></td>
               <td><span class="bad">-10.79bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="108.22035128659013"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="49.48610582413399"
                 data-entry-slip-bps="-1.014996574385999"
                 data-exit-slip-bps=""
@@ -4644,11 +5157,15 @@
               <td>158.400000</td>
               <td><span class="good">-1.01bps</span></td>
               <td><span class="good">+49.49bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="50.246865032550545"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="20.057556466381516"
                 data-entry-slip-bps="0.6104101083915213"
                 data-exit-slip-bps="0.349540354434269"
@@ -4679,11 +5196,15 @@
               <td>1.144400 <span class="bad">(+0.35bps)</span></td>
               <td><span class="bad">+0.96bps</span></td>
               <td><span class="good">+20.06bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="6.542361792606411"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="2.616203017353859"
                 data-entry-slip-bps="0.6104101083915213"
                 data-exit-slip-bps="0.17446222020735727"
@@ -4714,11 +5235,15 @@
               <td>1.146400 <span class="bad">(+0.17bps)</span></td>
               <td><span class="bad">+0.78bps</span></td>
               <td><span class="good">+2.62bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="18.01562280064395"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="8.257900587582904"
                 data-entry-slip-bps="-0.06352271572344591"
                 data-exit-slip-bps="0.1271512400412687"
@@ -4749,11 +5274,15 @@
               <td>157.295000 <span class="bad">(+0.13bps)</span></td>
               <td><span class="bad">+0.06bps</span></td>
               <td><span class="good">+8.26bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="11.992969939076811"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="7.719298245614743"
                 data-entry-slip-bps="0.14034890738311728"
                 data-exit-slip-bps="0.2809264955827118"
@@ -4784,11 +5313,15 @@
               <td>0.711950 <span class="bad">(+0.28bps)</span></td>
               <td><span class="bad">+0.42bps</span></td>
               <td><span class="good">+7.72bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-7.629095189309709"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-4.9119360044903715"
                 data-entry-slip-bps="1.2632288128461178"
                 data-exit-slip-bps="0.1404080257221113"
@@ -4819,11 +5352,15 @@
               <td>0.712200 <span class="bad">(-0.14bps)</span></td>
               <td><span class="bad">+1.40bps</span></td>
               <td><span class="bad">-4.91bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-26.155073430368194"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-16.81378730559029"
                 data-entry-slip-bps="-0.0"
                 data-exit-slip-bps="0.14034890738311728"
@@ -4854,11 +5391,15 @@
               <td>0.712500 <span class="bad">(-0.14bps)</span></td>
               <td><span class="bad">+0.14bps</span></td>
               <td><span class="bad">-16.81bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="23.96900589637281"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="9.578127040793058"
                 data-entry-slip-bps="0.08707312401011363"
                 data-exit-slip-bps="0.26147892480037427"
@@ -4889,11 +5430,15 @@
               <td>1.147350 <span class="bad">(+0.26bps)</span></td>
               <td><span class="bad">+0.35bps</span></td>
               <td><span class="good">+9.58bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="8.713268129044959"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="5.606166783462746"
                 data-entry-slip-bps="0.14015220529431247"
                 data-exit-slip-bps="-0.2804577069780682"
@@ -4924,11 +5469,15 @@
               <td>0.713100 <span class="good">(-0.28bps)</span></td>
               <td><span class="good">-0.14bps</span></td>
               <td><span class="good">+5.61bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-38.1527028694277"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-17.539383889279016"
                 data-entry-slip-bps="1.7217521059588714"
                 data-exit-slip-bps="0.31834967528304164"
@@ -4959,11 +5508,15 @@
               <td>157.065000 <span class="bad">(+0.32bps)</span></td>
               <td><span class="bad">+2.04bps</span></td>
               <td><span class="bad">-17.54bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-21.51049303006633"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-9.885834555775313"
                 data-entry-slip-bps="1.7217521059588714"
                 data-exit-slip-bps="1.7206439031842624"
@@ -4994,11 +5547,15 @@
               <td>156.945000 <span class="bad">(+1.72bps)</span></td>
               <td><span class="bad">+3.44bps</span></td>
               <td><span class="bad">-9.89bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-4.355192042195038"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-2.808002808004057"
                 data-entry-slip-bps="-0.4211826809678004"
                 data-exit-slip-bps="0.9829803965625806"
@@ -5029,11 +5586,15 @@
               <td>0.712050 <span class="bad">(-0.98bps)</span></td>
               <td><span class="bad">+0.56bps</span></td>
               <td><span class="bad">-2.81bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="13.06421059507819"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="4.480119469853694"
                 data-entry-slip-bps="0.37332935115271765"
                 data-exit-slip-bps="0.14940648274660645"
@@ -5064,11 +5625,15 @@
               <td>1.338650 <span class="bad">(+0.15bps)</span></td>
               <td><span class="bad">+0.52bps</span></td>
               <td><span class="good">+4.48bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="1.0887268863256658"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="0.435445242759708"
                 data-entry-slip-bps="0.7837400073142404"
                 data-exit-slip-bps="0.5225843538259362"
@@ -5099,11 +5664,15 @@
               <td>1.148200 <span class="bad">(+0.52bps)</span></td>
               <td><span class="bad">+1.31bps</span></td>
               <td><span class="good">+0.44bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="2.1774537726561665"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="0.8708525646607069"
                 data-entry-slip-bps="0.3483288921383733"
                 data-exit-slip-bps="0.5225843538259362"
@@ -5134,11 +5703,15 @@
               <td>1.148200 <span class="bad">(+0.52bps)</span></td>
               <td><span class="bad">+0.87bps</span></td>
               <td><span class="good">+0.87bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="8.70655429407162"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="5.616005616004997"
                 data-entry-slip-bps="0.8424718122981228"
                 data-exit-slip-bps="0.28063479590862533"
@@ -5169,11 +5742,15 @@
               <td>0.712650 <span class="bad">(-0.28bps)</span></td>
               <td><span class="bad">+1.12bps</span></td>
               <td><span class="good">+5.62bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="6.941717711982605"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="3.1899961720035055"
                 data-entry-slip-bps="2.1696680407910507"
                 data-exit-slip-bps="1.7217521059588714"
@@ -5204,11 +5781,15 @@
               <td>156.790000 <span class="bad">(-1.72bps)</span></td>
               <td><span class="bad">+3.89bps</span></td>
               <td><span class="good">+3.19bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-8.333435381805522"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-3.827995406405657"
                 data-entry-slip-bps="2.1696680407910507"
                 data-exit-slip-bps="0.12764708134828046"
@@ -5239,11 +5820,15 @@
               <td>156.680000 <span class="bad">(-0.13bps)</span></td>
               <td><span class="bad">+2.30bps</span></td>
               <td><span class="bad">-3.83bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-32.652765105904535"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-14.973875366381115"
                 data-entry-slip-bps="1.4020061433354591"
                 data-exit-slip-bps="0.1276267173758114"
@@ -5274,11 +5859,15 @@
               <td>156.705000 <span class="bad">(-0.13bps)</span></td>
               <td><span class="bad">+1.53bps</span></td>
               <td><span class="bad">-14.97bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-25.686221433037694"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-11.787944437364743"
                 data-entry-slip-bps="1.4020061433354591"
                 data-exit-slip-bps="-0.19138511789233328"
@@ -5309,11 +5898,15 @@
               <td>156.755000 <span class="good">(+0.19bps)</span></td>
               <td><span class="bad">+1.21bps</span></td>
               <td><span class="bad">-11.79bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-32.652765105904535"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-14.973875366381115"
                 data-entry-slip-bps="1.4020061433354591"
                 data-exit-slip-bps="0.1276267173758114"
@@ -5344,11 +5937,15 @@
               <td>156.705000 <span class="bad">(-0.13bps)</span></td>
               <td><span class="bad">+1.53bps</span></td>
               <td><span class="bad">-14.97bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-110.41801880891725"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-50.484203841878866"
                 data-entry-slip-bps="1.9689540408021844"
                 data-exit-slip-bps="0.12764708134828046"
@@ -5379,11 +5976,15 @@
               <td>156.680000 <span class="bad">(-0.13bps)</span></td>
               <td><span class="bad">+2.10bps</span></td>
               <td><span class="bad">-50.48bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="116.66554929264663"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="53.22856599708532"
                 data-entry-slip-bps="-0.38021849889738074"
                 data-exit-slip-bps="-0.25481926943256067"
@@ -5414,11 +6015,15 @@
               <td>156.970000 <span class="good">(-0.25bps)</span></td>
               <td><span class="good">-0.64bps</span></td>
               <td><span class="good">+53.23bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-8.722768606754823"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-5.620740532564547"
                 data-entry-slip-bps="0.42157331159852857"
                 data-exit-slip-bps="0.14059556280339805"
@@ -5449,11 +6054,15 @@
               <td>0.711250 <span class="bad">(-0.14bps)</span></td>
               <td><span class="bad">+0.56bps</span></td>
               <td><span class="bad">-5.62bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-11.743216827337738"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-5.386565272497336"
                 data-entry-slip-bps="-0.5069451485337471"
                 data-exit-slip-bps="1.2679494088192367"
@@ -5484,11 +6093,15 @@
               <td>157.715000 <span class="bad">(-1.27bps)</span></td>
               <td><span class="bad">+0.76bps</span></td>
               <td><span class="bad">-5.39bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="28.330715048309372"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="13.001426985887685"
                 data-entry-slip-bps="0.6976862187959268"
                 data-exit-slip-bps="-0.6967802418458139"
@@ -5519,11 +6132,15 @@
               <td>157.880000 <span class="good">(+0.70bps)</span></td>
               <td><span class="bad">+0.00bps</span></td>
               <td><span class="good">+13.00bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="32.39769899459263"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="14.903602232368417"
                 data-entry-slip-bps="1.0148163182476377"
                 data-exit-slip-bps="0.0633248055931492"
@@ -5554,11 +6171,15 @@
               <td>157.915000 <span class="bad">(-0.06bps)</span></td>
               <td><span class="bad">+1.08bps</span></td>
               <td><span class="good">+14.90bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="31.708386250027413"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="14.58650431253106"
                 data-entry-slip-bps="1.0148163182476377"
                 data-exit-slip-bps="0.3799488335570954"
@@ -5589,11 +6210,15 @@
               <td>157.910000 <span class="bad">(-0.38bps)</span></td>
               <td><span class="bad">+1.39bps</span></td>
               <td><span class="good">+14.59bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="52.39751543079364"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="24.12468653779157"
                 data-entry-slip-bps="1.0793787857620991"
                 data-exit-slip-bps="-0.760056497533012"
@@ -5624,11 +6249,15 @@
               <td>157.895000 <span class="good">(+0.76bps)</span></td>
               <td><span class="bad">+0.32bps</span></td>
               <td><span class="good">+24.12bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-17.3463874930704"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-7.961276351824725"
                 data-entry-slip-bps="0.06369061646178086"
                 data-exit-slip-bps="-0.5099536579601442"
@@ -5659,11 +6288,15 @@
               <td>156.885000 <span class="good">(+0.51bps)</span></td>
               <td><span class="good">-0.45bps</span></td>
               <td><span class="bad">-7.96bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-24.992123251255997"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-11.464237946626227"
                 data-entry-slip-bps="0.06369061646178086"
                 data-exit-slip-bps="-1.9770534250859961"
@@ -5694,11 +6327,15 @@
               <td>156.830000 <span class="good">(+1.98bps)</span></td>
               <td><span class="good">-1.91bps</span></td>
               <td><span class="bad">-11.46bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-17.3463874930704"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-7.961276351824725"
                 data-entry-slip-bps="0.06369061646178086"
                 data-exit-slip-bps="-0.5099536579601442"
@@ -5729,11 +6366,15 @@
               <td>156.885000 <span class="good">(+0.51bps)</span></td>
               <td><span class="good">-0.45bps</span></td>
               <td><span class="bad">-7.96bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="104.36905436771397"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="48.09683070552607"
                 data-entry-slip-bps="2.293884885210264"
                 data-exit-slip-bps="0.3169873522061606"
@@ -5764,11 +6405,15 @@
               <td>157.730000 <span class="bad">(-0.32bps)</span></td>
               <td><span class="bad">+2.61bps</span></td>
               <td><span class="good">+48.10bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-13.183254494733346"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-6.051919095397284"
                 data-entry-slip-bps="2.293884885210264"
                 data-exit-slip-bps="-0.19123262173460115"
@@ -5799,11 +6444,15 @@
               <td>156.880000 <span class="good">(+0.19bps)</span></td>
               <td><span class="bad">+2.10bps</span></td>
               <td><span class="bad">-6.05bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="107.72858474607885"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="49.68944099378889"
                 data-entry-slip-bps="2.293884885210264"
                 data-exit-slip-bps="0.25355130293616707"
@@ -5834,11 +6483,15 @@
               <td>157.755000 <span class="bad">(-0.25bps)</span></td>
               <td><span class="bad">+2.55bps</span></td>
               <td><span class="good">+49.69bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="141.99842538056402"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="65.65527791942894"
                 data-entry-slip-bps="1.7213569392990133"
                 data-exit-slip-bps="0.3799488335570954"
@@ -5869,11 +6522,15 @@
               <td>157.910000 <span class="bad">(-0.38bps)</span></td>
               <td><span class="bad">+2.10bps</span></td>
               <td><span class="good">+65.66bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="4.35458516044421"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="2.8064267171820383"
                 data-entry-slip-bps="0.14031936687837804"
                 data-exit-slip-bps="0.5614744318586208"
@@ -5904,11 +6561,15 @@
               <td>0.712450 <span class="bad">(+0.56bps)</span></td>
               <td><span class="bad">+0.70bps</span></td>
               <td><span class="good">+2.81bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="154.68719860975463"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="71.50381460082386"
                 data-entry-slip-bps="-1.276690817401949"
                 data-exit-slip-bps="0.25355130293616707"
@@ -5939,11 +6600,15 @@
               <td>157.755000 <span class="bad">(-0.25bps)</span></td>
               <td><span class="good">-1.02bps</span></td>
               <td><span class="good">+71.50bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="67.89187964522561"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="31.282918887860895"
                 data-entry-slip-bps="-1.276690817401949"
                 data-exit-slip-bps="1.0818240826765542"
@@ -5974,11 +6639,15 @@
               <td>157.125000 <span class="bad">(-1.08bps)</span></td>
               <td><span class="good">-0.19bps</span></td>
               <td><span class="good">+31.28bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="0.0"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="0.0"
                 data-entry-slip-bps="0.14057579846989554"
                 data-exit-slip-bps="0.28116345437448165"
@@ -6009,11 +6678,15 @@
               <td>0.711350 <span class="bad">(+0.28bps)</span></td>
               <td><span class="bad">+0.42bps</span></td>
               <td><span class="good">+0.00bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-10.887126625991163"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-7.028888732690587"
                 data-entry-slip-bps="0.14057579846989554"
                 data-exit-slip-bps="0.4214548621839017"
@@ -6044,11 +6717,15 @@
               <td>0.711850 <span class="bad">(+0.42bps)</span></td>
               <td><span class="bad">+0.56bps</span></td>
               <td><span class="bad">-7.03bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="248.6044263371023"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="115.41790901221395"
                 data-entry-slip-bps="0.3206155819188121"
                 data-exit-slip-bps="0.25355130293616707"
@@ -6079,11 +6756,15 @@
               <td>157.755000 <span class="bad">(-0.25bps)</span></td>
               <td><span class="bad">+0.57bps</span></td>
               <td><span class="good">+115.42bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="9.801743403428027"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="3.3701554016106456"
                 data-entry-slip-bps="0.6739856515937774"
                 data-exit-slip-bps="-0.0"
@@ -6114,11 +6795,15 @@
               <td>1.334800 <span class="good">(+0.00bps)</span></td>
               <td><span class="bad">+0.67bps</span></td>
               <td><span class="good">+3.37bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="60.79037757801202"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="27.9886758460946"
                 data-entry-slip-bps="3.861997940266082"
                 data-exit-slip-bps="0.06416179037090487"
@@ -6149,11 +6834,15 @@
               <td>155.855000 <span class="bad">(-0.06bps)</span></td>
               <td><span class="bad">+3.93bps</span></td>
               <td><span class="good">+27.99bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="1.0884187887203784"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="0.7024445068838788"
                 data-entry-slip-bps="0.8428623605773607"
                 data-exit-slip-bps="0.14050074465330722"
@@ -6184,11 +6873,15 @@
               <td>0.711750 <span class="bad">(+0.14bps)</span></td>
               <td><span class="bad">+0.98bps</span></td>
               <td><span class="good">+0.70bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="1.0884187887203784"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="0.7024445068838788"
                 data-entry-slip-bps="0.8428623605773607"
                 data-exit-slip-bps="0.14050074465330722"
@@ -6219,11 +6912,15 @@
               <td>0.711750 <span class="bad">(+0.14bps)</span></td>
               <td><span class="bad">+0.98bps</span></td>
               <td><span class="good">+0.70bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-8.711142858386346"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-2.9927799184464177"
                 data-entry-slip-bps="-0.0"
                 data-exit-slip-bps="-0.1496860335439589"
@@ -6254,11 +6951,15 @@
               <td>1.336150 <span class="good">(+0.15bps)</span></td>
               <td><span class="good">-0.15bps</span></td>
               <td><span class="bad">-2.99bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-11.980012981978803"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-7.73449585149839"
                 data-entry-slip-bps="1.2654846103015298"
                 data-exit-slip-bps="0.42157331159852857"
@@ -6289,11 +6990,15 @@
               <td>0.711650 <span class="bad">(+0.42bps)</span></td>
               <td><span class="bad">+1.69bps</span></td>
               <td><span class="bad">-7.73bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="13.083125820419575"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="5.236287472181646"
                 data-entry-slip-bps="0.08727221950765823"
                 data-exit-slip-bps="0.5233273150687651"
@@ -6324,11 +7029,15 @@
               <td>1.146450 <span class="bad">(-0.52bps)</span></td>
               <td><span class="bad">+0.61bps</span></td>
               <td><span class="good">+5.24bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-9.816368467208125"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-6.33758186043323"
                 data-entry-slip-bps="0.1408331690288921"
                 data-exit-slip-bps="-0.1407439726387312"
@@ -6359,11 +7068,15 @@
               <td>0.710500 <span class="good">(-0.14bps)</span></td>
               <td><span class="bad">+0.00bps</span></td>
               <td><span class="bad">-6.34bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-2.181815008268839"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-1.4083515245403704"
                 data-entry-slip-bps="0.1408331690288921"
                 data-exit-slip-bps="0.14081730362962924"
@@ -6394,11 +7107,15 @@
               <td>0.710150 <span class="bad">(+0.14bps)</span></td>
               <td><span class="bad">+0.28bps</span></td>
               <td><span class="bad">-1.41bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="1.0900228032769246"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="0.7053180984623288"
                 data-entry-slip-bps="0.5642863188771969"
                 data-exit-slip-bps="-0.0"
@@ -6429,11 +7146,15 @@
               <td>0.708950 <span class="good">(+0.00bps)</span></td>
               <td><span class="bad">+0.56bps</span></td>
               <td><span class="good">+0.71bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="9.81281510039734"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="6.347862886162526"
                 data-entry-slip-bps="0.5642863188771969"
                 data-exit-slip-bps="0.7048209754721524"
@@ -6464,11 +7185,15 @@
               <td>0.709350 <span class="bad">(-0.70bps)</span></td>
               <td><span class="bad">+1.27bps</span></td>
               <td><span class="good">+6.35bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-0.7792169920294962"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-0.3574364656689818"
                 data-entry-slip-bps="-0.4289421571497436"
                 data-exit-slip-bps="0.07148524901933327"
@@ -6499,11 +7224,15 @@
               <td>1.398900 <span class="bad">(+0.07bps)</span></td>
               <td><span class="good">-0.36bps</span></td>
               <td><span class="bad">-0.36bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-15.254732235862635"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-9.882120420694894"
                 data-entry-slip-bps="1.1292576542490997"
                 data-exit-slip-bps="-0.14103178856606652"
@@ -6534,11 +7263,15 @@
               <td>0.709050 <span class="good">(-0.14bps)</span></td>
               <td><span class="bad">+0.99bps</span></td>
               <td><span class="bad">-9.88bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="26.52332673574623"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="12.184173400025506"
                 data-entry-slip-bps="0.962000962000087"
                 data-exit-slip-bps="0.7044914532375021"
@@ -6569,11 +7302,15 @@
               <td>156.130000 <span class="bad">(-0.70bps)</span></td>
               <td><span class="bad">+1.67bps</span></td>
               <td><span class="good">+12.18bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="35.61444321450697"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="16.352443247402555"
                 data-entry-slip-bps="0.962000962000087"
                 data-exit-slip-bps="0.5121540559406527"
@@ -6604,11 +7341,15 @@
               <td>156.195000 <span class="bad">(-0.51bps)</span></td>
               <td><span class="bad">+1.47bps</span></td>
               <td><span class="good">+16.35bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="16.768292242333768"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="7.695760918361095"
                 data-entry-slip-bps="0.32066698733336235"
                 data-exit-slip-bps="0.12816240740145132"
@@ -6639,11 +7380,15 @@
               <td>156.050000 <span class="bad">(-0.13bps)</span></td>
               <td><span class="bad">+0.45bps</span></td>
               <td><span class="good">+7.70bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="18.843430385053995"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="8.657175836859748"
                 data-entry-slip-bps="0.962000962000087"
                 data-exit-slip-bps="0.1281418786886953"
@@ -6674,11 +7419,15 @@
               <td>156.075000 <span class="bad">(-0.13bps)</span></td>
               <td><span class="bad">+1.09bps</span></td>
               <td><span class="good">+8.66bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="46.81548839505677"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="21.511590573428883"
                 data-entry-slip-bps="1.0275248211458914"
                 data-exit-slip-bps="0.44851094366734595"
@@ -6709,11 +7458,15 @@
               <td>156.065000 <span class="bad">(-0.45bps)</span></td>
               <td><span class="bad">+1.48bps</span></td>
               <td><span class="good">+21.51bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="92.1753781954757"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="42.44236519726032"
                 data-entry-slip-bps="-0.32152273165683576"
                 data-exit-slip-bps="0.6403073475280503"
@@ -6744,11 +7497,15 @@
               <td>156.165000 <span class="bad">(-0.64bps)</span></td>
               <td><span class="bad">+0.32bps</span></td>
               <td><span class="good">+42.44bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-62.11342565349904"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-24.78476389251256"
                 data-entry-slip-bps="0.08696484011378015"
                 data-exit-slip-bps="0.34870847100088054"
@@ -6779,11 +7536,15 @@
               <td>1.147050 <span class="bad">(-0.35bps)</span></td>
               <td><span class="bad">+0.44bps</span></td>
               <td><span class="bad">-24.78bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="110.96319850278952"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="51.14513638703139"
                 data-entry-slip-bps="0.12866866532054902"
                 data-exit-slip-bps="0.7040180228611087"
@@ -6814,11 +7575,15 @@
               <td>156.235000 <span class="bad">(-0.70bps)</span></td>
               <td><span class="bad">+0.83bps</span></td>
               <td><span class="good">+51.15bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-59.941584201578756"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-20.50555514130214"
                 data-entry-slip-bps="-0.29825372444368226"
                 data-exit-slip-bps="-0.14943997369788453"
@@ -6849,11 +7614,15 @@
               <td>1.338350 <span class="good">(+0.15bps)</span></td>
               <td><span class="good">-0.45bps</span></td>
               <td><span class="bad">-20.51bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-74.12155062284054"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-29.561361561536057"
                 data-entry-slip-bps="0.08694593701693283"
                 data-exit-slip-bps="0.08720220447230033"
@@ -6884,11 +7653,15 @@
               <td>1.146750 <span class="bad">(-0.09bps)</span></td>
               <td><span class="bad">+0.17bps</span></td>
               <td><span class="bad">-29.56bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="44.55998643637478"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="28.733618333450085"
                 data-entry-slip-bps="-0.420509657704781"
                 data-exit-slip-bps="0.28114369254153904"
@@ -6919,11 +7692,15 @@
               <td>0.711400 <span class="bad">(+0.28bps)</span></td>
               <td><span class="good">-0.14bps</span></td>
               <td><span class="good">+28.73bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="46.74380481526622"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="30.14370837714821"
                 data-entry-slip-bps="2.3828880603291673"
                 data-exit-slip-bps="-0.0"
@@ -6954,11 +7731,15 @@
               <td>0.711100 <span class="good">(+0.00bps)</span></td>
               <td><span class="bad">+2.38bps</span></td>
               <td><span class="good">+30.14bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="4.891424892541194"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="2.2566813888259833"
                 data-entry-slip-bps="-0.06447619538897037"
                 data-exit-slip-bps="-0.19338993211922506"
@@ -6989,11 +7770,15 @@
               <td>155.130000 <span class="good">(+0.19bps)</span></td>
               <td><span class="good">-0.26bps</span></td>
               <td><span class="good">+2.26bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="0.0"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="0.0"
                 data-entry-slip-bps="-0.06447619538897037"
                 data-exit-slip-bps="0.5802558283483695"
@@ -7024,11 +7809,15 @@
               <td>155.095000 <span class="bad">(-0.58bps)</span></td>
               <td><span class="bad">+0.52bps</span></td>
               <td><span class="good">+0.00bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-5.416390430754102"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-3.5068031982041306"
                 data-entry-slip-bps="0.5610570314478077"
                 data-exit-slip-bps="0.5609232797174206"
@@ -7059,11 +7848,15 @@
               <td>0.713150 <span class="bad">(+0.56bps)</span></td>
               <td><span class="bad">+1.12bps</span></td>
               <td><span class="bad">-3.51bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-9.748235569363278"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-6.312245756768993"
                 data-entry-slip-bps="0.5610570314478077"
                 data-exit-slip-bps="0.1401856057429208"
@@ -7094,11 +7887,15 @@
               <td>0.713350 <span class="bad">(+0.14bps)</span></td>
               <td><span class="bad">+0.70bps</span></td>
               <td><span class="bad">-6.31bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-17.46857863029407"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-8.057238623179066"
                 data-entry-slip-bps="-0.3222791582083776"
                 data-exit-slip-bps="0.7095583966575993"
@@ -7129,11 +7926,15 @@
               <td>155.015000 <span class="bad">(-0.71bps)</span></td>
               <td><span class="bad">+0.39bps</span></td>
               <td><span class="bad">-8.06bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-1.083052822652147"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-0.7011639321272541"
                 data-entry-slip-bps="0.8413259296659936"
                 data-exit-slip-bps="0.9816570370772348"
@@ -7164,11 +7965,15 @@
               <td>0.713150 <span class="bad">(+0.98bps)</span></td>
               <td><span class="bad">+1.82bps</span></td>
               <td><span class="bad">-0.70bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-247.29177379012162"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-84.21443145984026"
                 data-entry-slip-bps="-0.816108497915618"
                 data-exit-slip-bps="0.7482229704451103"
@@ -7199,11 +8004,15 @@
               <td>1.336400 <span class="bad">(-0.75bps)</span></td>
               <td><span class="good">-0.07bps</span></td>
               <td><span class="bad">-84.21bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="19.540280365015548"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="9.01800380044541"
                 data-entry-slip-bps="0.1932392043688745"
                 data-exit-slip-bps="-0.12894324563105145"
@@ -7234,11 +8043,15 @@
               <td>155.105000 <span class="good">(-0.13bps)</span></td>
               <td><span class="bad">+0.06bps</span></td>
               <td><span class="good">+9.02bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-20.229345119237326"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-9.343686567645728"
                 data-entry-slip-bps="-0.0"
                 data-exit-slip-bps="0.12875978574433133"
@@ -7269,11 +8082,15 @@
               <td>155.330000 <span class="bad">(+0.13bps)</span></td>
               <td><span class="bad">+0.13bps</span></td>
               <td><span class="bad">-9.34bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="3.2488206780958984"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="2.102754608538508"
                 data-entry-slip-bps="-0.1401856057429208"
                 data-exit-slip-bps="0.4206570663372617"
@@ -7304,11 +8121,15 @@
               <td>0.713200 <span class="bad">(+0.42bps)</span></td>
               <td><span class="bad">+0.28bps</span></td>
               <td><span class="good">+2.10bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-46.02634151325856"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-21.28894910005887"
                 data-entry-slip-bps="0.7740836784456694"
                 data-exit-slip-bps="-0.579340710270818"
@@ -7339,11 +8160,15 @@
               <td>155.340000 <span class="good">(-0.58bps)</span></td>
               <td><span class="bad">+0.19bps</span></td>
               <td><span class="bad">-21.29bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="11.176573104495192"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="5.160790891203051"
                 data-entry-slip-bps="0.451548812426946"
                 data-exit-slip-bps="0.5163722269204062"
@@ -7374,11 +8199,15 @@
               <td>154.935000 <span class="bad">(+0.52bps)</span></td>
               <td><span class="bad">+0.97bps</span></td>
               <td><span class="good">+5.16bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-5.585541243816774"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-2.5795634088925317"
                 data-entry-slip-bps="-0.19347099869638615"
                 data-exit-slip-bps="0.25789646746253586"
@@ -7409,11 +8238,15 @@
               <td>155.105000 <span class="bad">(+0.26bps)</span></td>
               <td><span class="bad">+0.06bps</span></td>
               <td><span class="bad">-2.58bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-29.37361524134502"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-13.53877893108168"
                 data-entry-slip-bps="0.25788815390888165"
                 data-exit-slip-bps="0.9037272293002301"
@@ -7444,11 +8277,15 @@
               <td>154.900000 <span class="bad">(-0.90bps)</span></td>
               <td><span class="bad">+1.16bps</span></td>
               <td><span class="bad">-13.54bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-53.76797648073305"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-24.87964069921425"
                 data-entry-slip-bps="-1.4218959042929207"
                 data-exit-slip-bps="-0.3222999323167211"
@@ -7479,11 +8316,15 @@
               <td>155.130000 <span class="good">(-0.32bps)</span></td>
               <td><span class="good">-1.74bps</span></td>
               <td><span class="bad">-24.88bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-53.76797648073305"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-24.87964069921425"
                 data-entry-slip-bps="-1.4218959042929207"
                 data-exit-slip-bps="-0.3222999323167211"
@@ -7514,11 +8355,15 @@
               <td>155.130000 <span class="good">(-0.32bps)</span></td>
               <td><span class="good">-1.74bps</span></td>
               <td><span class="bad">-24.88bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur="-19.50272388043556"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-unrealized-price-ts=""
                 data-profit-bps="-12.623606143488491"
                 data-entry-slip-bps="-0.14026032316070342"
                 data-exit-slip-bps="0.2808712626570422"
@@ -7549,6 +8394,7 @@
               <td>0.712050 <span class="bad">(-0.28bps)</span></td>
               <td><span class="bad">+0.14bps</span></td>
               <td><span class="bad">-12.62bps</span></td>
+              <td style="color: var(--good)">—<br><small></small></td>
             </tr>
             
           </tbody>
@@ -7600,6 +8446,17 @@
         let totalGross = 0;
         let totalGrossCount = 0;
         const pnlSamples = [];
+        const openRows = visibleRows.filter(row => row.getAttribute('data-is-open') === '1');
+        const unrealized = openRows.map(row => readNumber(row, 'data-unrealized-pnl-eur'));
+        const complete = unrealized.every(value => value != null);
+        const unrealizedTotal = complete ? unrealized.reduce((sum, value) => sum + value, 0) : null;
+        const unrealizedEl = document.getElementById('summary-unrealized');
+        unrealizedEl.textContent = formatSigned(unrealizedTotal, 2);
+        unrealizedEl.style.color = unrealizedTotal == null ? '' : unrealizedTotal < 0 ? 'var(--bad)' : 'var(--good)';
+        const priceTimes = openRows.map(row => readNumber(row, 'data-unrealized-price-ts')).filter(value => value != null);
+        const asOf = priceTimes.length ? new Date(Math.min(...priceTimes)).toISOString() : 'unavailable';
+        document.getElementById('summary-unrealized-note').textContent =
+          `Latest recorded 15m bid/ask. Fees/financing excluded. Priced ${unrealized.filter(v => v != null).length}/${openRows.length} open trades. Oldest price: ${asOf}.`;
         const slippageSamples = [];
         const barVsLiveIbkrSpotSamples = [];
         for (const row of visibleRows) {
