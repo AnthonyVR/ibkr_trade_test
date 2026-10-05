@@ -132,7 +132,7 @@
       <div class="eyebrow">Trade Ledger</div>
       <h1>IBKR Probe Trades</h1>
       <p>Static export of the probe ledger. Updated from the trading server after trade events.</p>
-      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-10-05 03:00:07 UTC | Rows: 219</p>
+      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-10-05 03:00:16 UTC | Rows: 220</p>
       <p class="meta"><a href="./archive_index.html" style="color:#7dd3fc;">View archived probe ledgers</a></p>
       <div class="filters">
         <label class="filter-label">
@@ -142,7 +142,7 @@
             <option value="525fe219-14e3-4e47-895a-73ff9fc0c4c8">strategy-promotion-5-symbol-test</option>
           </select>
         </label>
-        <p class="meta" id="row-count">Showing 219 of 219 trade rows.</p>
+        <p class="meta" id="row-count">Showing 220 of 220 trade rows.</p>
       </div>
     </section>
 
@@ -161,11 +161,11 @@
       </div>
       <div class="summary">
         <div class="label">Avg Slippage (bps)</div>
-        <div class="value" id="summary-slippage-bps">+0.06</div>
+        <div class="value" id="summary-slippage-bps">+0.07</div>
       </div>
       <div class="summary">
         <div class="label">Avg Bar vs Live IBKR SPOT (bps)</div>
-        <div class="value" id="summary-bar-vs-live-ibkr-spot-bps">-0.13</div>
+        <div class="value" id="summary-bar-vs-live-ibkr-spot-bps">-0.12</div>
       </div>
       <div class="summary">
         <div class="label">Win Rate</div>
@@ -177,7 +177,7 @@
       <div class="leverage-heading"><div class="label">Gross Leverage · Account-wide</div><div class="value" id="leverage-updated" data-timestamp="1791169205877" data-stale="0" title="Updated 05/10/2026, 03:00:05">1.55×</div></div>
       <div class="leverage-track" role="img" aria-label="Account gross leverage 1.55×; scale zero to ten"><span class="leverage-arrow" style="left:15.538956906576654%" aria-hidden="true">▼</span></div>
       <div class="leverage-ticks"><span>0×</span><span>1×</span><span>2×</span><span>3×</span><span>4×</span><span>5×</span><span>6×</span><span>7×</span><span>8×</span><span>9×</span><span>10×</span></div>
-      <div style="margin-top:8px;font-size:12px;color:var(--muted)">Open trades: 4</div>
+      <div style="margin-top:8px;font-size:12px;color:var(--muted)">Open trades: 5</div>
     </section>
 
     <section class="panel">
@@ -217,6 +217,44 @@
             </tr>
           </thead>
           <tbody>
+            
+            <tr class="ledger-row buy-row"
+                data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
+                data-gross-pnl-eur=""
+                data-is-open="1"
+                data-unrealized-pnl-eur="-75.78911561580217"
+                data-profit-bps=""
+                data-entry-slip-bps="1.3639773579763805"
+                data-exit-slip-bps=""
+                data-entry-bar-vs-live-ibkr-spot-bps="1.136647798313931"
+                data-exit-bar-vs-live-ibkr-spot-bps="">
+              <td>05/10/2026, 03:00:08</td>
+              <td>—</td>
+              <td>—</td>
+              <td>GBP-USD</td>
+              <td>strategy-promotion-5-symbol-test</td>
+              <td>BUY</td>
+              <td>long</td>
+              <td>423322</td>
+              <td>0.7022</td>
+              <td>1.319660</td>
+              <td>1.319650</td>
+              <td>1.319670</td>
+              <td>+0.08</td>
+              <td>1.319670</td>
+              <td>1.319820 <span class="bad">(+1.14bps)</span></td>
+              <td>1.319850 <span class="bad">(+1.36bps)</span></td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="bad">+1.36bps</span></td>
+              <td style="color: var(--bad)">-75.79</td>
+              <td>—</td>
+            </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
@@ -8584,7 +8622,7 @@
           }
         }
 
-        rowCount.textContent = `Showing ${visibleRows.length} of 219 trade rows.`;
+        rowCount.textContent = `Showing ${visibleRows.length} of 220 trade rows.`;
 
         let totalGross = 0;
         let totalGrossCount = 0;
