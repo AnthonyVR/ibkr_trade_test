@@ -132,7 +132,7 @@
       <div class="eyebrow">Trade Ledger</div>
       <h1>IBKR Probe Trades</h1>
       <p>Static export of the probe ledger. Updated from the trading server after trade events.</p>
-      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-10-05 02:02:03 UTC | Rows: 217</p>
+      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-10-05 02:15:08 UTC | Rows: 218</p>
       <p class="meta"><a href="./archive_index.html" style="color:#7dd3fc;">View archived probe ledgers</a></p>
       <div class="filters">
         <label class="filter-label">
@@ -142,7 +142,7 @@
             <option value="525fe219-14e3-4e47-895a-73ff9fc0c4c8">strategy-promotion-5-symbol-test</option>
           </select>
         </label>
-        <p class="meta" id="row-count">Showing 217 of 217 trade rows.</p>
+        <p class="meta" id="row-count">Showing 218 of 218 trade rows.</p>
       </div>
     </section>
 
@@ -174,10 +174,10 @@
     </section>
 
     <section class="summary leverage-panel">
-      <div class="leverage-heading"><div class="label">Gross Leverage · Account-wide</div><div class="value" id="leverage-updated" data-timestamp="1791165608013" data-stale="0" title="Updated 05/10/2026, 02:00:08">2.06×</div></div>
-      <div class="leverage-track" role="img" aria-label="Account gross leverage 2.06×; scale zero to ten"><span class="leverage-arrow" style="left:20.562840162217096%" aria-hidden="true">▼</span></div>
+      <div class="leverage-heading"><div class="label">Gross Leverage · Account-wide</div><div class="value" id="leverage-updated" data-timestamp="1791166506231" data-stale="0" title="Updated 05/10/2026, 02:15:06">2.05×</div></div>
+      <div class="leverage-track" role="img" aria-label="Account gross leverage 2.05×; scale zero to ten"><span class="leverage-arrow" style="left:20.54447778643594%" aria-hidden="true">▼</span></div>
       <div class="leverage-ticks"><span>0×</span><span>1×</span><span>2×</span><span>3×</span><span>4×</span><span>5×</span><span>6×</span><span>7×</span><span>8×</span><span>9×</span><span>10×</span></div>
-      <div style="margin-top:8px;font-size:12px;color:var(--muted)">Open trades: 5</div>
+      <div style="margin-top:8px;font-size:12px;color:var(--muted)">Open trades: 6</div>
     </section>
 
     <section class="panel">
@@ -217,6 +217,44 @@
             </tr>
           </thead>
           <tbody>
+            
+            <tr class="ledger-row sell-row"
+                data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
+                data-gross-pnl-eur=""
+                data-is-open="1"
+                data-unrealized-pnl-eur="-57.59330022048238"
+                data-profit-bps=""
+                data-entry-slip-bps="0.8638562543185468"
+                data-exit-slip-bps=""
+                data-entry-bar-vs-live-ibkr-spot-bps="0.575904169545165"
+                data-exit-bar-vs-live-ibkr-spot-bps="">
+              <td>05/10/2026, 02:15:05</td>
+              <td>—</td>
+              <td>—</td>
+              <td>AUD-USD</td>
+              <td>strategy-promotion-5-symbol-test</td>
+              <td>SELL</td>
+              <td>short</td>
+              <td>808052</td>
+              <td>0.2720</td>
+              <td>0.694570</td>
+              <td>0.694560</td>
+              <td>0.694580</td>
+              <td>+0.14</td>
+              <td>0.694560</td>
+              <td>0.694520 <span class="bad">(+0.58bps)</span></td>
+              <td>0.694500 <span class="bad">(-0.86bps)</span></td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="bad">+0.86bps</span></td>
+              <td style="color: var(--bad)">-57.59</td>
+              <td>—</td>
+            </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
@@ -450,7 +488,7 @@
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur=""
                 data-is-open="1"
-                data-unrealized-pnl-eur="232.66149535167307"
+                data-unrealized-pnl-eur="770.9455381986833"
                 data-profit-bps=""
                 data-entry-slip-bps="-1.1425452098792508"
                 data-exit-slip-bps=""
@@ -480,7 +518,7 @@
               <td>—</td>
               <td>—</td>
               <td><span class="good">-1.14bps</span></td>
-              <td style="color: var(--good)">+232.66</td>
+              <td style="color: var(--good)">+770.95</td>
               <td>—</td>
             </tr>
             
@@ -488,7 +526,7 @@
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur=""
                 data-is-open="1"
-                data-unrealized-pnl-eur="-284.08146911520276"
+                data-unrealized-pnl-eur="56.85172728693694"
                 data-profit-bps=""
                 data-entry-slip-bps="0.07558807522406927"
                 data-exit-slip-bps=""
@@ -518,7 +556,7 @@
               <td>—</td>
               <td>—</td>
               <td><span class="bad">+0.08bps</span></td>
-              <td style="color: var(--bad)">-284.08</td>
+              <td style="color: var(--good)">+56.85</td>
               <td>—</td>
             </tr>
             
@@ -640,7 +678,7 @@
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur=""
                 data-is-open="1"
-                data-unrealized-pnl-eur="1388.9816360601055"
+                data-unrealized-pnl-eur="1701.6727175534822"
                 data-profit-bps=""
                 data-entry-slip-bps="-1.8649426308127908"
                 data-exit-slip-bps=""
@@ -670,7 +708,7 @@
               <td>—</td>
               <td>—</td>
               <td><span class="good">-1.86bps</span></td>
-              <td style="color: var(--good)">+1388.98</td>
+              <td style="color: var(--good)">+1701.67</td>
               <td>—</td>
             </tr>
             
@@ -754,7 +792,7 @@
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur=""
                 data-is-open="1"
-                data-unrealized-pnl-eur="342.7935447968558"
+                data-unrealized-pnl-eur="654.8321714145089"
                 data-profit-bps=""
                 data-entry-slip-bps="2.2239025041149625"
                 data-exit-slip-bps=""
@@ -784,7 +822,7 @@
               <td>—</td>
               <td>—</td>
               <td><span class="bad">+2.22bps</span></td>
-              <td style="color: var(--good)">+342.79</td>
+              <td style="color: var(--good)">+654.83</td>
               <td>—</td>
             </tr>
             
@@ -2160,7 +2198,7 @@
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur=""
                 data-is-open="1"
-                data-unrealized-pnl-eur="927.7685030606652"
+                data-unrealized-pnl-eur="990.7120743034072"
                 data-profit-bps=""
                 data-entry-slip-bps="0.35286126377296906"
                 data-exit-slip-bps=""
@@ -2190,7 +2228,7 @@
               <td>—</td>
               <td>—</td>
               <td><span class="bad">+0.35bps</span></td>
-              <td style="color: var(--good)">+927.77</td>
+              <td style="color: var(--good)">+990.71</td>
               <td>—</td>
             </tr>
             
@@ -8508,7 +8546,7 @@
           }
         }
 
-        rowCount.textContent = `Showing ${visibleRows.length} of 217 trade rows.`;
+        rowCount.textContent = `Showing ${visibleRows.length} of 218 trade rows.`;
 
         let totalGross = 0;
         let totalGrossCount = 0;
