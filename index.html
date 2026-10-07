@@ -132,7 +132,7 @@
       <div class="eyebrow">Trade Ledger</div>
       <h1>IBKR Probe Trades</h1>
       <p>Static export of the probe ledger. Updated from the trading server after trade events.</p>
-      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-10-07 17:02:03 UTC | Rows: 246</p>
+      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-10-07 17:15:18 UTC | Rows: 247</p>
       <p class="meta"><a href="./archive_index.html" style="color:#7dd3fc;">View archived probe ledgers</a></p>
       <div class="filters">
         <label class="filter-label">
@@ -142,7 +142,7 @@
             <option value="525fe219-14e3-4e47-895a-73ff9fc0c4c8">strategy-promotion-5-symbol-test</option>
           </select>
         </label>
-        <p class="meta" id="row-count">Showing 246 of 246 trade rows.</p>
+        <p class="meta" id="row-count">Showing 247 of 247 trade rows.</p>
       </div>
     </section>
 
@@ -174,10 +174,10 @@
     </section>
 
     <section class="summary leverage-panel">
-      <div class="leverage-heading"><div class="label">Gross Leverage · Account-wide</div><div class="value" id="leverage-updated" data-timestamp="1791392521720" data-stale="0" title="Updated 07/10/2026, 17:02:01">0.00×</div></div>
-      <div class="leverage-track" role="img" aria-label="Account gross leverage 0.00×; scale zero to ten"><span class="leverage-arrow" style="left:0%" aria-hidden="true">▼</span></div>
+      <div class="leverage-heading"><div class="label">Gross Leverage · Account-wide</div><div class="value" id="leverage-updated" data-timestamp="1791393307673" data-stale="0" title="Updated 07/10/2026, 17:15:07">0.48×</div></div>
+      <div class="leverage-track" role="img" aria-label="Account gross leverage 0.48×; scale zero to ten"><span class="leverage-arrow" style="left:4.845020441577295%" aria-hidden="true">▼</span></div>
       <div class="leverage-ticks"><span>0×</span><span>1×</span><span>2×</span><span>3×</span><span>4×</span><span>5×</span><span>6×</span><span>7×</span><span>8×</span><span>9×</span><span>10×</span></div>
-      <div style="margin-top:8px;font-size:12px;color:var(--muted)">Open trades: 0</div>
+      <div style="margin-top:8px;font-size:12px;color:var(--muted)">Open trades: 1</div>
     </section>
 
     <section class="panel">
@@ -217,6 +217,44 @@
             </tr>
           </thead>
           <tbody>
+            
+            <tr class="ledger-row sell-row"
+                data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
+                data-gross-pnl-eur=""
+                data-is-open="1"
+                data-unrealized-pnl-eur="-22.324518125323376"
+                data-profit-bps=""
+                data-entry-slip-bps="0.3571938848410488"
+                data-exit-slip-bps=""
+                data-entry-bar-vs-live-ibkr-spot-bps="0.0"
+                data-exit-bar-vs-live-ibkr-spot-bps="">
+              <td>07/10/2026, 17:15:07</td>
+              <td>—</td>
+              <td>—</td>
+              <td>EUR-USD</td>
+              <td>strategy-promotion-5-symbol-test</td>
+              <td>SELL</td>
+              <td>short</td>
+              <td>500000</td>
+              <td>0.2969</td>
+              <td>1.119845</td>
+              <td>1.119840</td>
+              <td>1.119850</td>
+              <td>+0.04</td>
+              <td>1.119840</td>
+              <td>1.119840 <span class="good">(+0.00bps)</span></td>
+              <td>1.119800 <span class="bad">(-0.36bps)</span></td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="bad">+0.36bps</span></td>
+              <td style="color: var(--bad)">-22.32</td>
+              <td>—</td>
+            </tr>
             
             <tr class="ledger-row buy-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
@@ -9610,7 +9648,7 @@
           }
         }
 
-        rowCount.textContent = `Showing ${visibleRows.length} of 246 trade rows.`;
+        rowCount.textContent = `Showing ${visibleRows.length} of 247 trade rows.`;
 
         let totalGross = 0;
         let totalGrossCount = 0;
