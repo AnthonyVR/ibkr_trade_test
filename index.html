@@ -132,7 +132,7 @@
       <div class="eyebrow">Trade Ledger</div>
       <h1>IBKR Probe Trades</h1>
       <p>Static export of the probe ledger. Updated from the trading server after trade events.</p>
-      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-10-08 00:47:09 UTC | Rows: 250</p>
+      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-10-08 01:00:16 UTC | Rows: 250</p>
       <p class="meta"><a href="./archive_index.html" style="color:#7dd3fc;">View archived probe ledgers</a></p>
       <div class="filters">
         <label class="filter-label">
@@ -149,7 +149,7 @@
     <section class="grid">
       <div class="summary">
         <div class="label">Total PnL (Gross, EUR)</div>
-        <div class="value" id="summary-total-gross" style="color: var(--good)">+27879.15</div>
+        <div class="value" id="summary-total-gross" style="color: var(--good)">+27908.52</div>
       </div>
       <div class="summary">
         <div class="label">Estimated Unrealized PnL (EUR)</div>
@@ -157,7 +157,7 @@
       </div>
       <div class="summary">
         <div class="label">Profit / Trade (bps)</div>
-        <div class="value" id="summary-profit-bps">+6.48</div>
+        <div class="value" id="summary-profit-bps">+6.56</div>
       </div>
       <div class="summary">
         <div class="label">Avg Slippage (bps)</div>
@@ -169,15 +169,15 @@
       </div>
       <div class="summary">
         <div class="label">Win Rate</div>
-        <div class="value" id="summary-win-rate">60.7%</div>
+        <div class="value" id="summary-win-rate">61.0%</div>
       </div>
     </section>
 
     <section class="summary leverage-panel">
-      <div class="leverage-heading"><div class="label">Gross Leverage · Account-wide</div><div class="value" id="leverage-updated" data-timestamp="1791420420991" data-stale="0" title="Updated 08/10/2026, 00:47:00">1.46×</div></div>
-      <div class="leverage-track" role="img" aria-label="Account gross leverage 1.46×; scale zero to ten"><span class="leverage-arrow" style="left:14.56827937166365%" aria-hidden="true">▼</span></div>
+      <div class="leverage-heading"><div class="label">Gross Leverage · Account-wide</div><div class="value" id="leverage-updated" data-timestamp="1791421208888" data-stale="0" title="Updated 08/10/2026, 01:00:08">1.94×</div></div>
+      <div class="leverage-track" role="img" aria-label="Account gross leverage 1.94×; scale zero to ten"><span class="leverage-arrow" style="left:19.408515951160513%" aria-hidden="true">▼</span></div>
       <div class="leverage-ticks"><span>0×</span><span>1×</span><span>2×</span><span>3×</span><span>4×</span><span>5×</span><span>6×</span><span>7×</span><span>8×</span><span>9×</span><span>10×</span></div>
-      <div style="margin-top:8px;font-size:12px;color:var(--muted)">Open trades: 3</div>
+      <div style="margin-top:8px;font-size:12px;color:var(--muted)">Open trades: 4</div>
     </section>
 
     <section class="panel">
@@ -218,11 +218,49 @@
           </thead>
           <tbody>
             
+            <tr class="ledger-row buy-row"
+                data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
+                data-gross-pnl-eur=""
+                data-is-open="1"
+                data-unrealized-pnl-eur="-63.35339775070561"
+                data-profit-bps=""
+                data-entry-slip-bps="1.0136269472736321"
+                data-exit-slip-bps=""
+                data-entry-bar-vs-live-ibkr-spot-bps="0.5701651578416431"
+                data-exit-bar-vs-live-ibkr-spot-bps="">
+              <td>08/10/2026, 01:00:08</td>
+              <td>—</td>
+              <td>—</td>
+              <td>USD-JPY</td>
+              <td>strategy-promotion-5-symbol-test</td>
+              <td>BUY</td>
+              <td>long</td>
+              <td>559930</td>
+              <td>0.7239</td>
+              <td>157.847000</td>
+              <td>157.845000</td>
+              <td>157.849000</td>
+              <td>+0.13</td>
+              <td>157.849000</td>
+              <td>157.858000 <span class="bad">(+0.57bps)</span></td>
+              <td>157.865000 <span class="bad">(+1.01bps)</span></td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="bad">+1.01bps</span></td>
+              <td style="color: var(--bad)">-63.35</td>
+              <td>—</td>
+            </tr>
+            
             <tr class="ledger-row sell-row"
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur=""
                 data-is-open="1"
-                data-unrealized-pnl-eur="4.464943496169307"
+                data-unrealized-pnl-eur="-0.0"
                 data-profit-bps=""
                 data-entry-slip-bps="-0.0892984712107579"
                 data-exit-slip-bps=""
@@ -252,7 +290,7 @@
               <td>—</td>
               <td>—</td>
               <td><span class="good">-0.09bps</span></td>
-              <td style="color: var(--good)">+4.46</td>
+              <td style="color: var(--good)">-0.00</td>
               <td>—</td>
             </tr>
             
@@ -260,7 +298,7 @@
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur=""
                 data-is-open="1"
-                data-unrealized-pnl-eur="-903.7211896121142"
+                data-unrealized-pnl-eur="-522.807415537075"
                 data-profit-bps=""
                 data-entry-slip-bps="0.0632875342546801"
                 data-exit-slip-bps=""
@@ -290,7 +328,7 @@
               <td>—</td>
               <td>—</td>
               <td><span class="bad">+0.06bps</span></td>
-              <td style="color: var(--bad)">-903.72</td>
+              <td style="color: var(--bad)">-522.81</td>
               <td>—</td>
             </tr>
             
@@ -298,7 +336,7 @@
                 data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
                 data-gross-pnl-eur=""
                 data-is-open="1"
-                data-unrealized-pnl-eur="-935.3522071687488"
+                data-unrealized-pnl-eur="-554.4461824806316"
                 data-profit-bps=""
                 data-entry-slip-bps="0.44300152519128183"
                 data-exit-slip-bps=""
@@ -328,7 +366,7 @@
               <td>—</td>
               <td>—</td>
               <td><span class="bad">+0.44bps</span></td>
-              <td style="color: var(--bad)">-935.35</td>
+              <td style="color: var(--bad)">-554.45</td>
               <td>—</td>
             </tr>
             
@@ -9678,44 +9716,6 @@
               <td><span class="bad">+0.06bps</span></td>
               <td style="color: var(--good)">—</td>
               <td><span class="bad">-2.58bps</span></td>
-            </tr>
-            
-            <tr class="ledger-row buy-row"
-                data-strategy-id="525fe219-14e3-4e47-895a-73ff9fc0c4c8"
-                data-gross-pnl-eur="-29.37361524134502"
-                data-is-open="0"
-                data-unrealized-pnl-eur=""
-                data-profit-bps="-13.53877893108168"
-                data-entry-slip-bps="0.25788815390888165"
-                data-exit-slip-bps="0.9037272293002301"
-                data-entry-bar-vs-live-ibkr-spot-bps="-0.1289440769526084"
-                data-exit-bar-vs-live-ibkr-spot-bps="0.9682791742506396">
-              <td>15/09/2026, 08:15:05</td>
-              <td>15/09/2026, 10:00:06</td>
-              <td>1h 45m</td>
-              <td>USD-JPY</td>
-              <td>strategy-promotion-5-symbol-test</td>
-              <td>BUY</td>
-              <td>closed</td>
-              <td>25000</td>
-              <td>0.7449</td>
-              <td>155.105500</td>
-              <td>155.105000</td>
-              <td>155.106000</td>
-              <td>+0.03</td>
-              <td>155.106000</td>
-              <td>155.104000 <span class="good">(-0.13bps)</span></td>
-              <td>155.110000 <span class="bad">(+0.26bps)</span></td>
-              <td>154.914500</td>
-              <td>154.914000</td>
-              <td>154.915000</td>
-              <td>+0.03</td>
-              <td>154.914000</td>
-              <td>154.899000 <span class="bad">(+0.97bps)</span></td>
-              <td>154.900000 <span class="bad">(-0.90bps)</span></td>
-              <td><span class="bad">+1.16bps</span></td>
-              <td style="color: var(--good)">—</td>
-              <td><span class="bad">-13.54bps</span></td>
             </tr>
             
           </tbody>
