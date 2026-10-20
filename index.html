@@ -132,7 +132,7 @@
       <div class="eyebrow">Trade Ledger</div>
       <h1>IBKR Probe Trades</h1>
       <p>Static export of the probe ledger. Updated from the trading server after trade events.</p>
-      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-10-20 15:32:14 UTC | Rows: 397</p>
+      <p class="meta">Source: /home/anthony/sle_live/sandbox/ibkr_order_test/events*.jsonl | Generated: 2026-10-20 15:45:18 UTC | Rows: 399</p>
       <p class="meta"><a href="./archive_index.html" style="color:#7dd3fc;">View archived probe ledgers</a></p>
       <div class="filters">
         <label class="filter-label">
@@ -142,14 +142,14 @@
             <option value="3b3a4c50-4fa3-51ae-8b5f-427ac2d8545a">Combined28 | H4 momentum + volatility | entry66 | 20261019</option><option value="525fe219-14e3-4e47-895a-73ff9fc0c4c8">strategy-promotion-5-symbol-test</option>
           </select>
         </label>
-        <p class="meta" id="row-count">Showing 397 of 397 trade rows.</p>
+        <p class="meta" id="row-count">Showing 399 of 399 trade rows.</p>
       </div>
     </section>
 
     <section class="grid">
       <div class="summary">
         <div class="label">Total PnL (Gross, EUR)</div>
-        <div class="value" id="summary-total-gross" style="color: var(--good)">+24091.59</div>
+        <div class="value" id="summary-total-gross" style="color: var(--good)">+24155.04</div>
       </div>
       <div class="summary">
         <div class="label">Estimated Unrealized PnL (EUR)</div>
@@ -157,7 +157,7 @@
       </div>
       <div class="summary">
         <div class="label">Profit / Trade (bps)</div>
-        <div class="value" id="summary-profit-bps">+3.72</div>
+        <div class="value" id="summary-profit-bps">+3.78</div>
       </div>
       <div class="summary">
         <div class="label">Avg Slippage (bps)</div>
@@ -169,15 +169,15 @@
       </div>
       <div class="summary">
         <div class="label">Win Rate</div>
-        <div class="value" id="summary-win-rate">58.3%</div>
+        <div class="value" id="summary-win-rate">58.4%</div>
       </div>
     </section>
 
     <section class="summary leverage-panel">
-      <div class="leverage-heading"><div class="label">Gross Leverage · Account-wide</div><div class="value" id="leverage-updated" data-timestamp="1792510321693" data-stale="0" title="Updated 20/10/2026, 15:32:01">0.10×</div></div>
-      <div class="leverage-track" role="img" aria-label="Account gross leverage 0.10×; scale zero to ten"><span class="leverage-arrow" style="left:0.9759130508315537%" aria-hidden="true">▼</span></div>
+      <div class="leverage-heading"><div class="label">Gross Leverage · Account-wide</div><div class="value" id="leverage-updated" data-timestamp="1792511106173" data-stale="0" title="Updated 20/10/2026, 15:45:06">0.10×</div></div>
+      <div class="leverage-track" role="img" aria-label="Account gross leverage 0.10×; scale zero to ten"><span class="leverage-arrow" style="left:0.9758942196186114%" aria-hidden="true">▼</span></div>
       <div class="leverage-ticks"><span>0×</span><span>1×</span><span>2×</span><span>3×</span><span>4×</span><span>5×</span><span>6×</span><span>7×</span><span>8×</span><span>9×</span><span>10×</span></div>
-      <div style="margin-top:8px;font-size:12px;color:var(--muted)">Open trades: 4</div>
+      <div style="margin-top:8px;font-size:12px;color:var(--muted)">Open trades: 5</div>
     </section>
 
     <section class="panel">
@@ -218,11 +218,87 @@
           </thead>
           <tbody>
             
+            <tr class="ledger-row buy-row"
+                data-strategy-id="3b3a4c50-4fa3-51ae-8b5f-427ac2d8545a"
+                data-gross-pnl-eur=""
+                data-is-open="1"
+                data-unrealized-pnl-eur="-1.5584091759135503"
+                data-profit-bps=""
+                data-entry-slip-bps="0.4452557994577276"
+                data-exit-slip-bps=""
+                data-entry-bar-vs-live-ibkr-spot-bps="0.17810231978388197"
+                data-exit-bar-vs-live-ibkr-spot-bps="">
+              <td>20/10/2026, 15:45:06</td>
+              <td>—</td>
+              <td>—</td>
+              <td>EUR-USD</td>
+              <td>Combined28 | H4 momentum + volatility | entry66 | 20261019</td>
+              <td>BUY</td>
+              <td>long</td>
+              <td>25000</td>
+              <td>0.6630</td>
+              <td>1.122940</td>
+              <td>1.122930</td>
+              <td>1.122950</td>
+              <td>+0.09</td>
+              <td>1.122950</td>
+              <td>1.122970 <span class="bad">(+0.18bps)</span></td>
+              <td>1.123000 <span class="bad">(+0.45bps)</span></td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="bad">+0.45bps</span></td>
+              <td style="color: var(--bad)">-1.56</td>
+              <td>—</td>
+            </tr>
+            
+            <tr class="ledger-row buy-row"
+                data-strategy-id="3b3a4c50-4fa3-51ae-8b5f-427ac2d8545a"
+                data-gross-pnl-eur=""
+                data-is-open="1"
+                data-unrealized-pnl-eur="-2.8568578908924396"
+                data-profit-bps=""
+                data-entry-slip-bps="0.9999571446924198"
+                data-exit-slip-bps=""
+                data-entry-bar-vs-live-ibkr-spot-bps="0.8571061240225273"
+                data-exit-bar-vs-live-ibkr-spot-bps="">
+              <td>20/10/2026, 15:45:05</td>
+              <td>—</td>
+              <td>—</td>
+              <td>AUD-USD</td>
+              <td>Combined28 | H4 momentum + volatility | entry66 | 20261019</td>
+              <td>BUY</td>
+              <td>long</td>
+              <td>40101</td>
+              <td>0.6789</td>
+              <td>0.700025</td>
+              <td>0.700020</td>
+              <td>0.700030</td>
+              <td>+0.07</td>
+              <td>0.700030</td>
+              <td>0.700090 <span class="bad">(+0.86bps)</span></td>
+              <td>0.700100 <span class="bad">(+1.00bps)</span></td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td>—</td>
+              <td><span class="bad">+1.00bps</span></td>
+              <td style="color: var(--bad)">-2.86</td>
+              <td>—</td>
+            </tr>
+            
             <tr class="ledger-row sell-row"
                 data-strategy-id="3b3a4c50-4fa3-51ae-8b5f-427ac2d8545a"
                 data-gross-pnl-eur=""
                 data-is-open="1"
-                data-unrealized-pnl-eur="54.07618733949458"
+                data-unrealized-pnl-eur="64.56266585926505"
                 data-profit-bps=""
                 data-entry-slip-bps="-0.710624727964682"
                 data-exit-slip-bps=""
@@ -252,27 +328,27 @@
               <td>—</td>
               <td>—</td>
               <td><span class="good">-0.71bps</span></td>
-              <td style="color: var(--good)">+54.08</td>
+              <td style="color: var(--good)">+64.56</td>
               <td>—</td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="3b3a4c50-4fa3-51ae-8b5f-427ac2d8545a"
-                data-gross-pnl-eur=""
-                data-is-open="1"
-                data-unrealized-pnl-eur="54.07618733949458"
-                data-profit-bps=""
+                data-gross-pnl-eur="63.449516447896144"
+                data-is-open="0"
+                data-unrealized-pnl-eur=""
+                data-profit-bps="25.31420704356725"
                 data-entry-slip-bps="-0.710624727964682"
-                data-exit-slip-bps=""
+                data-exit-slip-bps="0.4452557994577276"
                 data-entry-bar-vs-live-ibkr-spot-bps="-0.9771090009509447"
-                data-exit-bar-vs-live-ibkr-spot-bps="">
+                data-exit-bar-vs-live-ibkr-spot-bps="0.17810231978388197">
               <td>20/10/2026, 14:30:07</td>
-              <td>—</td>
-              <td>—</td>
+              <td>20/10/2026, 15:45:06</td>
+              <td>1h 14m</td>
               <td>EUR-USD</td>
               <td>Combined28 | H4 momentum + volatility | entry66 | 20261019</td>
               <td>SELL</td>
-              <td>short</td>
+              <td>closed</td>
               <td>25000</td>
               <td>0.2591</td>
               <td>1.125775</td>
@@ -282,23 +358,23 @@
               <td>1.125770</td>
               <td>1.125880 <span class="good">(-0.98bps)</span></td>
               <td>1.125850 <span class="good">(+0.71bps)</span></td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td>—</td>
-              <td><span class="good">-0.71bps</span></td>
-              <td style="color: var(--good)">+54.08</td>
-              <td>—</td>
+              <td>1.122940</td>
+              <td>1.122930</td>
+              <td>1.122950</td>
+              <td>+0.09</td>
+              <td>1.122950</td>
+              <td>1.122970 <span class="bad">(+0.18bps)</span></td>
+              <td>1.123000 <span class="bad">(+0.45bps)</span></td>
+              <td><span class="good">-0.27bps</span></td>
+              <td style="color: var(--good)">—</td>
+              <td><span class="good">+25.31bps</span></td>
             </tr>
             
             <tr class="ledger-row sell-row"
                 data-strategy-id="3b3a4c50-4fa3-51ae-8b5f-427ac2d8545a"
                 data-gross-pnl-eur=""
                 data-is-open="1"
-                data-unrealized-pnl-eur="1.7802860029432124"
+                data-unrealized-pnl-eur="12.244643525033625"
                 data-profit-bps=""
                 data-entry-slip-bps="-0.3560429387787728"
                 data-exit-slip-bps=""
@@ -328,7 +404,7 @@
               <td>—</td>
               <td>—</td>
               <td><span class="good">-0.36bps</span></td>
-              <td style="color: var(--good)">+1.78</td>
+              <td style="color: var(--good)">+12.24</td>
               <td>—</td>
             </tr>
             
@@ -336,7 +412,7 @@
                 data-strategy-id="3b3a4c50-4fa3-51ae-8b5f-427ac2d8545a"
                 data-gross-pnl-eur=""
                 data-is-open="1"
-                data-unrealized-pnl-eur="0.6676072511043223"
+                data-unrealized-pnl-eur="11.131494113669628"
                 data-profit-bps=""
                 data-entry-slip-bps="-0.5340976864664007"
                 data-exit-slip-bps=""
@@ -366,7 +442,7 @@
               <td>—</td>
               <td>—</td>
               <td><span class="good">-0.53bps</span></td>
-              <td style="color: var(--good)">+0.67</td>
+              <td style="color: var(--good)">+11.13</td>
               <td>—</td>
             </tr>
             
@@ -15348,7 +15424,7 @@
           }
         }
 
-        rowCount.textContent = `Showing ${visibleRows.length} of 397 trade rows.`;
+        rowCount.textContent = `Showing ${visibleRows.length} of 399 trade rows.`;
 
         let totalGross = 0;
         let totalGrossCount = 0;
