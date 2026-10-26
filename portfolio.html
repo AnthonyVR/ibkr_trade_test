@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Shadow Portfolio</title>
+<style>
+:root{color-scheme:dark;font-family:"Segoe UI",sans-serif;background:#09090b;color:#e4e4e7}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#17212b 0,transparent 55%)}
+main{max-width:1200px;margin:auto;padding:20px}header,.spread{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+h1{font-size:20px;margin:0}h2{font-size:16px;margin:0;padding:16px}a{color:#7dd3fc}p{line-height:1.5}
+.muted{color:#a1a1aa;font-size:12px}.warning{color:#fbbf24;font-size:13px}.profit{color:#34d399}.loss{color:#fb7185}
+.panel,.card{background:#18181bcc;border:1px solid #303038;border-radius:12px}.panel{margin-top:16px;overflow:hidden}
+.chart{padding:16px}.chart svg{width:100%;height:220px;display:block;margin:12px 0}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:16px}
+.card{padding:16px;min-width:0}.label{color:#a1a1aa;font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.value{font-size:24px;font-weight:600;margin-top:10px;overflow-wrap:anywhere}.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;white-space:nowrap;text-align:left;font-size:13px}
+th{background:#111114;color:#a1a1aa;font-size:11px;text-transform:uppercase}td,th{padding:12px;border-top:1px solid #303038}
+@media(max-width:700px){main{padding:12px}.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.card{padding:12px}.value{font-size:19px}.chart{padding:12px}}
+</style>
+</head>
+<body><main>
+<header><h1>Portfolio <span class="muted">Shadow / simulated</span></h1><a href="./">Existing probe ledger</a></header>
+<p class="muted">Snapshot generated: 2026-10-26 22:32:09 UTC<br>Session started: 2026-10-26T22:18:30.566959+01:00<br>Latest account input: 2026-10-26 22:32:03 UTC</p>
+<p id="snapshot-warning" class="warning" hidden>This published snapshot is over 20 minutes old. It is not a live account view.</p>
+<p class="warning">History is catching up; the curve and trade table may lag the account cards.</p>
+<section class="panel chart"><div class="spread muted"><span>Equity (EUR)</span><span>1,000,000.00 to 1,000,000.00</span></div><svg viewBox="0 0 900 210" role="img" aria-label="Recorded account equity" preserveAspectRatio="none"><g fill="none" stroke="#38bdf8" stroke-width="2"><path d="M12.00,190.00 L133.09,190.00 L317.61,190.00 L499.24,190.00 L683.34,190.00 L867.63,190.00 L888.00,190.00"/></g><g fill="#38bdf8"><circle cx="12.00" cy="190.00" r="2"><title>2026-10-26 21:19:59 UTC: EUR 1,000,000.00</title></circle><circle cx="133.09" cy="190.00" r="2"><title>2026-10-26 21:29:53 UTC: EUR 1,000,000.00</title></circle><circle cx="317.61" cy="190.00" r="2"><title>2026-10-26 21:44:59 UTC: EUR 1,000,000.00</title></circle><circle cx="499.24" cy="190.00" r="2"><title>2026-10-26 21:59:50 UTC: EUR 1,000,000.00</title></circle><circle cx="683.34" cy="190.00" r="2"><title>2026-10-26 22:14:53 UTC: EUR 1,000,000.00</title></circle><circle cx="867.63" cy="190.00" r="2"><title>2026-10-26 22:29:58 UTC: EUR 1,000,000.00</title></circle><circle cx="888.00" cy="190.00" r="2"><title>2026-10-26 22:31:38 UTC: EUR 1,000,000.00</title></circle></g></svg><div class="spread muted"><span>2026-10-26 21:19:59 UTC</span><span>2026-10-26 22:31:38 UTC</span></div></section>
+<div class="cards">
+<div class="card"><div class="label">Starting capital (EUR)</div><div class="value">1,000,000.00</div></div>
+<div class="card"><div class="label">Equity (EUR)</div><div class="value">1,000,000.00</div></div>
+<div class="card"><div class="label">P&amp;L after recorded fees (EUR)</div><div class="value profit">0.00</div></div>
+<div class="card"><div class="label">Open positions</div><div class="value">0</div></div>
+</div>
+<p class="muted">Account-wide simulated balances, not your IBKR account. Financing and interest excluded.<br>
+Price observations: No price observations<br>History projected: 2026-10-26T23:31:44.869164+01:00. Curve uses recorded 15-minute samples; gaps mean unavailable valuations.</p>
+<section class="panel"><h2>Positions</h2><div class="scroll"><table><thead><tr><th>Symbol</th><th>Side</th><th>Quantity</th><th>Average entry</th><th>Valuation price</th><th>Unrealized P&amp;L (EUR)</th></tr></thead><tbody><tr><td colspan="6" class="muted">No open positions.</td></tr></tbody></table></div></section>
+<section class="panel"><h2>Trades (0)</h2><div class="scroll"><table><thead><tr><th>Entry (UTC)</th><th>Exit (UTC)</th><th>Symbol</th><th>Side</th><th>Quantity</th><th>Entry</th><th>Exit</th><th>Status</th><th>Realized P&amp;L after fees (EUR)</th></tr></thead><tbody><tr><td colspan="9" class="muted">No recorded trades in this session.</td></tr></tbody></table></div></section>
+<p class="muted">Newest entries first. Trade P&amp;L is episode-attributed; it is not total account equity. This public snapshot has no trading controls or connection to the trading server.</p>
+</main><script>
+function checkAge(){document.getElementById('snapshot-warning').hidden=Date.now()-1793053929503<=1200000;}
+checkAge();setInterval(checkAge,60000);
+</script></body></html>
